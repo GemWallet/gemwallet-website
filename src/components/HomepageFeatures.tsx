@@ -12,31 +12,31 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Easy to Use',
-    image: '/img/undraw_docusaurus_mountain.svg',
+    image: '/img/undraw_into_the_night.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Gem Wallet is designed from the ground up to be easy to use.
+        It is also provided with an API for an easy to use experience for developers.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    image: '/img/undraw_docusaurus_tree.svg',
+    title: 'Fast and secure payment',
+    image: '/img/undraw_transfer_money.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Gem Wallet is using Ripple blockchain to make international payments
+        secure in less than 5 seconds.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    image: '/img/undraw_docusaurus_react.svg',
+    title: 'Own your data',
+    image: '/img/undraw_security_on.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Gem Wallet keeps your passwords and keys on your device, so
+        only you have access to your accounts and data.
       </>
     ),
   },
