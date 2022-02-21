@@ -1,5 +1,5 @@
 ---
-title: Markdown page example
+title: Awesome websites using Gem Wallet
 ---
 
 # Want to showcase your project?
