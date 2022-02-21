@@ -21,3 +21,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.chromeIcon {
+  width: 34px;
+  height: 32px;
+  margin-right: 19px;
+  float: left;
+  clear: none;
+}
