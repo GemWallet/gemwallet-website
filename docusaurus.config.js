@@ -58,13 +58,13 @@ const config = {
             position: 'left',
           },
           {
-            href: '/faq',
+            to: '/faq',
             label: 'FAQ',
             position: 'left',
           },
           {
             href: 'https://github.com/GemWallet/gemwallet-website',
-            label: 'GitHub',
+            label: 'Star us on GitHub',
             position: 'right',
           },
         ],
