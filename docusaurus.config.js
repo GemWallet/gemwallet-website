@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'GemWallet', // Usually your GitHub org/user name.
   projectName: 'gemwallet-website', // Usually your repo name.
-
+  trailingSlash: false,
   presets: [
     [
       'classic',
