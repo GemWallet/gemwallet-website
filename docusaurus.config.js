@@ -58,6 +58,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/showcase',
+            label: 'Showcase',
+            position: 'left',
+          },
+          {
             to: '/faq',
             label: 'FAQ',
             position: 'left',
