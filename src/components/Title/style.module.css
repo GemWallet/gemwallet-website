@@ -1,0 +1,13 @@
+.h1 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizelegibility;
+  -webkit-text-size-adjust: 100%;
+  word-wrap: break-word;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}

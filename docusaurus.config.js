@@ -35,6 +35,9 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    'docusaurus-plugin-sass'
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -68,7 +71,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/GemWallet/gemwallet-website',
+            href: 'https://github.com/GemWallet/gemwallet-extension',
             label: 'Star us on GitHub',
             position: 'right',
           },
