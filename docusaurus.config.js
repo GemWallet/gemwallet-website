@@ -51,7 +51,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'user-guide/introduction',
             position: 'left',
             label: 'Documentation',
           },
@@ -84,16 +84,16 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Getting Started',
-                to: '/docs/intro',
+                label: 'User Guide',
+                to: '/docs/user-guide/introduction',
               },
               {
                 label: 'API Reference',
-                to: '/docs/intro',
+                to: '/docs/api/gemwallet-api',
               },
               {
                 label: 'Playground',
-                to: '/docs/intro',
+                to: '/docs/playground/isConnected',
               },
             ],
           },

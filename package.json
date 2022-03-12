@@ -17,6 +17,7 @@
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.16",
     "@docusaurus/preset-classic": "^2.0.0-beta.16",
+    "@gemwallet/api": "1.0.0",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.5",
     "@mdx-js/react": "^1.6.21",
