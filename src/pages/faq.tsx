@@ -17,29 +17,29 @@ export default function Faq(): JSX.Element {
           title="Getting started"
           faqs={[
             {
-              question: "How do I install Gem Wallet?",
+              question: "How do I install GemWallet?",
               answer:
                 "Go to GemWallet.app and click on the installation button.",
             },
             {
               question: "What does the red and green dot mean?",
               answer:
-                "The red and green dot in the top right of Gem Wallet indicates whether your wallet is connected to the blockchain or not.",
+                "The red and green dot in the top right of GemWallet indicates whether your wallet is connected to the blockchain or not.",
             },
             {
-              question: "On which browsers can I install Gem Wallet?",
+              question: "On which browsers can I install GemWallet?",
               answer:
-                "You can install Gem Wallet on chromium browsers like: Chrome, Brave and Microsoft Edge.",
+                "You can install GemWallet on chromium browsers like: Chrome, Brave and Microsoft Edge.",
             },
             {
-              question: "How can I install Gem Wallet on Firefox?",
+              question: "How can I install GemWallet on Firefox?",
               answer:
-                "We are currently developing Gem Wallet to be supported on Firefox.",
+                "We are currently developing GemWallet to be supported on Firefox.",
             },
             {
-              question: "Is Gem Wallet available on mobile, iOS, or Android?",
+              question: "Is GemWallet available on mobile, iOS, or Android?",
               answer:
-                "Gem Wallet is NOT available on mobile, iOS or Android yet. We will be working on it.",
+                "GemWallet is NOT available on mobile, iOS or Android yet. We will be working on it.",
             },
           ]}
         />
@@ -49,17 +49,17 @@ export default function Faq(): JSX.Element {
             {
               question: "How we keep you and your crypto safe?",
               answer:
-                "Gem Wallet generates encrypt your password and keys on your device, so only you have access to your accounts and data. You always choose what to share and what to keep private.",
+                "GemWallet generates encrypt your password and keys on your device, so only you have access to your accounts and data. You always choose what to share and what to keep private.",
             },
             {
-              question: "How can I be sure that Gem Wallet code is safe?",
+              question: "How can I be sure that GemWallet code is safe?",
               answer:
-                "Gem Wallet code is open source. This means that you can check it by yourself and it is available for everybody to check: https://github.com/GemWallet/gemwallet-extension",
+                "GemWallet code is open source. This means that you can check it by yourself and it is available for everybody to check: https://github.com/GemWallet/gemwallet-extension",
             },
             {
               question: "Privacy of my accounts",
               answer:
-                "Gem Wallet needs you authorize a transaction to an address to share your account address. You will see a Gem Wallet confirmation when websites request access to view your account address.",
+                "GemWallet needs you authorize a transaction to an address to share your account address. You will see a GemWallet confirmation when websites request access to view your account address.",
             },
             {
               question: "Lost my password: How can I restore my wallet?",
@@ -69,12 +69,12 @@ export default function Faq(): JSX.Element {
             {
               question: "How do we respect your privacy?",
               answer:
-                "Gem Wallet doesn’t track any personal identifiable information, your account addresses or asset balances.",
+                "GemWallet doesn’t track any personal identifiable information, your account addresses or asset balances.",
             },
           ]}
         />
         <FAQ
-          title="Contribution: How can I contribute to Gem Wallet?"
+          title="Contribution: How can I contribute to GemWallet?"
           faqs={[
             {
               question: "I found a bug, what do I do?",

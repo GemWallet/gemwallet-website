@@ -1,5 +1,5 @@
 ---
-title: Awesome websites using Gem Wallet
+title: Awesome websites using GemWallet
 ---
 
 # Want to showcase your project?

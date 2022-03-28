@@ -43,9 +43,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Gem Wallet',
+        title: 'GemWallet',
         logo: {
-          alt: 'Gem Wallet Logo',
+          alt: 'GemWallet Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -120,7 +120,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Gem Wallet`,
+        copyright: `Copyright © ${new Date().getFullYear()} GemWallet`,
       },
       prism: {
         theme: lightCodeTheme,

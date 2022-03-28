@@ -1,7 +1,7 @@
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import React from 'react';
-import clsx from 'clsx';
-import styles from './HomepageFeatures.module.css';
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import React from "react";
+import clsx from "clsx";
+import styles from "./HomepageFeatures.module.css";
 
 type FeatureItem = {
   title: string;
@@ -11,40 +11,40 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    image: '/img/undraw_into_the_night.svg',
+    title: "Easy to Use",
+    image: "/img/undraw_into_the_night.svg",
     description: (
       <>
-        Gem Wallet is designed from the ground up to be easy to use.
-        It is also provided with an API for an easy to use experience for developers.
+        GemWallet is designed from the ground up to be easy to use. It is also
+        provided with an API for an easy to use experience for developers.
       </>
     ),
   },
   {
-    title: 'Fast and secure payment',
-    image: '/img/undraw_transfer_money.svg',
+    title: "Fast and secure payment",
+    image: "/img/undraw_transfer_money.svg",
     description: (
       <>
-        Gem Wallet is using Ripple blockchain to make international payments
+        GemWallet is using Ripple blockchain to make international payments
         secure in less than 5 seconds.
       </>
     ),
   },
   {
-    title: 'Own your data',
-    image: '/img/undraw_security_on.svg',
+    title: "Own your data",
+    image: "/img/undraw_security_on.svg",
     description: (
       <>
-        Gem Wallet keeps your passwords and keys on your device, so
-        only you have access to your accounts and data.
+        GemWallet keeps your passwords and keys on your device, so only you have
+        access to your accounts and data.
       </>
     ),
   },
 ];
 
-function Feature({title, image, description}: FeatureItem) {
+function Feature({ title, image, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx("col col--4")}>
       <div className="text--center">
         <img
           className={styles.featureSvg}
