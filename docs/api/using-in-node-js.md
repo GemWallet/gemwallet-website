@@ -5,7 +5,7 @@ sidebar_position: 3
 ---
 
 :::info
-This page assume that you have GemWallet installed.
+This page assumes that you have GemWallet installed.
 :::
 
 ## Installing the library
@@ -23,7 +23,7 @@ Now let's dig into what functionalities are available to you.
 ### isConnected()
 
 :::tip
-We definitely recommend to you to check if the user is connected before using any of the other methods available.
+We definitely recommend that you check if the user is connected before using any of the other methods available.
 :::
 `isConnected() -> <Promise<boolean>>`
 
@@ -54,7 +54,7 @@ export default App;
 
 `getNetwork() -> <Promise<'TEST'|'MAIN'>>`
 
-Returns `TEST` if the user is connected to the `test network`, and `MAIN` if connected on the `main network`.
+Returns `TEST` if the user is connected to the `test network`, and `MAIN` if connected to the `main network`.
 
 Here is an example with a React web application:
 

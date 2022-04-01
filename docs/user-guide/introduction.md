@@ -7,15 +7,17 @@ sidebar_position: 1
 
 ## Welcome to GemWallet
 
-Welcome to GemWallet’s Developer Documentation. GemWallet is the bridge between blockchain and fast payments over the internet and experience on Web3 payments. It is currently available as a browser extension (and much more soon). The purpose of this documentation is to illustrate how to use it.
+Welcome to GemWallet’s Developer Documentation. GemWallet is the bridge between the blockchain (XRPL) and fast payments over the internet. It is currently available as a browser extension (and much more soon). This documentation webpage illustrates how to use it.
 
-If you want to know about the our last updates and announcements, follow our [Twitter](https://twitter.com/gemwallet_app) and our [blog](/blog).
+If you want to know about our last updates and announcements, follow us on [Twitter](https://twitter.com/gemwallet_app) and check out our [blog](/blog).
 
-Once you've installed the extension and the API, and you've familiarized yourself with how to integrate it, head down to the Playground to test your connection with the extension.
+Once you've installed the extension and the API, familiarize yourself with how to integrate it, then head down to the Playground to test your connection with the extension.
 
 ## Why GemWallet
 
-GemWallet was created to make the fast secure online payments on blockchain, easier and more user friendly.
+GemWallet makes fast secure online payments on the blockchain easier and more user-friendly.
+
+Our vision is oriented toward payments, micro-payments, and donations.
 
 Get started here
 
@@ -25,10 +27,10 @@ Get started here
 
 GemWallet comes pre-loaded with fast connections to the Ripple (XRP) blockchain. This allows you to get started without synchronizing a full node, while still providing the option to upgrade your security and use the blockchain provider of your choice.
 
-Today, GemWallet is compatible with the Ripple blockchain but other blockchain might be considered. For development, we recommend running on a test blockchain.
+GemWallet is compatible with the XRP Ledger (XRPL). For development, we recommend running on a test blockchain.
 
-## New GemWallet Developers
+## GemWallet Tutorials
 
 :::note Contributing
-Feel Free to post your tutorial here by editing this page.
+Post your tutorial here by editing this page.
 :::

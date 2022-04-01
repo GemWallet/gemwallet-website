@@ -1555,6 +1555,11 @@
     url-loader "^4.1.1"
     webpack "^5.69.1"
 
+"@gemwallet/api@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-1.0.2.tgz#c9fbb74be61e093f3e84357e6fea7cd37b721848"
+  integrity sha512-oCmcwu7JYSHgZ4zFwBZWavMigHCDX+aiOvx1m3Te56mcwZ44DONd62nOzoxgSLfNTJ+e3n+nLEf7kced4FEVjQ==
+
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.1.tgz#9551142a1980503752536b5050fd99f4a7f13b17"

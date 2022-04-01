@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Crypto payments for the web',
-  tagline: `GemWallet is a web extension that enables you to make fast payment on the Ripple (XRP) network via your browser. It's a safer alternative to copying and pasting private keys for use with web applications.`,
+  tagline: `GemWallet is a web extension that enables you to make fast payments on the Ripple (XRP) network via your browser. It's a safer alternative to copying and pasting private keys for use with web applications.`,
   url: 'https://gemwallet.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -43,9 +43,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Gem Wallet',
+        title: 'GemWallet',
         logo: {
-          alt: 'Gem Wallet Logo',
+          alt: 'GemWallet Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -120,7 +120,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Gem Wallet`,
+        copyright: `Copyright © ${new Date().getFullYear()} GemWallet`,
       },
       prism: {
         theme: lightCodeTheme,
