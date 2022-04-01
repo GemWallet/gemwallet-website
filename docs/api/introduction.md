@@ -7,14 +7,14 @@ sidebar_position: 1
 ## Introduction
 
 :::tip Recommended Reading
-Before reading this section, make sure that you have GemWallet extension installed. You can have a read to the [Getting Started](/docs/user-guide/getting-started) section.
+Before reading this section, make sure that you have the GemWallet extension installed. You can have a read to the [Getting Started](/docs/user-guide/getting-started) section.
 :::
 
 The GemWallet API is used to bridge communication between your website and the GemWallet extension.
 
 We provide two ways of installing the extension:
 
-- Via CDN for [browser based application](/docs/api/gemwallet-api#for-browser-based-applications)
+- Via CDN for [browser-based applications](/docs/api/gemwallet-api#for-browser-based-applications)
 - Via an NPM package for [Node.js applications](/docs/api/gemwallet-api#for-nodejs-applications)
 
 ## For browser-based applications
@@ -25,7 +25,7 @@ Install the packaged library via script tag using cdnjs, swapping in the desired
 <script src="https://cdn.jsdelivr.net/gh/GemWallet/gemwallet-extension@{version}/dist/gemwallet-api.min.js"></script>
 ```
 
-After adding the library to your webpages using GemWallet, you will need to import the proper functions as explained in the guide [here](/docs/api/using-gemwallet-in-browser).
+After adding the library to your web pages using GemWallet, you will need to import the proper functions as explained in the guide [here](/docs/api/using-gemwallet-in-browser).
 
 ## For Node.js applications
 

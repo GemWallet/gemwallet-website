@@ -16,7 +16,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         GemWallet is designed from the ground up to be easy to use. It is also
-        provided with an API for an easy to use experience for developers.
+        provided with an API for an easy-to-use experience for developers.
       </>
     ),
   },
@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
     image: "/img/undraw_transfer_money.svg",
     description: (
       <>
-        GemWallet is using Ripple blockchain to make international payments
+        GemWallet is using the Ripple blockchain to make international payments
         secure in less than 5 seconds.
       </>
     ),

@@ -5,14 +5,14 @@ sidebar_position: 2
 ---
 
 :::info
-This page assume that you have GemWallet installed.
+This page assumes that you have GemWallet installed.
 :::
 
 ## Importing the library
 
 Let's first import the library in the `<head>` tag of our page.
 
-Install the packaged library via script tag using cdnjs, swapping in the desired version number for {version}. You can also replace {version} by master to get the last available version (not recommended).
+Install the packaged library via script tag using cdnjs, swapping in the desired version number for {version}. You can also replace {version} with `master` to get the last version (not recommended).
 
 ```html
 <head>
@@ -29,7 +29,7 @@ Now let's dig into what functionalities are available to you.
 ### isConnected()
 
 :::tip
-We definitely recommend to you to check if the user is connected before using any of the other methods available.
+We recommend that you check if the user is connected before using any of the other methods available.
 :::
 `isConnected() -> <Promise<boolean>>`
 
@@ -49,7 +49,7 @@ gemWalletApi.isConnected().then((isConnected) => {
 
 `getNetwork() -> <Promise<'TEST'|'MAIN'>>`
 
-Returns `TEST` if the user is connected to the `test network`, and `MAIN` if connected on the `main network`.
+Returns `TEST` if the user is connected to the `test network`, and `MAIN` if connected to the `main network`.
 
 ```javascript
 gemWalletApi.isConnected().then((isConnected) => {

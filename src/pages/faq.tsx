@@ -24,22 +24,21 @@ export default function Faq(): JSX.Element {
             {
               question: "What does the red and green dot mean?",
               answer:
-                "The red and green dot in the top right of GemWallet indicates whether your wallet is connected to the blockchain or not.",
+                "The red and green dot in the top right of GemWallet shows whether or not your wallet is connected to the blockchain.",
             },
             {
               question: "On which browsers can I install GemWallet?",
               answer:
-                "You can install GemWallet on chromium browsers like: Chrome, Brave and Microsoft Edge.",
+                "You can install GemWallet on chromium browsers like Chrome, Brave, and Microsoft Edge.",
             },
             {
               question: "How can I install GemWallet on Firefox?",
-              answer:
-                "We are currently developing GemWallet to be supported on Firefox.",
+              answer: "We are developing GemWallet to be supported on Firefox.",
             },
             {
               question: "Is GemWallet available on mobile, iOS, or Android?",
               answer:
-                "GemWallet is NOT available on mobile, iOS or Android yet. We will be working on it.",
+                "GemWallet is NOT available on mobile, iOS, or Android yet. We will work on it.",
             },
           ]}
         />
@@ -47,19 +46,19 @@ export default function Faq(): JSX.Element {
           title="Security"
           faqs={[
             {
-              question: "How we keep you and your crypto safe?",
+              question: "How do we keep you and your crypto safe?",
               answer:
-                "GemWallet generates encrypt your password and keys on your device, so only you have access to your accounts and data. You always choose what to share and what to keep private.",
+                "GemWallet encrypts your password and keys on your device, so only you have access to your accounts and data. You always choose what to share and what to keep private.",
             },
             {
-              question: "How can I be sure that GemWallet code is safe?",
+              question: "How can I be sure that the GemWallet code is safe?",
               answer:
-                "GemWallet code is open source. This means that you can check it by yourself and it is available for everybody to check: https://github.com/GemWallet/gemwallet-extension",
+                "GemWallet code is open source. That means that the code is available for everybody to check: https://github.com/GemWallet/gemwallet-extension",
             },
             {
               question: "Privacy of my accounts",
               answer:
-                "GemWallet needs you authorize a transaction to an address to share your account address. You will see a GemWallet confirmation when websites request access to view your account address.",
+                "GemWallet needs you to authorize a transaction to an address to share your account address. You will see a GemWallet confirmation when websites request access to view your account address.",
             },
             {
               question: "Lost my password: How can I restore my wallet?",
@@ -69,7 +68,7 @@ export default function Faq(): JSX.Element {
             {
               question: "How do we respect your privacy?",
               answer:
-                "GemWallet doesn’t track any personal identifiable information, your account addresses or asset balances.",
+                "GemWallet doesn’t track any personally identifiable information, your account addresses, or asset balances.",
             },
           ]}
         />
@@ -77,14 +76,14 @@ export default function Faq(): JSX.Element {
           title="Contribution: How can I contribute to GemWallet?"
           faqs={[
             {
-              question: "I found a bug, what do I do?",
+              question: "I found a bug. What do I do?",
               answer:
-                "Email us at contact@gemwallet.app or send us a direct message on twitter: https://twitter.com/gemwallet_app If you are a dev you can raise an issue here: https://github.com/GemWallet/gemwallet-extension/issues",
+                "Email us at contact@gemwallet.app or send us a direct message on Twitter: https://twitter.com/gemwallet_app If you are a dev, you can raise an issue here: https://github.com/GemWallet/gemwallet-extension/issues",
             },
             {
-              question: "How do I give a feedback to the developer team?",
+              question: "How do I give feedback to the developer team?",
               answer:
-                "Open a Github issue here: https://github.com/GemWallet/gemwallet-extension/issues, or submit a feature request here: https://github.com/GemWallet/gemwallet-extension/pulls",
+                "Open a GitHub issue here: https://github.com/GemWallet/gemwallet-extension/issues, or submit a feature request here: https://github.com/GemWallet/gemwallet-extension/pulls",
             },
           ]}
         />
@@ -94,10 +93,10 @@ export default function Faq(): JSX.Element {
             {
               question: "How do I keep my extension up to date?",
               answer:
-                "Our browser extension update automatically if you installed it via the Chrome store.",
+                "Our browser extension updates automatically if you installed it via the Chrome store.",
             },
             {
-              question: "Questions not answered: How do I contact support?",
+              question: "Questions are not answered: How do I contact support?",
               answer:
                 "You can email us at contact@gemwallet.app or tweet @gemwallet_app",
             },
