@@ -1,0 +1,15 @@
+.h2 {
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizelegibility;
+  -webkit-text-size-adjust: 100%;
+  word-wrap: break-word;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}

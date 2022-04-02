@@ -1,7 +1,7 @@
 import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import styles from "./style.module.scss";
+import styles from "./styles.module.scss";
 
 export function FAQ({
   title,
