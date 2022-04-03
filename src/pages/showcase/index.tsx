@@ -23,7 +23,7 @@ export default function Faq(): JSX.Element {
       title={siteConfig.title}
       description="Awesome websites using GemWallet"
     >
-      <main>
+      <main className={styles.mainContainer}>
         <Title>Want to showcase your project?</Title>
         <Subtitle>
           If you want to showcase your project on this list, please open an
