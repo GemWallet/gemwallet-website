@@ -1,7 +1,7 @@
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import React from "react";
 import clsx from "clsx";
-import styles from "./HomepageFeatures.module.css";
+import styles from "./styles.module.scss";
 
 type FeatureItem = {
   title: string;
@@ -60,7 +60,7 @@ function Feature({ title, image, description }: FeatureItem) {
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
