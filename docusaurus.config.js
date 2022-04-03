@@ -36,7 +36,13 @@ const config = {
     ],
   ],
   plugins: [
-    'docusaurus-plugin-sass'
+    'docusaurus-plugin-sass',
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        disableInDev: false,
+      },
+    ]
   ],
 
   themeConfig:

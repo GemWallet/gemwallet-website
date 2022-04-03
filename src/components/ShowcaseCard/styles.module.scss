@@ -1,0 +1,83 @@
+.container {
+    background-color: var(--ifm-card-background-color);
+    border-radius: var(--ifm-card-border-radius);
+    box-shadow: var(--ifm-global-shadow-md);
+    display: flex;
+    flex-direction: column;
+
+    .imageContainer {
+        &:first-child {
+            padding-top: 0;
+        }
+        overflow: hidden;
+        height: 150px;
+        border-bottom: 2px solid var(--ifm-color-emphasis-200);
+        img {
+            border-radius: var(--ifm-card-border-radius);
+        }
+    }
+
+    .body {
+        padding: var(--ifm-card-vertical-spacing)
+            var(--ifm-card-horizontal-spacing);
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+
+            .title {
+                margin-bottom: 0;
+                flex: 1 1 auto;
+
+                a {
+                    text-decoration: none;
+                    background: linear-gradient(
+                            var(--ifm-color-primary),
+                            var(--ifm-color-primary)
+                        )
+                        0% 100% / 0% 1px no-repeat;
+                    transition: background-size ease-out 200ms;
+                }
+                a:not(:focus):hover {
+                    background-size: 100% 1px;
+                }
+            }
+
+            .button {
+                background-color: var(--ifm-color-secondary);
+                margin-left: 6px;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                border: none;
+                border-radius: var(--ifm-button-border-radius);
+                cursor: pointer;
+                font-size: calc(0.875rem * var(--ifm-button-size-multiplier));
+                font-weight: var(--ifm-button-font-weight);
+                line-height: 1.5;
+                text-align: center;
+                transition-duration: var(--ifm-button-transition-duration);
+
+                &:focus-visible {
+                    background-color: var(--ifm-color-secondary-dark);
+                }
+
+                [data-theme="dark"] & {
+                    background-color: var(--ifm-color-emphasis-200) !important;
+                    color: inherit;
+                }
+
+                [data-theme="dark"] &:hover {
+                    background-color: var(--ifm-color-emphasis-300) !important;
+                }
+            }
+        }
+
+        .description {
+            font-size: smaller;
+            line-height: 1.66;
+        }
+    }
+}

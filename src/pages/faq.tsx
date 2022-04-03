@@ -11,7 +11,7 @@ export default function Faq(): JSX.Element {
       title={siteConfig.title}
       description="Description will go into a meta tag in <head />"
     >
-      <main className="my-8">
+      <main>
         <Title>Frequently Asked Questions</Title>
         <FAQ
           title="Getting started"
