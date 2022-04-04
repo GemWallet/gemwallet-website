@@ -1,6 +1,7 @@
 ---
 id: using-gemwallet-in-node-js
 title: Using GemWallet in Node.js
+description: Provides the documentation on how to use GemWallet in a Node.js application like React thanks to npm.
 sidebar_position: 3
 ---
 

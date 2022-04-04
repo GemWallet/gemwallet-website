@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { Title } from "../../components/Title";
 import { Subtitle } from "../../components/Subtitle";
 import { ShowcaseCard } from "../../components/ShowcaseCard";
@@ -17,11 +16,10 @@ const showcases = [
   }
 ];
 export default function Faq(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={siteConfig.title}
-      description="Awesome websites using GemWallet"
+      title="Showcase | GemWallet"
+      description="List of websites the community is building with GemWallet. Add your project to the list by letting us know on GitHub."
     >
       <main className={styles.mainContainer}>
         <Title>Want to showcase your project?</Title>

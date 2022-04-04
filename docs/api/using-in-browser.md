@@ -1,6 +1,7 @@
 ---
 id: using-gemwallet-in-browser
 title: Using GemWallet in the browser
+description: Provides the documentation on how to use GemWallet in the browser thanks to our CDN.
 sidebar_position: 2
 ---
 

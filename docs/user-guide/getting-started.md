@@ -1,6 +1,7 @@
 ---
 id: getting-started
 title: Getting Started
+description: Provides the documentation on how to get started with GemWallet.
 sidebar_position: 2
 ---
 

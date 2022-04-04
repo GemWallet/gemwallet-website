@@ -1,15 +1,13 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { Title } from "../components/Title";
 import { FAQ } from "../components/FAQ";
 
 export default function Faq(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={siteConfig.title}
-      description="Description will go into a meta tag in <head />"
+      title="FAQ | Getting started, Security, Contribution, Troubleshooting | GemWallet"
+      description="Get instant answers to the most common questions and find out how to use GemWallet like a pro."
     >
       <main>
         <Title>Frequently Asked Questions</Title>

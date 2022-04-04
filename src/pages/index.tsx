@@ -21,6 +21,7 @@ function HomepageHeader() {
           >
             <img
               className={styles.chromeIcon}
+              alt="Chrome icon"
               src={useBaseUrl("/img/chrome.png")}
             />
             Add to Chrome
@@ -35,8 +36,8 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={siteConfig.title}
-      description="Description will go into a meta tag in <head />"
+      title="GemWallet"
+      description="The web crypto wallet available on browser extension on the XRP Ledger. Our vision is oriented toward payments, micro-payments, donations and payment streaming."
     >
       <HomepageHeader />
       <main>
