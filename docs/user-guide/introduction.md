@@ -1,7 +1,7 @@
 ---
 id: introduction
 title: Introduction
-# slug: /
+description: Provides the documentation on why GemWallet is created and what's our vision.
 sidebar_position: 1
 ---
 

@@ -1,9 +1,13 @@
-.showcaseList {
-    margin: 0 auto;
-    max-width: var(--ifm-container-width);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    padding-left: var(--ifm-list-left-padding);
-    padding-right: var(--ifm-list-left-padding);
+.mainContainer {
+    margin-bottom: 2rem;
+
+    .showcaseList {
+        margin: 0 auto;
+        max-width: var(--ifm-container-width);
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        padding-left: var(--ifm-list-left-padding);
+        padding-right: var(--ifm-list-left-padding);
+    }
 }

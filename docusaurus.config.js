@@ -1,127 +1,129 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Crypto payments for the web',
+  title: "Crypto payments for the web made easy",
   tagline: `GemWallet is a web extension that enables you to make fast payments on the Ripple (XRP) network via your browser. It's a safer alternative to copying and pasting private keys for use with web applications.`,
-  url: 'https://gemwallet.app',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'GemWallet', // Usually your GitHub org/user name.
-  projectName: 'gemwallet-website', // Usually your repo name.
+  url: "https://gemwallet.app",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+  organizationName: "GemWallet", // Usually your GitHub org/user name.
+  projectName: "gemwallet-website", // Usually your repo name.
   trailingSlash: false,
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/GemWallet/gemwallet-website/blob/master',
+          sidebarPath: require.resolve("./sidebars.js"),
+          editUrl: "https://github.com/GemWallet/gemwallet-website/blob/master",
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/GemWallet/gemwallet-website/blob/master',
+          editUrl: "https://github.com/GemWallet/gemwallet-website/blob/master",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
   ],
   plugins: [
-    'docusaurus-plugin-sass',
+    "docusaurus-plugin-sass",
     [
-      '@docusaurus/plugin-ideal-image',
+      "@docusaurus/plugin-ideal-image",
       {
         disableInDev: false,
       },
-    ]
+    ],
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'GemWallet',
+        title: "GemWallet",
         logo: {
-          alt: 'GemWallet Logo',
-          src: 'img/logo.svg',
+          alt: "GemWallet Logo",
+          src: "img/logo.svg",
+          width: 32,
+          height: 32,
         },
         items: [
           {
-            type: 'doc',
-            docId: 'user-guide/introduction',
-            position: 'left',
-            label: 'Documentation',
+            type: "doc",
+            docId: "user-guide/introduction",
+            position: "left",
+            label: "Documentation",
           },
           {
-            to: '/blog',
-            label: 'Blog',
-            position: 'left',
+            to: "/blog",
+            label: "Blog",
+            position: "left",
           },
           {
-            to: '/showcase',
-            label: 'Showcase',
-            position: 'left',
+            to: "/showcase",
+            label: "Showcase",
+            position: "left",
           },
           {
-            to: '/faq',
-            label: 'FAQ',
-            position: 'left',
+            to: "/faq",
+            label: "FAQ",
+            position: "left",
           },
           {
-            href: 'https://github.com/GemWallet/gemwallet-extension',
-            label: 'Star us on GitHub',
-            position: 'right',
+            href: "https://github.com/GemWallet/gemwallet-extension",
+            label: "Star us on GitHub",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'User Guide',
-                to: '/docs/user-guide/introduction',
+                label: "User Guide",
+                to: "/docs/user-guide/introduction",
               },
               {
-                label: 'API Reference',
-                to: '/docs/api/gemwallet-api',
+                label: "API Reference",
+                to: "/docs/api/gemwallet-api",
               },
               {
-                label: 'Playground',
-                to: '/docs/playground/isConnected',
+                label: "Playground",
+                to: "/docs/playground/isConnected",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/gemwallet_app',
+                label: "Twitter",
+                href: "https://twitter.com/gemwallet_app",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Blog",
+                to: "/blog",
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/GemWallet/gemwallet-website',
+                label: "GitHub",
+                href: "https://github.com/GemWallet/gemwallet-website",
               },
             ],
           },
@@ -133,7 +135,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       colorMode: {
-        defaultMode: 'dark',
+        defaultMode: "dark",
       },
     }),
 };

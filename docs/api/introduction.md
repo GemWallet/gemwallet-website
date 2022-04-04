@@ -1,6 +1,7 @@
 ---
 id: gemwallet-api
 title: GemWallet API
+description: Provides the documentation on how to use GemWallet.
 sidebar_position: 1
 ---
 
