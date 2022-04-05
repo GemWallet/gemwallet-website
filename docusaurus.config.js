@@ -43,6 +43,12 @@ const config = {
         disableInDev: false,
       },
     ],
+    [
+      "@docusaurus/plugin-google-gtag",
+      {
+        trackingID: "G-6K1MGTVRGX",
+      },
+    ],
   ],
 
   themeConfig:
