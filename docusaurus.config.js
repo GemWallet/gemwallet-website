@@ -118,6 +118,10 @@ const config = {
                 label: "Twitter",
                 href: "https://twitter.com/gemwallet_app",
               },
+              {
+                label: "Discord",
+                href: "https://discord.gg/Nuu68md4",
+              },
             ],
           },
           {
