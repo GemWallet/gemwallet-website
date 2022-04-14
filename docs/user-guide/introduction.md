@@ -25,7 +25,7 @@ Get started here
 
 ## Blockchain Connection
 
-GemWallet comes pre-loaded with fast connections to the Ripple (XRP) blockchain. This allows you to get started without synchronizing a full node, while still providing the option to upgrade your security and use the blockchain provider of your choice.
+GemWallet comes pre-loaded with fast connections to the XRP Ledger. This allows you to get started without synchronizing a full node, while still providing the option to upgrade your security and use the blockchain provider of your choice.
 
 GemWallet is compatible with the XRP Ledger (XRPL). For development, we recommend running on a test blockchain.
 

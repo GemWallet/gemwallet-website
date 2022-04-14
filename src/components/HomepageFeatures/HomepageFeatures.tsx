@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
     image: "/img/undraw_transfer_money.svg",
     description: (
       <>
-        GemWallet is using the Ripple blockchain to make international payments
+        GemWallet is using the XRP Ledger to make international payments
         secure in less than 5 seconds.
       </>
     ),
