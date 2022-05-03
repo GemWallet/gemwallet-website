@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Crypto payments for the web made easy Blog</title>
+        <link>https://gemwallet.app/blog</link>
+        <description>Crypto payments for the web made easy Blog</description>
+        <lastBuildDate>Wed, 13 Apr 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Announcing GemWallet: Online payments on the XRPL]]></title>
+            <link>https://gemwallet.app/blog/announcing-gemwallet-online-payments-on-the-xrpl</link>
+            <guid>announcing-gemwallet-online-payments-on-the-xrpl</guid>
+            <pubDate>Wed, 13 Apr 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Introduction]]></description>
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_mojV" id="introduction">Introduction<a class="hash-link" href="#introduction" title="Direct link to heading">​</a></h3><p>Today, I would like to introduce GemWallet, a browser extension to make fast, easy and cheap (about 0.000008 USD)
+online crypto payments. I have been working on GemWallet since November 2021.</p><p>Below, you can find a demo of an online payment made with GemWallet on the test net of the XRPL (XRP Ledger).
+The video may seem technical, but no worries, I am saying a few technical words for my developer audience.</p><iframe width="560" height="315" src="https://www.youtube.com/embed/CRhOIPvGJ9w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe><h3 class="anchor anchorWithStickyNavbar_mojV" id="why-gemwallet">Why GemWallet?<a class="hash-link" href="#why-gemwallet" title="Direct link to heading">​</a></h3><p>GemWallet is a web extension that allows you to make online
+payments with one click on the XRPL. It also provides an API that
+bridges web browsers to the blockchain, allowing developers to
+easily build web3 applications integrated with XRP.
+Our vision is really oriented toward payments, micro-payments, donations and
+payment streaming. Tomorrow we could also support NFTs on XRPL and be a
+part of the metaverse.</p><p>When I was developing web3 applications on Ethereum and Solana, I
+was impressed by its user experience (Metamask, Phantom...) but
+unfortunately, I couldn't find a similar experience on the XRPL.
+After looking on the web, I found the video of
+<a href="https://youtu.be/EfQEM9M23Sw?t=383" target="_blank" rel="noopener noreferrer">Moralis with Wietse Wind talking about XUMM wallet</a>
+. In this video, Wietse is saying that XUMM is a mobile
+application and is not focusing on the web. This is the missing
+element that GemWallet is addressing. On top of that, GemWallet is
+going to help the ecosystem grow.
+For instance, GemWallet will be empowering streaming payments,
+which could be a gate to:</p><ul><li>Blog article subscription per second of reading</li><li>Video streaming per second of watching</li><li>Online classes per second of learning</li></ul><p>We do need a bridge between our browser and the blockchain and
+we strongly believe the solution is GemWallet and the XRP Ledger.</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="why-the-xrpl">Why the XRPL?<a class="hash-link" href="#why-the-xrpl" title="Direct link to heading">​</a></h3><p>Our vision is to enable crypto payments on the internet. We want to
+create a world where crypto payments are easier and more secure. We believe XRPL is the most relevant one for several reasons:</p><ul><li>Transfer fees are very low.</li><li>It is fast and secure.</li><li>XRPL is used by banking corporations (Bank of America, Saudi British Bank, Santander, American Express ...).</li><li>XRPL is a carbon-neutral ledger, enhancing our core values.</li></ul><h3 class="anchor anchorWithStickyNavbar_mojV" id="what-about-the-developer-experience">What about the developer experience?<a class="hash-link" href="#what-about-the-developer-experience" title="Direct link to heading">​</a></h3><p>Developers will be able to integrate to the XRPL much easier, which
+will bring more users to the XRP ledger and web3. Before starting the
+project I have discussed it with developers in the crypto industry and
+they confirmed that a wallet browser extension would solve the issue
+of integrating the XRPL to the web3.</p><p>As well our code is fully open sourced, you can find it here: <a href="https://github.com/GemWallet" target="_blank" rel="noopener noreferrer">https://github.com/GemWallet</a>.</p><p>If you ever get stuck or need some help you can read our <a href="/faq">FAQ</a> or see our <a href="/showcase">showcases</a>.</p><h3 class="anchor anchorWithStickyNavbar_mojV" id="how-about-the-roadmap">How about the roadmap?<a class="hash-link" href="#how-about-the-roadmap" title="Direct link to heading">​</a></h3><p>As for now, GemWallet is available only on the XRPL testnet, we will release it on the mainnet pretty soon.</p><p>Here is our closest roadmap (on the 9th of April 2022):</p><ul><li>Publication of the extension in the Chrome Store</li><li>Connect GemWallet to the mainnetConnect GemWallet to the mainnet</li><li>Allow users to create a new wallet from GemWallet - currently supporting only importing wallets</li><li>Support different wallets - currently supporting only one</li><li>List user's tokens (other than XRP)</li><li>Authorize payments to be done in other tokens (tokens supported by the XRPL)</li><li>Ensure compatibility with Mozilla Firefox and not only with Chromium based browsers (Chrome, Edge and Brave)</li><li>Provide XUMM Wallet import to GemWallet - better experience within the XRP ecosystem</li><li>Build an extension for WooCommerce</li><li>Allow payment streaming</li><li>And much more...</li></ul><p>We would love contributors and testers! You can find the <a href="https://github.com/GemWallet/gemwallet-extension" target="_blank" rel="noopener noreferrer">code base</a>
+here and can submit bugs/feature requests here or in our <a href="https://discord.gg/CnkP9KGHBe" target="_blank" rel="noopener noreferrer">discord</a>.</p><p>If you want to contact me, feel free to reach out to me on <a href="https://twitter.com/florian_bouron" target="_blank" rel="noopener noreferrer">twitter</a>.</p><p>We also have a discord right here: <a href="https://discord.gg/CnkP9KGHBe" target="_blank" rel="noopener noreferrer">https://discord.gg/CnkP9KGHBe</a></p><p>All our last updates are available on <a href="https://twitter.com/gemwallet_app" target="_blank" rel="noopener noreferrer">GemWallet's twitter account</a>.</p>]]></content:encoded>
+            <category>GemWallet</category>
+        </item>
+    </channel>
+</rss>
