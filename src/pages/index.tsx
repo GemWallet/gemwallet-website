@@ -17,7 +17,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/user-guide/introduction"
+            to="/blog/getting-started-with-gemwallet-beta#installation"
           >
             <img
               className={styles.chromeIcon}

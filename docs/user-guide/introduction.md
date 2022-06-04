@@ -31,6 +31,11 @@ GemWallet is compatible with the XRP Ledger (XRPL). For development, we recommen
 
 ## GemWallet Tutorials
 
+- [Getting Started with GemWallet](/blog/getting-started-with-gemwallet-beta)
+- [How to install GemWallet beta?](/blog/getting-started-with-gemwallet-beta#installation)
+- [Importing and adding a wallet with GemWallet](/blog/getting-started-with-gemwallet-beta#importing-and-adding-a-wallet-with-gemwallet)
+- [Creation of a donation website with GemWallet](/blog/getting-started-with-gemwallet-beta#tutorial-creation-of-a-donation-website)
+
 :::note Contributing
 Post your tutorial here by editing this page.
 :::
