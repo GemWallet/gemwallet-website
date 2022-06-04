@@ -147,6 +147,13 @@ const config = {
       colorMode: {
         defaultMode: "dark",
       },
+      announcementBar: {
+        content:
+          'Beta version is out! 🎉 Check the <a target="_blank" rel="noopener noreferrer" href="/blog/getting-started-with-gemwallet-beta#installation">blog post</a> to get started!',
+        backgroundColor: '#3dd4f5',
+        textColor: 'black',
+        isCloseable: true,
+      },
     }),
 };
 
