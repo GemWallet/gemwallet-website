@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkgemwallet_website=self.webpackChunkgemwallet_website||[]).push([[535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Announcing GemWallet: Online payments on the XRPL","permalink":"/blog/announcing-gemwallet-online-payments-on-the-xrpl"}]}')}}]);
