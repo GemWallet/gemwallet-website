@@ -154,6 +154,8 @@ const config = {
         textColor: 'black',
         isCloseable: true,
       },
+      image: 'img/metadata.png',
+      metadata: [{ name: 'og:type', content: 'website' }],
     }),
 };
 
