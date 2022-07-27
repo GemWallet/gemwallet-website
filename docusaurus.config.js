@@ -96,11 +96,12 @@ const config = {
             position: "left",
           },
           {
-            href: "https://github.com/GemWallet/gemwallet-extension",
+            to: "https://github.com/GemWallet/gemwallet-extension",
             label: "Star us on GitHub",
             position: "right",
           },
         ],
+        hideOnScroll: true,
       },
       footer: {
         style: "dark",
@@ -127,11 +128,11 @@ const config = {
             items: [
               {
                 label: "Twitter",
-                href: "https://twitter.com/gemwallet_app",
+                to: "https://twitter.com/gemwallet_app",
               },
               {
                 label: "Discord",
-                href: "https://discord.gg/CnkP9KGHBe",
+                to: "https://discord.gg/CnkP9KGHBe",
               },
             ],
           },
@@ -144,7 +145,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/GemWallet/gemwallet-website",
+                to: "https://github.com/GemWallet/gemwallet-website",
               },
             ],
           },
@@ -156,19 +157,11 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       colorMode: {
-        defaultMode: "dark",
         disableSwitch: true,
         respectPrefersColorScheme: true,
       },
-      announcementBar: {
-        content:
-          'Beta version is out! 🎉 Check the <a target="_blank" rel="noopener noreferrer" href="/blog/getting-started-with-gemwallet-beta#installation">blog post</a> to get started!',
-        backgroundColor: '#3dd4f5',
-        textColor: 'black',
-        isCloseable: true,
-      },
-      image: 'img/metadata.png',
-      metadata: [{ name: 'og:type', content: 'website' }],
+      image: "img/metadata.png",
+      metadata: [{ name: "og:type", content: "website" }],
     }),
 };
 

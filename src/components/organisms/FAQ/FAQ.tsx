@@ -1,15 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import styles from "./styles.module.scss";
 
-export function FAQ({
-  title,
-  faqs,
-}: {
+interface Faq {
+  question: string;
+  answer: string;
+}
+export interface FAQProps {
   title: string;
-  faqs: Array<{ question: string; answer: string }>;
-}) {
+  faqs: Faq[];
+}
+
+export const FAQ: FC<FAQProps> = ({ title, faqs }) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -52,4 +55,4 @@ export function FAQ({
       </div>
     </div>
   );
-}
+};
