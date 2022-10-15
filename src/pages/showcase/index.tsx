@@ -1,19 +1,18 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
-import { Title } from "../../components/Title";
-import { Subtitle } from "../../components/Subtitle";
-import { ShowcaseCard } from "../../components/ShowcaseCard";
+import { Subtitle, Title } from "../../components/atoms";
+import { Showcase } from "../../components/molecules";
 import styles from "./styles.module.scss";
 
 const showcases = [
-{
-    title: 'GemWallet Store Demo',
-    description: 'A GemWallet e-commerce demo using the testnet',
-    preview: require('./gemwallet-store.png'),
-    website: 'https://florianbouron.github.io/gemwallet-store-demo',
-    source: 'https://github.com/FlorianBouron/gemwallet-store-demo',
-  }
+  {
+    title: "GemWallet Store Demo",
+    description: "A GemWallet e-commerce demo using the testnet",
+    preview: require("./gemwallet-store.png"),
+    website: "https://florianbouron.github.io/gemwallet-store-demo",
+    source: "https://github.com/FlorianBouron/gemwallet-store-demo",
+  },
 ];
 export default function Faq(): JSX.Element {
   return (
@@ -33,7 +32,7 @@ export default function Faq(): JSX.Element {
         </Subtitle>
         <ul className={styles.showcaseList}>
           {showcases.map((showcase) => (
-            <ShowcaseCard key={showcase.title} showcase={showcase} />
+            <Showcase key={showcase.title} {...showcase} />
           ))}
         </ul>
       </main>

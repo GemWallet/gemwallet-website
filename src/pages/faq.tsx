@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import { Title } from "../components/Title";
-import { FAQ } from "../components/FAQ";
+import { Title } from "../components/atoms";
+import { FAQ } from "../components/organisms";
 
 export default function Faq(): JSX.Element {
   return (

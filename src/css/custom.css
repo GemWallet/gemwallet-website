@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -25,6 +29,7 @@
   --ifm-color-primary-light: #5adaf7;
   --ifm-color-primary-lighter: #69def7;
   --ifm-color-primary-lightest: #94e7fa;
+  --ifm-background-color: #0e102e;
 }
 
 .docusaurus-highlight-code-line {
@@ -36,4 +41,8 @@
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] footer {
+  background-color: #242526;
 }

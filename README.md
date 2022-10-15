@@ -2,6 +2,12 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
+### Repository structure
+
+This repository follows the Atomic Design Methodology: https://atomicdesign.bradfrost.com/chapter-2/
+
+![Atomic Design methodology](atomic-design-product.jpeg)
+
 ### Installation
 
 ```
