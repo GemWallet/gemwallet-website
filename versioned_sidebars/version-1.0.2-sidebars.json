@@ -1,0 +1,57 @@
+{
+  "docs": [
+    {
+      "type": "category",
+      "label": "User Guide",
+      "collapsed": false,
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.0.2/user-guide/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0.2/user-guide/getting-started"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API Reference",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.0.2/api/gemwallet-api"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0.2/api/using-gemwallet-in-browser"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0.2/api/using-gemwallet-in-node-js"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Playground",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.0.2/playground/isConnected"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0.2/playground/getNetwork"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0.2/playground/transactionRequest"
+        }
+      ]
+    }
+  ]
+}
