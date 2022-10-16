@@ -108,7 +108,7 @@ function App() {
           network: "TEST",
           transaction: "payment",
           amount: "50",
-          destination: "rNvFCZXpDtGeQ3bVas95wGLN6N2stGmA9o",
+          destination: "rMrXopFSnCDSd5Eej4TpeHrV7SPjKtLpo2",
           token: "xrp",
           apiVersion: 1,
         };

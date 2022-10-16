@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { isConnected } from "@gemwallet/api";
 
 export const IsConnectedDemo = () => {
-  const [isConnectedState, setIsConnectedState] = useState(" ");
-  const handleConnect = () => {
+  const [input, setInput] = useState(" ");
+
+  const handleConnect = useCallback(() => {
     isConnected().then((isConnected) => {
-      setIsConnectedState(isConnected.toString());
+      if (isConnected) {
+        setInput("GemWallet is installed");
+      } else {
+        setInput("Please install GemWallet");
+      }
     });
-  };
+  }, []);
+
   return (
     <section>
       <div>
         Is GemWallet currently connected to your browser?
         <input
           readOnly
-          value={isConnectedState}
+          value={input}
           style={{ display: "block", margin: "1em 0", width: "50%" }}
         />
       </div>
