@@ -8,8 +8,8 @@ export default function Home(): JSX.Element {
       title="GemWallet"
       description="The web crypto wallet available on browser extension on the XRP Ledger. Our vision is oriented toward payments, micro-payments, donations and payment streaming."
     >
+      <Hero />
       <main>
-        <Hero />
         <Features />
       </main>
     </Layout>

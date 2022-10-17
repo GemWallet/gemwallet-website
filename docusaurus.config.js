@@ -49,17 +49,6 @@ const config = {
         trackingID: "G-6K1MGTVRGX",
       },
     ],
-    async function myPlugin(context, options) {
-      return {
-        name: "docusaurus-tailwindcss",
-        configurePostCss(postcssOptions) {
-          // Appends TailwindCSS and AutoPrefixer.
-          postcssOptions.plugins.push(require("tailwindcss"));
-          postcssOptions.plugins.push(require("autoprefixer"));
-          return postcssOptions;
-        },
-      };
-    },
   ],
 
   themeConfig:
@@ -96,7 +85,7 @@ const config = {
             position: "left",
           },
           {
-            to: "https://github.com/GemWallet/gemwallet-extension",
+            href: "https://github.com/GemWallet/gemwallet-extension",
             label: "Star us on GitHub",
             position: "right",
           },
@@ -128,11 +117,11 @@ const config = {
             items: [
               {
                 label: "Twitter",
-                to: "https://twitter.com/gemwallet_app",
+                href: "https://twitter.com/gemwallet_app",
               },
               {
                 label: "Discord",
-                to: "https://discord.gg/CnkP9KGHBe",
+                href: "https://discord.gg/CnkP9KGHBe",
               },
             ],
           },
@@ -145,7 +134,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                to: "https://github.com/GemWallet/gemwallet-website",
+                href: "https://github.com/GemWallet/gemwallet-website",
               },
             ],
           },

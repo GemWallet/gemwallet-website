@@ -1,0 +1,79 @@
+.container {
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: rgb(15 23 42);
+
+  @media (min-width: 640px) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .subcontainer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 640px) {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      max-width: 48rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 80rem;
+    }
+
+    .title {
+      margin-top: 0.5rem;
+      color: #ffffff;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+
+      @media (min-width: 640px) {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+      }
+    }
+
+    .subtitle {
+      margin-top: 1.25rem;
+      color: #d1d5db;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      max-width: 65ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .body {
+      margin-top: 3rem;
+
+      .featureContainer {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 2rem;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @media (min-width: 1024px) {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+    }
+  }
+}
