@@ -8,6 +8,7 @@ import {
   KeyIcon,
 } from "@heroicons/react/24/outline";
 import { Card } from "../../molecules";
+import styles from "./styles.module.scss";
 
 const features = [
   {
@@ -36,7 +37,7 @@ const features = [
   {
     name: "Own your data",
     description:
-      "GemWallet keeps your passwords and keys on your device, so only vou have access to your accounts and data.",
+      "No one has access to your master password, keys or the data stored on your device, except you. Not even GemWallet.",
     icon: ShieldCheckIcon,
   },
   {
@@ -49,16 +50,16 @@ const features = [
 
 export const Features: FC = () => {
   return (
-    <div className="relative bg-slate-900 py-16 sm:py-24 lg:py-32">
-      <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <div className={styles.container}>
+      <div className={styles.subcontainer}>
+        <h2 className={styles.title}>
           Our top features you will enjoy the most
         </h2>
-        <p className="mx-auto mt-5 max-w-prose text-xl text-gray-300">
+        <p className={styles.subtitle}>
           GemWallet has everything you need to shine on the XRPL
         </p>
-        <div className="mt-12">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={styles.body}>
+          <div className={styles.featureContainer}>
             {features.map(({ icon, name, description }) => (
               <Card
                 key={name}
