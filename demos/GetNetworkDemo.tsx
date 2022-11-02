@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { isConnected, getNetwork } from "@gemwallet/api";
 
 export const GetNetworkDemo = () => {
-  const [networkResult, setNetworkResult] = useState("");
+  const [input, setInput] = useState("");
 
-  const handleNetwork = () => {
+  const handleNetwork = useCallback(() => {
     isConnected().then((isConnected) => {
       if (isConnected) {
         getNetwork().then((network) => {
-          setNetworkResult(network);
+          setInput(network);
         });
       } else {
-        setNetworkResult("Please install GemWallet");
+        setInput("Please install GemWallet");
       }
     });
-  };
+  }, []);
 
   return (
     <section>
@@ -22,7 +22,7 @@ export const GetNetworkDemo = () => {
         What network is GemWallet using?
         <input
           readOnly
-          value={networkResult}
+          value={input}
           style={{ display: "block", margin: "1em 0", width: "50%" }}
         />
       </div>

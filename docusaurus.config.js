@@ -64,8 +64,7 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "user-guide/introduction",
+            type: "docsVersion",
             position: "left",
             label: "Documentation",
           },
@@ -83,6 +82,10 @@ const config = {
             to: "/faq",
             label: "FAQ",
             position: "left",
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
           },
           {
             href: "https://github.com/GemWallet/gemwallet-extension",
@@ -135,6 +138,15 @@ const config = {
               {
                 label: "GitHub",
                 href: "https://github.com/GemWallet/gemwallet-website",
+              },
+            ],
+          },
+          {
+            title: "Legal",
+            items: [
+              {
+                label: "Privacy Policy",
+                to: "/privacy-policy",
               },
             ],
           },
