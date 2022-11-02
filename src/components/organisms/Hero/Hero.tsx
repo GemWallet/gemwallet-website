@@ -27,7 +27,7 @@ export const Hero: FC = () => {
                 <div className={styles.ctaWrapper}>
                   <Link
                     className={styles.ctaLink}
-                    to="/blog/getting-started-with-gemwallet-beta#installation"
+                    to="https://chrome.google.com/webstore/detail/gemwallet/egebedonbdapoieedfcfkofloclfghab"
                   >
                     Download
                   </Link>
