@@ -13,6 +13,13 @@ const showcases = [
     website: "https://florianbouron.github.io/gemwallet-store-demo",
     source: "https://github.com/FlorianBouron/gemwallet-store-demo",
   },
+  {
+    title: "SolidiFi",
+    description: "An XRP browser wallet including transactions and receipts.",
+    preview: require("./solidifi-web.jpg"),
+    website: "https://solidifi.app/wallet",
+    source: null,
+  },
 ];
 export default function Faq(): JSX.Element {
   return (

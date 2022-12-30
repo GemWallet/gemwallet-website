@@ -30,9 +30,11 @@ export const Showcase: FC<ShowcaseProps> = ({
               {title}
             </Link>
           </h4>
-          <Link href={source} className={styles.button}>
-            source
-          </Link>
+          {source &&
+            <Link href={source} className={styles.button}>
+              source
+            </Link>
+          }
         </div>
         <p className={styles.description}>{description}</p>
       </div>
