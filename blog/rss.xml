@@ -4,10 +4,20 @@
         <title>Crypto payments for the web made easy Blog</title>
         <link>https://gemwallet.app/blog</link>
         <description>Crypto payments for the web made easy Blog</description>
-        <lastBuildDate>Tue, 26 Jul 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 Jan 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Import XUMM wallets into GemWallet]]></title>
+            <link>https://gemwallet.app/blog/import-xumm-wallets-into-gemwallet</link>
+            <guid>import-xumm-wallets-into-gemwallet</guid>
+            <pubDate>Mon, 02 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to import my XUMM wallet to GemWallet?]]></description>
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="how-to-import-my-xumm-wallet-to-gemwallet">How to import my XUMM wallet to GemWallet?<a class="hash-link" href="#how-to-import-my-xumm-wallet-to-gemwallet" title="Direct link to heading">​</a></h3><p>GemWallet allows you to import your secret keys into the extension.</p><p>If you want to import your secret keys from XUMM to GemWallet you will have to import your private keys and add them into GemWallet.</p><ol><li><p>Open GemWallet and type your password</p></li><li><p>Add a new wallet</p></li></ol><p>In order to add a new wallet click on the "Wallet Icon" button.</p><img loading="lazy" src="/img/GemWalletHomeScreen.png" alt="GemWallet home screen" width="300" class="img_ev3q"><ol start="3"><li>Click on the "Plus" button.</li></ol><img loading="lazy" src="/img/GemWalletPlusButton.png" alt="GemWallet add wallet button" width="300" class="img_ev3q"><ol start="4"><li>Confirm your password, and then click on "Import a new wallet".</li></ol><img loading="lazy" src="/img/GemWalletImportNewWallet.png" alt="GemWallet import new wallet" width="300" class="img_ev3q"><ol start="5"><li>Add your secret numbers</li></ol><p>Click on "Secret numbers" and add your secret numbers that you obtained from XUMM wallet.</p><img loading="lazy" src="/img/GemWalletSecretNumbers.png" alt="GemWallet secret numbers" width="300" class="img_ev3q"><p>Congratulation! You have successfully imported your XUMM wallet to GemWallet.</p>]]></content:encoded>
+            <category>GemWallet</category>
+            <category>Release 2.2.0</category>
+        </item>
         <item>
             <title><![CDATA[GemWallet looking for beta testers]]></title>
             <link>https://gemwallet.app/blog/gemwallet-looking-for-beta-testers</link>
