@@ -126,6 +126,10 @@ const config = {
                 label: "Discord",
                 href: "https://discord.gg/CnkP9KGHBe",
               },
+              {
+                label: "Youtube",
+                href: "https://www.youtube.com/channel/UCP980esJwyzU7qU4qZQ6A5Q",
+              },
             ],
           },
           {
