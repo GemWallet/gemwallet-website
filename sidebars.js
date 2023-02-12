@@ -55,7 +55,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "playground/isConnected",
+          id: "playground/addTrustline",
         },
         {
           type: "doc",
@@ -68,6 +68,10 @@ const sidebars = {
         {
           type: "doc",
           id: "playground/getPublicKey",
+        },
+        {
+          type: "doc",
+          id: "playground/isConnected",
         },
         {
           type: "doc",
