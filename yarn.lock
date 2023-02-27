@@ -2585,10 +2585,10 @@
   resolved "https://registry.yarnpkg.com/@endiliey/react-ideal-image/-/react-ideal-image-0.0.11.tgz#dc3803d04e1409cf88efa4bba0f67667807bdf27"
   integrity sha512-QxMjt/Gvur/gLxSoCy7VIyGGGrGmDN+VHcXkN3R2ApoWX0EYUE+hMgPHSW/PV6VVebZ1Nd4t2UnGRBDihu16JQ==
 
-"@gemwallet/api@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-2.1.0.tgz#0d882ff2cdbdf20ae35bac0387839804d7a1d076"
-  integrity sha512-6mJR5TXvqWoaFLcDKuYhgOtoyEE3reuwh19W8wXRT4xsYgpj9uavIAqec5rObC3+sY75yGs3lJzKV3hZTvKVGw==
+"@gemwallet/api@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-2.2.0.tgz#0c36723bf5dcaf8f281486fb82c2ad1a39d7e47b"
+  integrity sha512-3UbR34gUHsqSG7jV7uiJIzNwGK16cF9YN+K4SlNr1G/dYHZIqZ6NMoDH5v4qDxOORWyl1w3+LtAD5WbOU7WU5g==
 
 "@hapi/hoek@^9.0.0":
   version "9.2.1"

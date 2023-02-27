@@ -67,6 +67,10 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "playground/getNFT",
+        },
+        {
+          type: "doc",
           id: "playground/getPublicKey",
         },
         {
