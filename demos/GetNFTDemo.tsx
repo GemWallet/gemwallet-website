@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { isConnected, getNFT } from "@gemwallet/api";
 
 export const GetNFTDemo = () => {
-  const [numberOfNFTs, setNumberOfNFTs] = useState<number>();
+  const [nfts, setNfts] = useState<unknown[]>();
   const [isGemWalletInstalled, setIsGemWalletInstalled] =
     useState<boolean>(true);
 
@@ -10,7 +10,7 @@ export const GetNFTDemo = () => {
     isConnected().then((isConnected) => {
       if (isConnected) {
         getNFT().then((nft) => {
-          setNumberOfNFTs(nft.length ?? 0);
+          setNfts(nft || []);
         });
       } else {
         setIsGemWalletInstalled(false);
@@ -21,12 +21,14 @@ export const GetNFTDemo = () => {
   return (
     <section>
       {!isGemWalletInstalled ? <div>Please install GemWallet</div> : null}
-      <div>How many NFTs hold your wallet?</div>
+      <div>Show the NFTs held your wallet?</div>
       <button type="button" onClick={handleNFT}>
-        Get the amount of NFTs
+        Get my NFTs
       </button>
-      {numberOfNFTs !== undefined ? (
-        <div>Your wallet hold {numberOfNFTs} NFT objects</div>
+      {nfts !== undefined ? (
+        <pre>
+          <code>{JSON.stringify(nfts, null, 4)}</code>
+        </pre>
       ) : null}
     </section>
   );
