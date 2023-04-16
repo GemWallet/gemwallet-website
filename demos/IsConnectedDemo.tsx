@@ -2,29 +2,35 @@ import React, { useCallback, useState } from "react";
 import { isConnected } from "@gemwallet/api";
 
 export const IsConnectedDemo = () => {
-  const [input, setInput] = useState(" ");
+  const [connectionMessage, setConnectionMessage] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
-  const handleConnect = useCallback(() => {
-    isConnected().then((isConnected) => {
-      if (isConnected) {
-        setInput("GemWallet is installed");
-      } else {
-        setInput("Please install GemWallet");
+  const handleConnect = useCallback(async () => {
+    try {
+      const connected = await isConnected();
+      if (!connected) {
+        setConnectionMessage("Please install GemWallet");
+        return;
       }
-    });
+
+      setConnectionMessage("GemWallet is installed");
+    } catch (error) {
+      setError("Something went wrong!");
+    }
   }, []);
 
   return (
     <section>
-      <div>
-        Is GemWallet currently connected to your browser?
-        <input
-          readOnly
-          value={input}
-          style={{ display: "block", margin: "1em 0", width: "50%" }}
-        />
-      </div>
-      <button type="button" onClick={handleConnect}>
+      <div>Is GemWallet currently connected to your browser?</div>
+      {connectionMessage ? (
+        <div style={{ display: "block", margin: "1em 0" }}>
+          {connectionMessage}
+        </div>
+      ) : null}
+      {!connectionMessage && error ? (
+        <div style={{ display: "block", margin: "1em 0" }}>Error: {error}</div>
+      ) : null}
+      <button type="button" style={{ margin: "1em 0" }} onClick={handleConnect}>
         Check Connection
       </button>
     </section>

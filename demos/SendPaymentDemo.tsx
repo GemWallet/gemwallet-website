@@ -1,48 +1,56 @@
 import React, { useCallback, useState } from "react";
 import { isConnected, sendPayment } from "@gemwallet/api";
 
-export const SendPaymentDemo = () => {
-  const [input, setInput] = useState("");
+const PAYMENT = {
+  amount: "50",
+  destination: "rMrXopFSnCDSd5Eej4TpeHrV7SPjKtLpo2",
+};
 
-  const btnHandler = useCallback(() => {
-    isConnected().then((isConnected) => {
-      if (isConnected) {
-        const payment = {
-          amount: "50",
-          destination: "rMrXopFSnCDSd5Eej4TpeHrV7SPjKtLpo2",
-        };
-        sendPayment(payment).then((transactionHash) => {
-          if (transactionHash === null) {
-            setInput("The payment has been refused!");
-          } else if (transactionHash === undefined) {
-            setInput("Something went wrong!");
-          } else {
-            setInput(transactionHash);
-          }
-        });
-      } else {
-        setInput("Please install GemWallet");
+export const SendPaymentDemo = () => {
+  const [txHash, setTxHash] = useState("");
+  const [error, setError] = useState("");
+
+  const handlePayment = useCallback(async () => {
+    try {
+      const connected = await isConnected();
+      if (!connected) {
+        setError("Please install GemWallet");
+        return;
       }
-    });
+
+      const transactionHash = await sendPayment(PAYMENT);
+      if (transactionHash === null) {
+        setError("The payment has been refused!");
+        return;
+      }
+      if (transactionHash === undefined) {
+        setError("Something went wrong!");
+        return;
+      }
+
+      setTxHash(transactionHash);
+    } catch (error) {
+      setError("Something went wrong!");
+    }
   }, []);
 
   return (
     <section>
       <div>
         This button is using the following payment information:
-        <code>
-          {JSON.stringify({
-            amount: "50",
-            destination: "rMrXopFSnCDSd5Eej4TpeHrV7SPjKtLpo2",
-          })}
-        </code>
+        <pre>
+          <code>{JSON.stringify(PAYMENT, null, 4)}</code>
+        </pre>
       </div>
-      <input
-        readOnly
-        value={input}
-        style={{ display: "block", margin: "1em 0", width: "50%" }}
-      />
-      <button type="button" onClick={btnHandler}>
+      {txHash ? (
+        <div style={{ display: "block", margin: "1em 0" }}>
+          Transaction hash: {txHash}
+        </div>
+      ) : null}
+      {!txHash && error ? (
+        <div style={{ display: "block", margin: "1em 0" }}>Error: {error}</div>
+      ) : null}
+      <button type="button" style={{ margin: "1em 0" }} onClick={handlePayment}>
         Make Transaction
       </button>
     </section>
