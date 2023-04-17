@@ -1,0 +1,42 @@
+name: Prepare Website Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_version:
+        description: 'New version number'
+        required: true
+
+jobs:
+  prepare_release:
+    name: 🚀 Website Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Git user
+        run: |
+          git config user.name "GemWallet Release Bot"
+          git config user.email "release@gemwallet.app"
+
+      - name: Set executable permissions for prepare_release.sh
+        run: chmod +x prepare_release.sh
+
+      - name: Prepare release
+        run: ./prepare_release.sh "${{ github.event.inputs.new_version }}"
+
+      - name: Update dependencies
+        run: yarn
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Release ${{ github.event.inputs.new_version }}"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: 'Release ${{ github.event.inputs.new_version }}'
+          branch: "release/${{ github.event.inputs.new_version }}"
