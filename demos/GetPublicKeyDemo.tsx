@@ -13,17 +13,17 @@ export const GetPublicKeyDemo = () => {
         return;
       }
 
-      const pbk = await getPublicKey();
-      if (pbk === null) {
+      const response = await getPublicKey();
+      if (response?.publicKey === null) {
         setError("Sharing the public key has been refused!");
         return;
       }
-      if (pbk === undefined) {
+      if (response?.publicKey === undefined) {
         setError("Something went wrong!");
         return;
       }
 
-      setPublicKey(pbk.publicKey);
+      setPublicKey(response.publicKey);
     } catch (error) {
       setError("Something went wrong!");
     }
