@@ -55,10 +55,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "playground/addTrustline",
-        },
-        {
-          type: "doc",
           id: "playground/getAddress",
         },
         {
@@ -75,11 +71,15 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "playground/isConnected",
+          id: "playground/isInstalled",
         },
         {
           type: "doc",
           id: "playground/sendPayment",
+        },
+        {
+          type: "doc",
+          id: "playground/setTrustline",
         },
         {
           type: "doc",

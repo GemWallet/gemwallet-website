@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { isConnected, addTrustline } from "@gemwallet/api";
+import { isConnected, addTrustline } from "@gemwallet/api-v2";
 
 const TRANSACTION = {
   currency: "USD",
