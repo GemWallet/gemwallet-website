@@ -38,3 +38,60 @@ or
 - Install the module using yarn: `yarn add @gemwallet/api`
 
 When the library is installed, you will need to import the proper functions as explained in the guide [here](/docs/api/using-gemwallet-in-node-js).
+
+## Methods
+
+### isInstalled
+
+Checks if the GemWallet extension is installed in the user's browser.
+
+:::tip
+We definitely recommend that you check if the user is connected before using any of the other methods available.
+:::
+
+#### Request
+This function does not require any parameters.
+
+#### Response
+
+```javascript
+result: { 
+  isInstalled: boolean 
+}
+```
+
+- `isInstalled`: `true` if the user has GemWallet extension installed, `false` otherwise.
+
+#### Examples
+```javascript
+import { isInstalled } from '@gemwallet/api';
+
+isInstalled().then(response => {
+  console.log(response.result.isInstalled);
+});
+```
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (!response.result.isInstalled) {
+        console.log("GemWallet is not installed");
+      } else {
+        console.log("GemWallet is installed");
+      }
+    });
+  };
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
