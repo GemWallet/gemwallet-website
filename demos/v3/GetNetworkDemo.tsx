@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { isConnected, getNetwork } from "@gemwallet/api";
+import { isInstalled, getNetwork } from "@gemwallet/api";
 
 export const GetNetworkDemo = () => {
   const [network, setNetwork] = useState("");
@@ -7,23 +7,18 @@ export const GetNetworkDemo = () => {
 
   const handleNetwork = useCallback(async () => {
     try {
-      const isConnectedResult = await isConnected();
-      if (!isConnectedResult) {
+      const responseIsInstalled = await isInstalled();
+      if (!responseIsInstalled.result.isInstalled) {
         setError("Please install GemWallet");
         return;
       }
-      const networkResult = await getNetwork();
-      if (networkResult === null) {
+      const responseGetNetwork = await getNetwork();
+      if (responseGetNetwork.type === "reject") {
         setError("Sharing the network has been refused!");
         return;
       }
 
-      if (networkResult === undefined) {
-        setError("Something went wrong!");
-        return;
-      }
-
-      setNetwork(networkResult);
+      setNetwork(responseGetNetwork.result.network);
     } catch (error) {
       setError("Something went wrong");
     }

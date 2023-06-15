@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { isConnected } from "@gemwallet/api";
+import { isConnected } from "@gemwallet/api-v2";
 
 export const IsConnectedDemo = () => {
   const [connectionMessage, setConnectionMessage] = useState<string>("");

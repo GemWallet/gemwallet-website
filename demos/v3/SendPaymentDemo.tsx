@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
-import { isConnected, sendPayment } from "@gemwallet/api";
+import { isInstalled, sendPayment } from "@gemwallet/api";
 
 const PAYMENT = {
-  amount: "50",
+  amount: "50000000",
   destination: "rMrXopFSnCDSd5Eej4TpeHrV7SPjKtLpo2",
 };
 
@@ -12,23 +12,19 @@ export const SendPaymentDemo = () => {
 
   const handlePayment = useCallback(async () => {
     try {
-      const connected = await isConnected();
-      if (!connected) {
+      const responseIsInstalled = await isInstalled();
+      if (!responseIsInstalled.result.isInstalled) {
         setError("Please install GemWallet");
         return;
       }
 
-      const transactionHash = await sendPayment(PAYMENT);
-      if (transactionHash === null) {
+      const responseSendPayment = await sendPayment(PAYMENT);
+      if (responseSendPayment.type === "reject") {
         setError("The payment has been refused!");
         return;
       }
-      if (transactionHash === undefined) {
-        setError("Something went wrong!");
-        return;
-      }
 
-      setTxHash(transactionHash);
+      setTxHash(responseSendPayment.result.hash);
     } catch (error) {
       setError("Something went wrong!");
     }
@@ -51,7 +47,7 @@ export const SendPaymentDemo = () => {
         <div style={{ display: "block", margin: "1em 0" }}>Error: {error}</div>
       ) : null}
       <button type="button" style={{ margin: "1em 0" }} onClick={handlePayment}>
-        Make Transaction
+        Send Payment
       </button>
     </section>
   );

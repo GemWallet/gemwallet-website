@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { isConnected, getAddress } from "@gemwallet/api";
+import { isInstalled, getAddress } from "@gemwallet/api";
 
 export const GetAddressDemo = () => {
   const [address, setAddress] = useState("");
@@ -7,23 +7,19 @@ export const GetAddressDemo = () => {
 
   const handleAddress = useCallback(async () => {
     try {
-      const connected = await isConnected();
-      if (!connected) {
+      const responseIsInstalled = await isInstalled();
+      if (!responseIsInstalled.result.isInstalled) {
         setError("Please install GemWallet");
         return;
       }
 
-      const address = await getAddress();
-      if (address === null) {
+      const responseGetAddress = await getAddress();
+      if (responseGetAddress.type === "reject") {
         setError("Sharing the address has been refused!");
         return;
       }
-      if (address === undefined) {
-        setError("Something went wrong!");
-        return;
-      }
 
-      setAddress(address);
+      setAddress(responseGetAddress.result.address);
     } catch (err) {
       setError("Something went wrong!");
     }
