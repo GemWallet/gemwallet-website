@@ -25,8 +25,6 @@ Install the packaged library via script tag using cdnjs, swapping in the desired
 <script src="https://unpkg.com/@gemwallet/api@{version}/umd/gemwallet-api.js"></script>
 ```
 
-After adding the library to your web pages using GemWallet, you will need to import the proper functions as explained in the guide [here](/docs/api/using-gemwallet-in-browser).
-
 ## For Node.js applications
 
 You can either:
@@ -36,8 +34,6 @@ You can either:
 or
 
 - Install the module using yarn: `yarn add @gemwallet/api`
-
-When the library is installed, you will need to import the proper functions as explained in the guide [here](/docs/api/using-gemwallet-in-node-js).
 
 ## Methods
 

@@ -38,14 +38,6 @@ const sidebars = {
           type: "doc",
           id: "api/gemwallet-api",
         },
-        {
-          type: "doc",
-          id: "api/using-gemwallet-in-browser",
-        },
-        {
-          type: "doc",
-          id: "api/using-gemwallet-in-node-js",
-        },
       ],
     },
     {
