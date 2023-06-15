@@ -41,61 +41,6 @@ When the library is installed, you will need to import the proper functions as e
 
 ## Methods
 
-### isInstalled
-
-Checks if the GemWallet extension is installed in the user's browser.
-
-:::tip
-We definitely recommend that you check if the user is connected before using any of the other methods available.
-:::
-
-#### Request
-This function does not require any parameters.
-
-#### Response
-
-```javascript
-result: { 
-  isInstalled: boolean 
-}
-```
-
-- `isInstalled`: `true` if the user has GemWallet extension installed, `false` otherwise.
-
-#### Examples
-```javascript
-import { isInstalled } from '@gemwallet/api';
-
-isInstalled().then(response => {
-  console.log(response.result.isInstalled);
-});
-```
-
-Here is an example with a React web application:
-
-```jsx
-import { isInstalled } from "@gemwallet/api";
-
-function App() {
-  const handleConnect = () => {
-    isInstalled().then((response) => {
-      if (!response.result.isInstalled) {
-        console.log("GemWallet is not installed");
-      } else {
-        console.log("GemWallet is installed");
-      }
-    });
-  };
-  return (
-    <div className="App">
-      <button onClick={handleConnect}>Click me!</button>
-    </div>
-  );
-}
-
-export default App;
-```
-
 ### getAddress
 
 Retrieves the wallet address associated with the extension.
@@ -391,6 +336,61 @@ function App() {
 export default App;
 ```
 
+### isInstalled
+
+Checks if the GemWallet extension is installed in the user's browser.
+
+:::tip
+We definitely recommend that you check if the user is connected before using any of the other methods available.
+:::
+
+#### Request
+This function does not require any parameters.
+
+#### Response
+
+```javascript
+result: { 
+  isInstalled: boolean 
+}
+```
+
+- `isInstalled`: `true` if the user has GemWallet extension installed, `false` otherwise.
+
+#### Examples
+```javascript
+import { isInstalled } from '@gemwallet/api';
+
+isInstalled().then(response => {
+  console.log(response.result.isInstalled);
+});
+```
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (!response.result.isInstalled) {
+        console.log("GemWallet is not installed");
+      } else {
+        console.log("GemWallet is installed");
+      }
+    });
+  };
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### sendPayment
 
 Initiates a payment transaction through the extension.
@@ -576,75 +576,6 @@ function App() {
 export default App;
 ```
 
-### signMessage
-
-Signs a message using the private key of the user's address.
-
-#### Request
-The function takes a message string as an input parameter.
-
-#### Response
-The response is a Promise which resolves to an object with a `type` and `result` property.
-
-- `type`: An enum value, could be ***response*** or ***reject***.
-- `result`: 
-  - `signedMessage`: The signed message.
-        
-```javascript
-type: 'response'
-result: {
-  signedMessage: string
-}
-```
-or
-
-```javascript
-type: 'reject'
-result: undefined
-```
-
-#### Error Handling
-In case of error, the error will be thrown.
-
-#### Examples
-```javascript
-import { signMessage } from '@gemwallet/api';
-
-const message = "Hello, World!";
-
-signMessage(message).then(response => {
-  console.log(response.result?.signedMessage);
-});
-```
-
-Here is an example with a React web application:
-
-```jsx
-import { isInstalled, signMessage } from "@gemwallet/api";
-
-function App() {
-  const handleConnect = () => {
-    isInstalled().then((response) => {
-      if (response.result.isInstalled) {
-        signMessage("The message I want to get signed").then(
-          (response) => {
-            console.log("Signed message: ", response.result?.signedMessage);
-          }
-        );
-      }
-    });
-  };
-
-  return (
-    <div className="App">
-      <button onClick={handleConnect}>Click me!</button>
-    </div>
-  );
-}
-
-export default App;
-```
-
 ### setTrustLine
 
 Adds or edits a trustline within the wallet.
@@ -703,7 +634,7 @@ The response is a Promise which resolves to an object with a `type` and `result`
 - `type`: An enum value, could be ***response*** or ***reject***.
 - `result`:
   - `hash`: The hash of the transaction.
-    
+
 ```javascript
 type: 'response'
 result: {
@@ -785,3 +716,71 @@ function App() {
 export default App;
 ```
 
+### signMessage
+
+Signs a message using the private key of the user's address.
+
+#### Request
+The function takes a message string as an input parameter.
+
+#### Response
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`: 
+  - `signedMessage`: The signed message.
+        
+```javascript
+type: 'response'
+result: {
+  signedMessage: string
+}
+```
+or
+
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { signMessage } from '@gemwallet/api';
+
+const message = "Hello, World!";
+
+signMessage(message).then(response => {
+  console.log(response.result?.signedMessage);
+});
+```
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled, signMessage } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        signMessage("The message I want to get signed").then(
+          (response) => {
+            console.log("Signed message: ", response.result?.signedMessage);
+          }
+        );
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
