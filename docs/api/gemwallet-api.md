@@ -159,3 +159,76 @@ function App() {
 
 export default App;
 ```
+
+### getNetwork
+
+Retrieves the network associated with the extension.
+
+#### Request
+This function does not require any parameters.
+
+#### Response
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`:
+  - `network`: The network name as a string.
+
+Returns:
+
+- `Mainnet` if the user is connected to the `main network`.
+- `Testnet` if the user is connected to the `test network`.
+- `Devnet` if the user is connected to the `developer network`.
+- `AMM-Devnet` if the user is connected to the `AMM Devnet`.
+
+```javascript
+type: 'response'
+result: {
+  network: string
+}
+```
+
+or
+
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { getNetwork } from '@gemwallet/api';
+
+getNetwork().then(response => {
+  console.log(response.result?.network);
+});
+```
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled, getNetwork } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        getNetwork().then((response) => {
+          console.log(`Your network: ${response.result?.network}`);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
