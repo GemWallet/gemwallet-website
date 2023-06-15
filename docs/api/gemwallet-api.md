@@ -644,3 +644,144 @@ function App() {
 
 export default App;
 ```
+
+### setTrustLine
+
+Adds or edits a trustline within the wallet.
+
+#### Request
+**Mandatory** - The function takes a payload of type `SetTrustlineRequest` as an input parameter.
+
+- `limitAmount`: The maximum amount of currency that can be exchanged to the trustline.
+  - More technical details about the formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+- `fee`: Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements.
+  - More technical details about the drops can be found [here](https://xrpl.org/currency-formats.html#xrp-amounts).
+- `memos`: The memos to attach to the transaction. Each attribute of each memo must be hex encoded.
+  - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
+- `flags`: Flags to set on the transaction.
+
+```typescript
+interface SetTrustlineRequest {
+  // The maximum amount of currency that can be exchanged to the trustline
+  limitAmount: IssuedCurrencyAmount;
+  // Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network.
+  // Some transaction types have different minimum requirements.
+  fee?: string;
+  // The memos to attach to the transaction
+  // Each attribute of each memo must be hex encoded
+  memos?: Memo[];
+  // Flags to set on the transaction
+  flags?: TrustSetFlags;
+}
+```
+
+```typescript
+interface Memo {
+  memo: {
+    memoType?: string;
+    memoData?: string;
+    memoFormat?: string;
+  };
+}
+```
+More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
+
+```typescript
+interface TrustSetFlags {
+  tfSetfAuth?: boolean;
+  tfSetNoRipple?: boolean;
+  tfClearNoRipple?: boolean;
+  tfSetFreeze?: boolean;
+  tfClearFreeze?: boolean;
+} | number;
+```
+More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
+
+#### Response
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`:
+  - `hash`: The hash of the transaction.
+    
+```javascript
+type: 'response'
+result: {
+  hash: string
+}
+```
+or
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { setTrustline } from '@gemwallet/api';
+
+const trustline = {
+  limitAmount: {
+    currency: 'ETH',
+    issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
+    value: '10000000'
+  },
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ],
+  fee: '199',
+  flags: {
+    tfClearFreeze: false,
+    tfClearNoRipple: false,
+    tfSetFreeze: true,
+    tfSetNoRipple: true,
+    tfSetfAuth: false
+  }
+};
+
+setTrustline(trustline).then(response => {
+  console.log(response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled, addTrustline } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const transaction = {
+          limitAmount: {
+            currency: 'ETH',
+            issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
+            value: '10000000'
+          }
+        };
+        addTrustline(transaction).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
