@@ -232,3 +232,94 @@ function App() {
 
 export default App;
 ```
+
+### getNFT
+
+Retrieves NFTs associated with the wallet.
+
+#### Request
+**Optional** - This function requires an optional payload parameter which has properties defined by `GetNFTRequest`.
+
+- `limit`: The maximum number of NFTs to return.
+- `marker`: A value from a previous paginated response. This is used to resume retrieving data where the previous response left off.
+
+```typescript
+interface GetNFTRequest {
+  // Limit the number of NFTokens to retrieve.
+  limit?: number;
+  // Value from a previous paginated response. Resume retrieving data where that response left off.
+  marker?: unknown;
+}
+```
+
+#### Response
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`:
+  - `account_nfts`: AccountNFToken[] - An array of NFTs associated with the wallet.
+  - `marker`: A value to be used as a marker in a subsequent request.
+
+```javascript
+type: 'response'
+result: {
+  account_nfts: AccountNFToken[]
+  marker: unknown
+}
+```
+
+```typescript
+interface AccountNFToken {
+  Flags: number;
+  Issuer: string;
+  NFTokenID: string;
+  NFTokenTaxon: number;
+  URI?: string;
+  nft_serial: number;
+}
+```
+
+or
+
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { getNFT } from '@gemwallet/api';
+
+getNFT({ limit: 10 }).then(response => {
+  console.log(response.result?.account_nfts);
+});
+```
+
+Here is an example of implementation:
+
+```jsx
+import { isInstalled, getNFT } from "@gemwallet/api";
+
+function App() {
+  const handleNFTs = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        getNFT().then((result) => {
+          console.log("Your NFTs: ", result.result?.account_nfts);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleNFTs}>Show my NFTs!</button>
+    </div>
+  );
+}
+
+export default App;
+```
