@@ -390,3 +390,188 @@ function App() {
 
 export default App;
 ```
+
+### sendPayment
+
+Initiates a payment transaction through the extension.
+
+#### Request
+
+**Mandatory** - The function takes a payload object as an input parameter, which has properties defined by `SendPaymentRequest`.
+
+- `amount`: The amount to deliver, in one of the following formats:
+  - A *string* representing the number of XRP to deliver, in drops.
+  - An *object* where 'value' is a string representing the number of the token to deliver.
+  - More technical details about the formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+- `destination`: The unique address of the account receiving the payment.
+- `memos`: The memos to attach to the transaction. Each attribute of each memo must be hex encoded.
+  - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
+- `destinationTag`: The destination tag to attach to the transaction.
+- `fee`: Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network.
+  - More technical details about the drops can be found [here](https://xrpl.org/currency-formats.html#xrp-amounts).
+- `flags`: Flags to set on the transaction.
+
+```typescript
+export interface SendPaymentRequest {
+  // The amount to deliver, in one of the following formats:
+  // - A string representing the number of XRP to deliver, in drops.
+  // - An object where 'value' is a string representing the number of the token to deliver.
+  amount: Amount;
+  // The unique address of the account receiving the payment
+  destination: string;
+  // The memos to attach to the transaction
+  // Each attribute of each memo must be hex encoded
+  memos?: Memo[];
+  // The destination tag to attach to the transaction
+  destinationTag?: number;
+  // Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network
+  fee?: string;
+  // Flags to set on the transaction
+  flags?: PaymentFlags;
+}
+```
+
+```typescript
+interface Amount {
+  currency: string;
+  issuer: string;
+  value: string;
+} | string;
+```
+More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+
+```typescript
+interface Memo {
+  memo: {
+    memoType?: string;
+    memoData?: string;
+    memoFormat?: string;
+  };
+}
+```
+More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
+
+```typescript
+interface PaymentFlags {
+  tfNoDirectRipple?: boolean;
+  tfPartialPayment?: boolean;
+  tfLimitQuality?: boolean;
+} | number;
+```
+More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
+
+#### Response
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`:
+  - `hash`: The hash of the transaction.
+    
+```javascript
+type: 'response'
+result: {
+  hash: string
+}
+```
+or
+
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { sendPayment } from '@gemwallet/api';
+
+const payload = {
+  amount: '1000000', // In drops (1 XRP)
+  destination: 'fake',
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ],
+  destinationTag: 12,
+  fee: '199',
+  flags: {
+    tfNoDirectRipple: false,
+    tfPartialPayment: false,
+    tfLimitQuality: false
+  }
+};
+
+sendPayment(payload).then(response => {
+  console.log(response.result?.hash);
+});
+```
+
+Here is an example for an XRP Payment with a React web application:
+
+```jsx
+import { isInstalled, sendPayment } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payment = {
+          amount: "1000000", // In drops (1 XRP)
+          destination: "rLWQskMM8EoPxaLsmuQxE5rYeP4uX7dhym",
+        };
+        sendPayment(payment).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Here is an example for an ETH Payment with a React web application:
+
+```jsx
+import { isInstalled, sendPayment } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payment = {
+          amount: {
+            currency: "ETH",
+            value: "0.01", // In currency
+            issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+          },
+          destination: "rLWQskMM8EoPxaLsmuQxE5rYeP4uX7dhym",
+        };
+        sendPayment(payment).then((trHash) => {
+          console.log("Transaction Hash: ", trHash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
