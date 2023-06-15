@@ -575,3 +575,72 @@ function App() {
 
 export default App;
 ```
+
+### signMessage
+
+Signs a message using the private key of the user's address.
+
+#### Request
+The function takes a message string as an input parameter.
+
+#### Response
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`: 
+  - `signedMessage`: The signed message.
+        
+```javascript
+type: 'response'
+result: {
+  signedMessage: string
+}
+```
+or
+
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { signMessage } from '@gemwallet/api';
+
+const message = "Hello, World!";
+
+signMessage(message).then(response => {
+  console.log(response.result?.signedMessage);
+});
+```
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled, signMessage } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        signMessage("The message I want to get signed").then(
+          (response) => {
+            console.log("Signed message: ", response.result?.signedMessage);
+          }
+        );
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
