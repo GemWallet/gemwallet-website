@@ -323,3 +323,70 @@ function App() {
 
 export default App;
 ```
+
+### getPublicKey
+
+Retrieves the public key associated with the wallet.
+
+#### Request
+This function does not require any parameters.
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`:
+  - `address`: Classic address of the wallet.
+  - `publicKey`: Public key of the wallet.
+  
+```javascript
+type: 'response'
+result: {
+  address: string
+  publicKey: string
+}
+```
+or
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { getPublicKey } from '@gemwallet/api';
+
+getPublicKey().then(response => {
+  console.log(`${response.result?.address} - ${response.result?.publicKey}`);
+});
+```
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled, getPublicKey } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        getPublicKey().then((response) => {
+          console.log(`${response.result?.address} - ${response.result?.publicKey}`)
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
