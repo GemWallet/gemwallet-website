@@ -95,3 +95,67 @@ function App() {
 
 export default App;
 ```
+
+### getAddress
+
+Retrieves the wallet address associated with the extension.
+
+#### Request
+This function does not require any parameters.
+
+#### Response
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: An enum value, could be ***response*** or ***reject***.
+- `result`: 
+  - `address`: The classic address of the wallet.
+
+```javascript
+type: 'response'
+result: {
+  address: string
+}
+```
+or
+```javascript
+type: 'reject'
+result: undefined
+```
+
+#### Error Handling
+In case of error, the error will be thrown.
+
+#### Examples
+```javascript
+import { getAddress } from '@gemwallet/api';
+
+getAddress().then(response => {
+  console.log(response.result?.address);
+});
+````
+
+Here is an example with a React web application:
+
+```jsx
+import { isInstalled, getAddress } from "@gemwallet/api";
+
+function App() {
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        getAddress().then((response) => {
+          console.log(`Your address: ${response.result?.address}`);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleConnect}>Click me!</button>
+    </div>
+  );
+}
+
+export default App;
+```
