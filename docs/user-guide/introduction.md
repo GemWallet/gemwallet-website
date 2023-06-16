@@ -20,7 +20,7 @@ Our vision is oriented toward payments, micro-payments, and donations.
 
 Get started here
 
-- Learn more about our [JavaScript Provider API](/docs/api/gemwallet-api).
+- Learn more about our [JavaScript Provider API](../api/gemwallet-api-installation).
 
 ## Blockchain Connection
 

@@ -7,15 +7,15 @@ description: Provides the documentation on how to use install GemWallet API.
 ## Introduction
 
 :::tip Recommended Reading
-Before reading this section, make sure that you have the GemWallet extension installed. You can have a read to the [Getting Started](/docs/user-guide/getting-started) section.
+Before reading this section, make sure that you have the GemWallet extension installed. You can have a read to the [Getting Started](../user-guide/getting-started) section.
 :::
 
 The GemWallet API is used to bridge communication between your website and the GemWallet extension.
 
 We provide two ways of installing the extension:
 
-- Via CDN for [browser-based applications](/docs/next/api/gemwallet-api-installation#for-browser-based-applications)
-- Via an NPM package for [Node.js applications](/docs/next/api/gemwallet-api-installation#for-nodejs-applications)
+- Via CDN for [browser-based applications](./gemwallet-api-installation#for-browser-based-applications)
+- Via an NPM package for [Node.js applications](./gemwallet-api-installation#for-nodejs-applications)
 
 ## For browser-based applications
 
