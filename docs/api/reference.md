@@ -18,7 +18,7 @@ This function does not require any parameters.
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be **_response_** or **_reject_**.
+- `type`: `"response" | "reject"`
 - `result`:
   - `address`: The classic address of the wallet.
 
@@ -88,7 +88,7 @@ This function does not require any parameters.
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be **_response_** or **_reject_**.
+- `type`: `"response" | "reject"`
 - `result`:
   - `network`: The network name as a string.
 
@@ -177,7 +177,7 @@ interface GetNFTRequest {
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be **_response_** or **_reject_**.
+- `type`: `"response" | "reject"`
 - `result`:
   - `account_nfts`: AccountNFToken[] - An array of NFTs associated with the wallet.
   - `marker`: A value to be used as a marker in a subsequent request.
@@ -260,7 +260,7 @@ This function does not require any parameters.
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be **_response_** or **_reject_**.
+- `type`: `"response" | "reject"`
 - `result`:
   - `address`: Classic address of the wallet.
   - `publicKey`: Public key of the wallet.
@@ -327,7 +327,7 @@ export default App;
 Checks if the GemWallet extension is installed in the user's browser.
 
 :::tip
-We definitely recommend that you check if the user is connected before using any of the other methods available.
+We definitely recommend that you check if the user has GemWallet installed before using any of the other methods available.
 :::
 
 #### Request
@@ -455,7 +455,7 @@ More details about the flags can be found [here](https://xrpl.org/transaction-co
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be **_response_** or **_reject_**.
+- `type`: `"response" | "reject"`
 - `result`:
   - `hash`: The hash of the transaction.
 
@@ -630,7 +630,7 @@ More details about the flags can be found [here](https://xrpl.org/transaction-co
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be **_response_** or **_reject_**.
+- `type`: `"response" | "reject"`
 - `result`:
   - `hash`: The hash of the transaction.
 
@@ -721,7 +721,7 @@ export default App;
 
 ### signMessage
 
-Signs a message using the private key of the user's address.
+Signs a message using the private key of the user's wallet.
 
 #### Request
 
@@ -731,7 +731,7 @@ The function takes a message string as an input parameter.
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be **_response_** or **_reject_**.
+- `type`: `"response" | "reject"`
 - `result`:
   - `signedMessage`: The signed message.
 
