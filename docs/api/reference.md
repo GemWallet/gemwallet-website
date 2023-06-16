@@ -183,7 +183,7 @@ The response is a Promise which resolves to an object with a `type` and `result`
   - `marker`: A value to be used as a marker in a subsequent request.
 
 ```javascript
-type: 'response'
+type: "response"
 result: {
   account_nfts: AccountNFToken[]
   marker: unknown
