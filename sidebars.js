@@ -40,7 +40,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "api/gemwallet-api",
+          id: "api/reference",
         },
       ],
     },
