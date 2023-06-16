@@ -1,5 +1,5 @@
 ---
-id: reference
+id: gemwallet-api-reference
 title: Reference
 description: Provides the documentation on how to use GemWallet API.
 ---
