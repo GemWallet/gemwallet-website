@@ -31,9 +31,13 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "API Reference",
+      label: "API",
       collapsed: true,
       items: [
+        {
+          type: "doc",
+          id: "api/gemwallet-api-installation",
+        },
         {
           type: "doc",
           id: "api/gemwallet-api",
