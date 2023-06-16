@@ -14,8 +14,8 @@ The GemWallet API is used to bridge communication between your website and the G
 
 We provide two ways of installing the extension:
 
-- Via CDN for [browser-based applications](/docs/api/gemwallet-api#for-browser-based-applications)
-- Via an NPM package for [Node.js applications](/docs/api/gemwallet-api#for-nodejs-applications)
+- Via CDN for [browser-based applications](/docs/api/gemwallet-api-installation#for-browser-based-applications)
+- Via an NPM package for [Node.js applications](/docs/api/gemwallet-api-installation#for-nodejs-applications)
 
 ## For browser-based applications
 
