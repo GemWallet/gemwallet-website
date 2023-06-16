@@ -31,20 +31,16 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "API Reference",
+      label: "API",
       collapsed: true,
       items: [
         {
           type: "doc",
-          id: "api/gemwallet-api",
+          id: "api/gemwallet-api-installation",
         },
         {
           type: "doc",
-          id: "api/using-gemwallet-in-browser",
-        },
-        {
-          type: "doc",
-          id: "api/using-gemwallet-in-node-js",
+          id: "api/gemwallet-api-reference",
         },
       ],
     },

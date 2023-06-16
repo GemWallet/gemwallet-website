@@ -14,4 +14,4 @@ Head over to the Chrome extension store and install GemWallet into your browser.
 
 ## Install GemWallet API
 
-To communicate with the extension, you need to use the [GemWallet API](/docs/api/gemwallet-api) that will let you send and receive messages from the extension.
+To communicate with the extension, you need to use the [GemWallet API](../api/gemwallet-api-installation) that will let you send and receive messages from the extension.
