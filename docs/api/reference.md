@@ -11,42 +11,48 @@ description: Provides the documentation on how to use GemWallet API.
 Retrieves the wallet address associated with the extension.
 
 #### Request
+
 This function does not require any parameters.
 
 #### Response
+
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be ***response*** or ***reject***.
-- `result`: 
+- `type`: An enum value, could be **_response_** or **_reject_**.
+- `result`:
   - `address`: The classic address of the wallet.
 
 ```javascript
-type: 'response'
+type: "response";
 result: {
-  address: string
+  address: string;
 }
 ```
+
 or
+
 ```javascript
-type: 'reject'
-result: undefined
+type: "reject";
+result: undefined;
 ```
 
 #### Error Handling
+
 In case of error, the error will be thrown.
 
 #### Examples
-```javascript
-import { getAddress } from '@gemwallet/api';
 
-getAddress().then(response => {
+```tsx
+import { getAddress } from "@gemwallet/api";
+
+getAddress().then((response) => {
   console.log(response.result?.address);
 });
-````
+```
 
 Here is an example with a React web application:
 
-```jsx
+```tsx
 import { isInstalled, getAddress } from "@gemwallet/api";
 
 function App() {
@@ -75,12 +81,14 @@ export default App;
 Retrieves the network associated with the extension.
 
 #### Request
+
 This function does not require any parameters.
 
 #### Response
+
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be ***response*** or ***reject***.
+- `type`: An enum value, could be **_response_** or **_reject_**.
 - `result`:
   - `network`: The network name as a string.
 
@@ -92,34 +100,36 @@ Returns:
 - `AMM-Devnet` if the user is connected to the `AMM Devnet`.
 
 ```javascript
-type: 'response'
+type: "response";
 result: {
-  network: string
+  network: string;
 }
 ```
 
 or
 
 ```javascript
-type: 'reject'
-result: undefined
+type: "reject";
+result: undefined;
 ```
 
 #### Error Handling
+
 In case of error, the error will be thrown.
 
 #### Examples
-```javascript
-import { getNetwork } from '@gemwallet/api';
 
-getNetwork().then(response => {
+```tsx
+import { getNetwork } from "@gemwallet/api";
+
+getNetwork().then((response) => {
   console.log(response.result?.network);
 });
 ```
 
 Here is an example with a React web application:
 
-```jsx
+```tsx
 import { isInstalled, getNetwork } from "@gemwallet/api";
 
 function App() {
@@ -148,6 +158,7 @@ export default App;
 Retrieves NFTs associated with the wallet.
 
 #### Request
+
 **Optional** - This function requires an optional payload parameter which has properties defined by `GetNFTRequest`.
 
 - `limit`: The maximum number of NFTs to return.
@@ -163,9 +174,10 @@ interface GetNFTRequest {
 ```
 
 #### Response
+
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be ***response*** or ***reject***.
+- `type`: An enum value, could be **_response_** or **_reject_**.
 - `result`:
   - `account_nfts`: AccountNFToken[] - An array of NFTs associated with the wallet.
   - `marker`: A value to be used as a marker in a subsequent request.
@@ -192,25 +204,27 @@ interface AccountNFToken {
 or
 
 ```javascript
-type: 'reject'
-result: undefined
+type: "reject";
+result: undefined;
 ```
 
 #### Error Handling
+
 In case of error, the error will be thrown.
 
 #### Examples
-```javascript
-import { getNFT } from '@gemwallet/api';
 
-getNFT({ limit: 10 }).then(response => {
+```tsx
+import { getNFT } from "@gemwallet/api";
+
+getNFT({ limit: 10 }).then((response) => {
   console.log(response.result?.account_nfts);
 });
 ```
 
 Here is an example of implementation:
 
-```jsx
+```tsx
 import { isInstalled, getNFT } from "@gemwallet/api";
 
 function App() {
@@ -239,45 +253,50 @@ export default App;
 Retrieves the public key associated with the wallet.
 
 #### Request
+
 This function does not require any parameters.
 
 #### Response
 
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be ***response*** or ***reject***.
+- `type`: An enum value, could be **_response_** or **_reject_**.
 - `result`:
   - `address`: Classic address of the wallet.
   - `publicKey`: Public key of the wallet.
-  
+
 ```javascript
-type: 'response'
+type: "response";
 result: {
-  address: string
-  publicKey: string
+  address: string;
+  publicKey: string;
 }
 ```
+
 or
+
 ```javascript
-type: 'reject'
-result: undefined
+type: "reject";
+result: undefined;
 ```
 
 #### Error Handling
+
 In case of error, the error will be thrown.
 
 #### Examples
-```javascript
-import { getPublicKey } from '@gemwallet/api';
 
-getPublicKey().then(response => {
+```tsx
+import { getPublicKey } from "@gemwallet/api";
+
+getPublicKey().then((response) => {
   console.log(`${response.result?.address} - ${response.result?.publicKey}`);
 });
 ```
 
 Here is an example with a React web application:
 
-```jsx
+```tsx
 import { isInstalled, getPublicKey } from "@gemwallet/api";
 
 function App() {
@@ -285,7 +304,9 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         getPublicKey().then((response) => {
-          console.log(`${response.result?.address} - ${response.result?.publicKey}`)
+          console.log(
+            `${response.result?.address} - ${response.result?.publicKey}`
+          );
         });
       }
     });
@@ -310,30 +331,32 @@ We definitely recommend that you check if the user is connected before using any
 :::
 
 #### Request
+
 This function does not require any parameters.
 
 #### Response
 
 ```javascript
-result: { 
-  isInstalled: boolean 
+result: {
+  isInstalled: boolean;
 }
 ```
 
 - `isInstalled`: `true` if the user has GemWallet extension installed, `false` otherwise.
 
 #### Examples
-```javascript
-import { isInstalled } from '@gemwallet/api';
 
-isInstalled().then(response => {
+```tsx
+import { isInstalled } from "@gemwallet/api";
+
+isInstalled().then((response) => {
   console.log(response.result.isInstalled);
 });
 ```
 
 Here is an example with a React web application:
 
-```jsx
+```tsx
 import { isInstalled } from "@gemwallet/api";
 
 function App() {
@@ -365,8 +388,8 @@ Initiates a payment transaction through the extension.
 **Mandatory** - The function takes a payload object as an input parameter, which has properties defined by `SendPaymentRequest`.
 
 - `amount`: The amount to deliver, in one of the following formats:
-  - A *string* representing the number of XRP to deliver, in drops.
-  - An *object* where 'value' is a string representing the number of the token to deliver.
+  - A _string_ representing the number of XRP to deliver, in drops.
+  - An _object_ where 'value' is a string representing the number of the token to deliver.
   - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
 - `destination`: The unique address of the account receiving the payment.
 - `memos`: The memos to attach to the transaction. Each attribute of each memo must be hex encoded.
@@ -403,6 +426,7 @@ interface Amount {
   value: string;
 } | string;
 ```
+
 More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
 
 ```typescript
@@ -414,6 +438,7 @@ interface Memo {
   };
 }
 ```
+
 More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 
 ```typescript
@@ -423,63 +448,68 @@ interface PaymentFlags {
   tfLimitQuality?: boolean;
 } | number;
 ```
+
 More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
 
 #### Response
+
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be ***response*** or ***reject***.
+- `type`: An enum value, could be **_response_** or **_reject_**.
 - `result`:
   - `hash`: The hash of the transaction.
-    
+
 ```javascript
-type: 'response'
+type: "response";
 result: {
-  hash: string
+  hash: string;
 }
 ```
+
 or
 
 ```javascript
-type: 'reject'
-result: undefined
+type: "reject";
+result: undefined;
 ```
 
 #### Error Handling
+
 In case of error, the error will be thrown.
 
 #### Examples
-```javascript
-import { sendPayment } from '@gemwallet/api';
+
+```tsx
+import { sendPayment } from "@gemwallet/api";
 
 const payload = {
-  amount: '1000000', // In drops (1 XRP)
-  destination: 'rLWQskMM8EoPxaLsmuQxE5rYeP4uX7dhym',
+  amount: "1000000", // In drops (1 XRP)
+  destination: "rLWQskMM8EoPxaLsmuQxE5rYeP4uX7dhym",
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
-      }
-    }
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f",
+      },
+    },
   ],
   destinationTag: 12,
-  fee: '199',
+  fee: "199",
   flags: {
     tfNoDirectRipple: false,
     tfPartialPayment: false,
-    tfLimitQuality: false
-  }
+    tfLimitQuality: false,
+  },
 };
 
-sendPayment(payload).then(response => {
+sendPayment(payload).then((response) => {
   console.log(response.result?.hash);
 });
 ```
 
 Here is an example for an XRP Payment with a React web application:
 
-```jsx
+```tsx
 import { isInstalled, sendPayment } from "@gemwallet/api";
 
 function App() {
@@ -509,7 +539,7 @@ export default App;
 
 Here is an example for an ETH Payment with a React web application:
 
-```jsx
+```tsx
 import { isInstalled, sendPayment } from "@gemwallet/api";
 
 function App() {
@@ -546,6 +576,7 @@ export default App;
 Adds or edits a trustline within the wallet.
 
 #### Request
+
 **Mandatory** - The function takes a payload of type `SetTrustlineRequest` as an input parameter.
 
 - `limitAmount`: The maximum amount of currency that can be exchanged to the trustline.
@@ -580,6 +611,7 @@ interface Memo {
   };
 }
 ```
+
 More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 
 ```typescript
@@ -591,66 +623,72 @@ interface TrustSetFlags {
   tfClearFreeze?: boolean;
 } | number;
 ```
+
 More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
 
 #### Response
+
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be ***response*** or ***reject***.
+- `type`: An enum value, could be **_response_** or **_reject_**.
 - `result`:
   - `hash`: The hash of the transaction.
 
 ```javascript
-type: 'response'
+type: "response";
 result: {
-  hash: string
+  hash: string;
 }
 ```
+
 or
+
 ```javascript
-type: 'reject'
-result: undefined
+type: "reject";
+result: undefined;
 ```
 
 #### Error Handling
+
 In case of error, the error will be thrown.
 
 #### Examples
-```javascript
-import { setTrustline } from '@gemwallet/api';
+
+```tsx
+import { setTrustline } from "@gemwallet/api";
 
 const trustline = {
   limitAmount: {
-    currency: 'ETH',
-    issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-    value: '10000000'
+    currency: "ETH",
+    issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+    value: "10000000",
   },
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
-      }
-    }
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f",
+      },
+    },
   ],
-  fee: '199',
+  fee: "199",
   flags: {
     tfClearFreeze: false,
     tfClearNoRipple: false,
     tfSetFreeze: true,
     tfSetNoRipple: true,
-    tfSetfAuth: false
-  }
+    tfSetfAuth: false,
+  },
 };
 
-setTrustline(trustline).then(response => {
+setTrustline(trustline).then((response) => {
   console.log(response.result?.hash);
 });
 ```
 
 Here is an example with a React web application:
 
-```jsx
+```tsx
 import { isInstalled, addTrustline } from "@gemwallet/api";
 
 function App() {
@@ -659,10 +697,10 @@ function App() {
       if (response.result.isInstalled) {
         const transaction = {
           limitAmount: {
-            currency: 'ETH',
-            issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-            value: '10000000'
-          }
+            currency: "ETH",
+            issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+            value: "10000000",
+          },
         };
         addTrustline(transaction).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -686,56 +724,59 @@ export default App;
 Signs a message using the private key of the user's address.
 
 #### Request
+
 The function takes a message string as an input parameter.
 
 #### Response
+
 The response is a Promise which resolves to an object with a `type` and `result` property.
 
-- `type`: An enum value, could be ***response*** or ***reject***.
-- `result`: 
+- `type`: An enum value, could be **_response_** or **_reject_**.
+- `result`:
   - `signedMessage`: The signed message.
-        
+
 ```javascript
-type: 'response'
+type: "response";
 result: {
-  signedMessage: string
+  signedMessage: string;
 }
 ```
+
 or
 
 ```javascript
-type: 'reject'
-result: undefined
+type: "reject";
+result: undefined;
 ```
 
 #### Error Handling
+
 In case of error, the error will be thrown.
 
 #### Examples
-```javascript
-import { signMessage } from '@gemwallet/api';
+
+```tsx
+import { signMessage } from "@gemwallet/api";
 
 const message = "Hello, World!";
 
-signMessage(message).then(response => {
+signMessage(message).then((response) => {
   console.log(response.result?.signedMessage);
 });
 ```
 
 Here is an example with a React web application:
 
-```jsx
+```tsx
 import { isInstalled, signMessage } from "@gemwallet/api";
 
 function App() {
   const handleConnect = () => {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
-        signMessage("The message I want to get signed").then(
-          (response) => {
-            console.log("Signed message: ", response.result?.signedMessage);
-          }
-        );
+        signMessage("The message I want to get signed").then((response) => {
+          console.log("Signed message: ", response.result?.signedMessage);
+        });
       }
     });
   };
