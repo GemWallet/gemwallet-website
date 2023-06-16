@@ -603,6 +603,16 @@ interface SetTrustlineRequest {
 ```
 
 ```typescript
+interface IssuedCurrencyAmount {
+  currency: string;
+  issuer: string;
+  value: string;
+}
+```
+
+More technical details about the currency amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+
+```typescript
 interface Memo {
   memo: {
     memoType?: string;
