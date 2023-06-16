@@ -107,11 +107,11 @@ const config = {
               },
               {
                 label: "API Reference",
-                to: "/docs/api/gemwallet-api",
+                to: "/docs/api/gemwallet-api-installation",
               },
               {
                 label: "Playground",
-                to: "/docs/playground/isConnected",
+                to: "/docs/playground/getAddress",
               },
             ],
           },

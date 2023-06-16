@@ -25,7 +25,7 @@ Install the packaged library via script tag using cdnjs, swapping in the desired
 <script src="https://cdn.jsdelivr.net/gh/GemWallet/gemwallet-extension@{version}/dist/gemwallet-api.min.js"></script>
 ```
 
-After adding the library to your web pages using GemWallet, you will need to import the proper functions as explained in the guide [here](/docs/api/using-gemwallet-in-browser).
+After adding the library to your web pages using GemWallet, you will need to import the proper functions as explained in the guide [here](./using-gemwallet-in-browser).
 
 ## For Node.js applications
 
@@ -37,4 +37,4 @@ or
 
 - Install the module using yarn: `yarn add @gemwallet/api`
 
-When the library is installed, you will need to import the proper functions as explained in the guide [here](/docs/api/using-gemwallet-in-node-js).
+When the library is installed, you will need to import the proper functions as explained in the guide [here](./using-gemwallet-in-node-js).
