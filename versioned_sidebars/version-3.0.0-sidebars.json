@@ -7,11 +7,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "user-guide/introduction"
+          "id": "version-3.0.0/user-guide/introduction"
         },
         {
           "type": "doc",
-          "id": "user-guide/getting-started"
+          "id": "version-3.0.0/user-guide/getting-started"
         }
       ]
     },
@@ -22,11 +22,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "api/gemwallet-api-installation"
+          "id": "version-3.0.0/api/gemwallet-api-installation"
         },
         {
           "type": "doc",
-          "id": "api/gemwallet-api-reference"
+          "id": "version-3.0.0/api/gemwallet-api-reference"
         }
       ]
     },
@@ -37,35 +37,35 @@
       "items": [
         {
           "type": "doc",
-          "id": "playground/getAddress"
+          "id": "version-3.0.0/playground/getAddress"
         },
         {
           "type": "doc",
-          "id": "playground/getNetwork"
+          "id": "version-3.0.0/playground/getNetwork"
         },
         {
           "type": "doc",
-          "id": "playground/getNFT"
+          "id": "version-3.0.0/playground/getNFT"
         },
         {
           "type": "doc",
-          "id": "playground/getPublicKey"
+          "id": "version-3.0.0/playground/getPublicKey"
         },
         {
           "type": "doc",
-          "id": "playground/isInstalled"
+          "id": "version-3.0.0/playground/isInstalled"
         },
         {
           "type": "doc",
-          "id": "playground/sendPayment"
+          "id": "version-3.0.0/playground/sendPayment"
         },
         {
           "type": "doc",
-          "id": "playground/setTrustline"
+          "id": "version-3.0.0/playground/setTrustline"
         },
         {
           "type": "doc",
-          "id": "playground/signMessage"
+          "id": "version-3.0.0/playground/signMessage"
         }
       ]
     }
