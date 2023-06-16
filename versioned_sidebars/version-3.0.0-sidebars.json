@@ -1,0 +1,73 @@
+{
+  "docs": [
+    {
+      "type": "category",
+      "label": "User Guide",
+      "collapsed": false,
+      "items": [
+        {
+          "type": "doc",
+          "id": "user-guide/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "user-guide/getting-started"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/gemwallet-api-installation"
+        },
+        {
+          "type": "doc",
+          "id": "api/gemwallet-api-reference"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Playground",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "playground/getAddress"
+        },
+        {
+          "type": "doc",
+          "id": "playground/getNetwork"
+        },
+        {
+          "type": "doc",
+          "id": "playground/getNFT"
+        },
+        {
+          "type": "doc",
+          "id": "playground/getPublicKey"
+        },
+        {
+          "type": "doc",
+          "id": "playground/isInstalled"
+        },
+        {
+          "type": "doc",
+          "id": "playground/sendPayment"
+        },
+        {
+          "type": "doc",
+          "id": "playground/setTrustline"
+        },
+        {
+          "type": "doc",
+          "id": "playground/signMessage"
+        }
+      ]
+    }
+  ]
+}
