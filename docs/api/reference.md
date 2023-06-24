@@ -8,7 +8,7 @@ description: Provides the documentation on how to use GemWallet API.
 
 ### cancelNFTOffer
 
-Cancels an existing offer for a Non-Fungible Token (NFT) within the wallet.
+Cancels an existing offer for a Non-Fungible Token (NFT) through the extension.
 
 #### Request
 **Mandatory** - The function takes a payload of type `CancelNFTOfferRequest` as an input parameter.
@@ -123,7 +123,10 @@ Creates a new offer for a Non-Fungible Token (NFT) through the extension.
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `NFTokenID`: Identifies the NFTokenID of the NFToken object that the offer references.
-- `amount`: Indicates the amount expected or offered for the Token.
+- `amount`: Indicates the amount expected or offered for the Token, in one of the following formats:
+  - A _string_ representing the number of XRP to deliver, in drops.
+  - An _object_ where 'value' is a string representing the number of the token to deliver.
+  - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
 - `owner`: Indicates the AccountID of the account that owns the corresponding NFToken.
 - `expiration`: Indicates the time after which the offer will no longer be valid. The value is the number of seconds since the Ripple Epoch.
 - `destination`: If present, indicates that this offer may only be accepted by the specified account.
@@ -155,10 +158,20 @@ interface CreateNFTOfferRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-interface CreateNFTOfferFlags {
+type CreateNFTOfferFlags = {
   tfSellNFToken?: boolean;
 } | number;
 ```
+
+```typescript
+type Amount = {
+  currency: string;
+  issuer: string;
+  value: string;
+} | string;
+```
+
+More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
 
 #### Response
 
@@ -433,10 +446,10 @@ The response is a Promise which resolves to an object with a `type` and `result`
   - `marker`: A value to be used as a marker in a subsequent request.
 
 ```javascript
-type: "response"
+type: "response";
 result: {
-  account_nfts: AccountNFToken[]
-  marker: unknown
+  account_nfts: AccountNFToken[];
+  marker: unknown;
 }
 ```
 
@@ -669,7 +682,7 @@ interface MintNFTRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-interface MintNFTFlags {
+type MintNFTFlags = {
   tfBurnable?: boolean;
   tfOnlyXRP?: boolean;
   tfTrustLine?: boolean;
@@ -823,7 +836,7 @@ export interface SendPaymentRequest {
 ```
 
 ```typescript
-interface Amount {
+type Amount = {
   currency: string;
   issuer: string;
   value: string;
@@ -845,7 +858,7 @@ interface Memo {
 More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 
 ```typescript
-interface PaymentFlags {
+type PaymentFlags = {
   tfNoDirectRipple?: boolean;
   tfPartialPayment?: boolean;
   tfLimitQuality?: boolean;
@@ -1028,7 +1041,7 @@ interface Memo {
 More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 
 ```typescript
-interface TrustSetFlags {
+type TrustSetFlags = {
   tfSetfAuth?: boolean;
   tfSetNoRipple?: boolean;
   tfClearNoRipple?: boolean;
