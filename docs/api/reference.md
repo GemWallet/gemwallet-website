@@ -6,6 +6,149 @@ description: Provides the documentation on how to use GemWallet API.
 
 ## Methods
 
+### createNFTOffer
+
+Creates a new offer for a Non-Fungible Token (NFT) through the extension.
+
+#### Request
+**Mandatory** - The function takes a payload of type `CreateNFTOfferRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `NFTokenID`: Identifies the NFTokenID of the NFToken object that the offer references.
+- `amount`: Indicates the amount expected or offered for the Token.
+- `owner`: Indicates the AccountID of the account that owns the corresponding NFToken.
+- `expiration`: Indicates the time after which the offer will no longer be valid. The value is the number of seconds since the Ripple Epoch.
+- `destination`: If present, indicates that this offer may only be accepted by the specified account.
+- `flags`: Flags to set on the transaction.
+
+```typescript
+interface CreateNFTOfferRequest extends BaseTransactionRequest {
+  // Identifies the NFTokenID of the NFToken object that the offer references.
+  NFTokenID: string;
+  // Indicates the amount expected or offered for the Token.
+  // The amount must be non-zero, except when this is a sell offer and the asset is XRP. This would indicate that the
+  // current owner of the token is giving it away free, either to anyone at all, or to the account identified by the
+  // Destination field.
+  amount: Amount;
+  // Indicates the AccountID of the account that owns the corresponding NFToken.
+  // If the offer is to buy a token, this field must be present and it must be different than Account (since an offer
+  // to buy a token one already holds is meaningless).
+  // If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as Account
+  // (since an offer to sell a token one doesn't already hold is meaningless).
+  owner?: string;
+  // Indicates the time after which the offer will no longer be valid. The value is the number of seconds since the
+  // Ripple Epoch.
+  expiration?: number;
+  // If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to
+  // accept this offer MUST fail.
+  destination?: string;
+  flags?: CreateNFTOfferFlags;
+}
+```
+
+```typescript
+interface CreateNFTOfferFlags {
+  tfSellNFToken?: boolean;
+} | number;
+```
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { createNFTOffer } from "@gemwallet/api";
+
+const payload = {
+  NFTokenID: 'Replace me!',
+  amount: 50000000, // 50 XRP
+  fee: '199',
+  flags: {
+    tfSellNFToken: true // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
+  },
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+createNFTOffer(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, createNFTOffer } from "@gemwallet/api";
+
+function App() {
+  const handleCreateOffer = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          NFTokenID: 'Replace me!',
+          amount: 50000000, // 50 XRP
+          fee: '199',
+          flags: {
+            tfSellNFToken: true // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
+          },
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        createNFTOffer(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleCreateOffer}>Create NFT Offer!</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+
 ### getAddress
 
 Retrieves the wallet address associated with the extension.
