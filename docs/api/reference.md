@@ -323,7 +323,7 @@ Here is an example with a React web application:
 import { isInstalled, cancelNFTOffer } from "@gemwallet/api";
 
 function App() {
-  const handleCancelOffer = () => {
+  const handleCancelNFTOffer = () => {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
@@ -347,7 +347,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={handleCancelOffer}>Cancel NFT Offer!</button>
+      <button onClick={handleCancelNFTOffer}>Cancel NFT Offer!</button>
     </div>
   );
 }
@@ -479,7 +479,7 @@ Here is an example with a React web application:
 import { isInstalled, createNFTOffer } from "@gemwallet/api";
 
 function App() {
-  const handleCreateOffer = () => {
+  const handleCreateNFTOffer = () => {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
@@ -507,7 +507,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={handleCreateOffer}>Create NFT Offer!</button>
+      <button onClick={handleCreateNFTOffer}>Create NFT Offer!</button>
     </div>
   );
 }
@@ -515,6 +515,163 @@ function App() {
 export default App;
 ```
 
+### createOffer
+
+Creates a new offer through the extension.
+
+#### Request
+
+**Mandatory** - The function takes a payload of type `CreateOfferRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `flags`: Flags to set on the transaction.
+- `expiration`: Time after which the Offer is no longer active, in seconds since the Ripple Epoch.
+- `offerSequence`: An Offer to delete first, specified in the same way as OfferCancel.
+- `takerGets`: The amount and type of currency being sold, in one of the following formats:
+  - A _string_ representing the number of XRP to deliver, in drops.
+  - An _object_ where 'value' is a string representing the number of the token to deliver.
+  - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+- `takerPays`: The amount and type of currency being bought, in one of the following formats:
+  - A _string_ representing the number of XRP to deliver, in drops.
+  - An _object_ where 'value' is a string representing the number of the token to deliver.
+  - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+
+```typescript
+interface CreateOfferRequest extends BaseTransactionRequest {
+  flags?: CreateOfferFlags;
+  // Time after which the Offer is no longer active, in seconds since the Ripple Epoch.
+  expiration?: number;
+  // An Offer to delete first, specified in the same way as OfferCancel.
+  offerSequence?: number;
+  // The amount and type of currency being sold.
+  takerGets: Amount;
+  // The amount and type of currency being bought.
+  takerPays: Amount;
+}
+```
+
+```typescript
+type OfferCreateFlagsInterface = {
+    tfPassive?: boolean;
+    tfImmediateOrCancel?: boolean;
+    tfFillOrKill?: boolean;
+    tfSell?: boolean;
+} | number;
+```
+
+```typescript
+type Amount = {
+  currency: string;
+  issuer: string;
+  value: string;
+} | string;
+```
+
+More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { createOffer } from "@gemwallet/api";
+
+const payload = {
+  takerGets: '10000000', // 10 XRP
+  takerPays: {
+    currency: 'ETH',
+    issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
+    value: '0.1'
+  },
+  flags: {
+    tfPassive: true
+  },
+  fee: '199',
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+createOffer(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, createOffer } from "@gemwallet/api";
+
+function App() {
+  const handleCreateOffer = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          takerGets: '10000000', // 10 XRP
+          takerPays: {
+            currency: 'ETH',
+            issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
+            value: '0.1'
+          },
+          flags: {
+            tfPassive: true
+          },
+          fee: '199',
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        createOffer(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleCreateOffer}>Create Offer</button>
+    </div>
+  );
+}
+
+export default App;
+```
 
 ### getAddress
 
