@@ -145,7 +145,8 @@ Cancels an existing offer for a Non-Fungible Token (NFT) through the extension.
 
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
-- `NFTokenOffers`: An array of IDs of the NFTokenOffer objects to cancel. Each entry must be a different object ID of an NFTokenOffer object.
+- `NFTokenOffers`: An array of IDs of the NFTokenOffer objects to cancel. 
+  - Each entry must be a different object ID of an NFTokenOffer object; the transaction is invalid if the array contains duplicate entries.
 
 ```typescript
 interface CancelNFTOfferRequest extends BaseTransactionRequest {
@@ -253,13 +254,18 @@ Creates a new offer for a Non-Fungible Token (NFT) through the extension.
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `NFTokenID`: Identifies the NFTokenID of the NFToken object that the offer references.
-- `amount`: Indicates the amount expected or offered for the Token, in one of the following formats:
-  - A _string_ representing the number of XRP to deliver, in drops.
-  - An _object_ where 'value' is a string representing the number of the token to deliver.
-  - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
-- `owner`: Indicates the AccountID of the account that owns the corresponding NFToken.
+- `amount`: Indicates the amount expected or offered for the Token.
+  - The amount must be non-zero, except when this is a sell offer and the asset is XRP. This would indicate that the current owner of the token is giving it away free, either to anyone at all, or to the account identified by the Destination field.
+  - Specified in one of the following formats:
+    - A _string_ representing the number of XRP to deliver, in drops.
+    - An _object_ where 'value' is a string representing the number of the token to deliver.
+    - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+- `owner`: Indicates the AccountID of the account that owns the corresponding NFToken. 
+  - If the offer is to buy a token, this field must be present and it must be different than Account (since an offer to buy a token one already holds is meaningless). 
+  - If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as Account (since an offer to sell a token one doesn't already hold is meaningless).
 - `expiration`: Indicates the time after which the offer will no longer be valid. The value is the number of seconds since the Ripple Epoch.
-- `destination`: If present, indicates that this offer may only be accepted by the specified account.
+- `destination`: If present, indicates that this offer may only be accepted by the specified account. 
+  - Attempts by other accounts to accept this offer MUST fail.
 - `flags`: Flags to set on the transaction.
 
 ```typescript
@@ -783,10 +789,19 @@ Mints a new Non-Fungible Token (NFT) through the extension.
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `flags`: Flags to be set on the transaction.
-- `issuer`: The issuer of the token.
-- `NFTokenTaxon`: The taxon associated with this token. If you have no use for this field, set it to 0.
-- `transferFee`: The fee charged by the issuer for secondary sales of the Token, if such sales are allowed.
-- `URI`: URI of the token. Must be hex encoded.
+- `issuer`: Indicates the issuer of the token. 
+  - Should only be specified if the account executing the transaction is not the Issuer of the token, e.g. when minting on behalf of another account.
+- `NFTokenTaxon`: Indicates the taxon associated with this token. 
+  - The taxon is generally a value chosen by the minter of the token and a given taxon may be used for multiple tokens. 
+  - The implementation reserves taxon identifiers greater than or equal to 2147483648 (0x80000000). 
+  - If you have no use for this field, set it to 0.
+- `transferFee`: Specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. 
+  - Valid values for this field are between 0 and 50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. 
+  - This field must NOT be present if the tfTransferable flag is not set.
+- `URI`: URI that points to the data and/or metadata associated with the NFT. 
+  - This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 "data" URL, or even an opaque issuer-specific encoding. 
+  - The URI is NOT checked for validity, but the field is limited to a maximum length of 256 bytes. 
+  - This field must be hex-encoded.
 
 ```typescript
 interface MintNFTRequest extends BaseTransactionRequest {
@@ -1354,14 +1369,27 @@ export default App;
 All the endpoints that extend the `BaseTransactionRequest` interface also have the following fields in their request.
 
 - `fee`: Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network.
-- `sequence`: The sequence number of the account sending the transaction.
-- `accountTxnID`: Hash value identifying another transaction.
-- `lastLedgerSequence`: Highest ledger index this transaction can appear in.
-- `memos`: Additional arbitrary information used to identify this transaction.
+  - Some transaction types have different minimum requirements.
+  - More technical details about the drops can be found [here](https://xrpl.org/currency-formats.html#xrp-amounts).
+- `sequence`: The sequence number of the account sending the transaction. 
+  - A transaction is only valid if the Sequence number is exactly 1 greater than the previous transaction from the same account. 
+  - The special case 0 means the transaction is using a Ticket instead.
+- `accountTxnID`: Hash value identifying another transaction. 
+  - If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash.
+- `lastLedgerSequence`: Highest ledger index this transaction can appear in. 
+  - Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected.
+- `memos`: Additional arbitrary information used to identify this transaction. 
+  - Each attribute of each memo must be hex encoded.
+  - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 - `signers`: Array of objects that represent a multi-signature which authorizes this transaction.
-- `sourceTag`: Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made.
-- `signingPubKey`: Hex representation of the public key that corresponds to the private key used to sign this transaction.
-- `ticketSequence`: The sequence number of the ticket to use in place of a Sequence number.
+  - More technical details about the signers can be found [here](https://xrpl.org/transaction-common-fields.html#signers-field).
+- `sourceTag`: Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. 
+  - Conventionally, a refund should specify the initial payment's SourceTag as the refund payment's DestinationTag.
+- `signingPubKey`: Hex representation of the public key that corresponds to the private key used to sign this transaction. 
+  - If an empty string, indicates a multi-signature is present in the Signers field instead.
+- `ticketSequence`: The sequence number of the ticket to use in place of a Sequence number. 
+  - If this is provided, Sequence must be 0. 
+  - Cannot be used with AccountTxnID.
 - `txnSignature`: The signature that verifies this transaction as originating from the account it says it is from.
 
 ```typescript
