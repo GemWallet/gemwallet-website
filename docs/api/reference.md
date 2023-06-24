@@ -6,6 +6,136 @@ description: Provides the documentation on how to use GemWallet API.
 
 ## Methods
 
+### acceptNFTOffer
+
+Accepts an existing offer for a Non-Fungible Token (NFT) through the extension.
+
+#### Request
+**Mandatory** - The function takes a payload of type `AcceptNFTOfferRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `NFTokenSellOffer`: Identifies the NFTokenOffer that offers to sell the NFToken.
+- `NFTokenBuyOffer`: Identifies the NFTokenOffer that offers to buy the NFToken.
+- `NFTokenBrokerFee`: 
+  This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought. 
+  - If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer.
+  - Specified in one of the following formats:
+    - A _string_ representing the number of XRP to deliver, in drops.
+    - An _object_ where 'value' is a string representing the number of the token to deliver.
+    - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+
+```typescript
+interface AcceptNFTOfferRequest extends BaseTransactionRequest {
+  // Identifies the NFTokenOffer that offers to sell the NFToken.
+  NFTokenSellOffer?: string;
+  // Identifies the NFTokenOffer that offers to buy the NFToken.
+  NFTokenBuyOffer?: string;
+  // This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for
+  // bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought.
+  // If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive
+  // is at least as much as the amount indicated in the sell offer.
+  NFTokenBrokerFee?: Amount;
+}
+```
+
+```typescript
+type Amount = {
+  currency: string;
+  issuer: string;
+  value: string;
+} | string;
+```
+
+More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { acceptNFTOffer } from "@gemwallet/api";
+
+const payload = {
+  NFTokenSellOffer: 'Replace me!',
+  fee: '199',
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+acceptNFTOffer(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, acceptNFTOffer } from "@gemwallet/api";
+
+function App() {
+  const handleAcceptOffer = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          NFTokenSellOffer: 'Replace me!',
+          fee: '199',
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        acceptNFTOffer(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleAcceptOffer}>Accept NFT Offer</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### cancelNFTOffer
 
 Cancels an existing offer for a Non-Fungible Token (NFT) through the extension.
