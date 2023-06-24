@@ -81,13 +81,13 @@ In case of error, the error will be thrown.
 import { acceptNFTOffer } from "@gemwallet/api";
 
 const payload = {
-  NFTokenSellOffer: 'Replace me!',
-  fee: '199',
+  NFTokenSellOffer: "Replace me!",
+  fee: "199",
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -108,13 +108,13 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
-          NFTokenSellOffer: 'Replace me!',
-          fee: '199',
+          NFTokenSellOffer: "Replace me!",
+          fee: "199",
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
@@ -192,13 +192,13 @@ In case of error, the error will be thrown.
 import { burnNFT } from "@gemwallet/api";
 
 const payload = {
-  NFTokenID: 'Replace me!',
-  fee: '199',
+  NFTokenID: "Replace me!",
+  fee: "199",
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -219,13 +219,13 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
-          NFTokenID: 'Replace me!',
-          fee: '199',
+          NFTokenID: "Replace me!",
+          fee: "199",
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
@@ -300,13 +300,13 @@ In case of error, the error will be thrown.
 import { cancelNFTOffer } from "@gemwallet/api";
 
 const payload = {
-  NFTokenOffers: ['Replace me!'],
-  fee: '199',
+  NFTokenOffers: ["Replace me!"],
+  fee: "199",
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -327,13 +327,13 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
-          NFTokenOffers: ['Replace me!'],
-          fee: '199',
+          NFTokenOffers: ["Replace me!"],
+          fee: "199",
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
@@ -410,12 +410,12 @@ import { cancelOffer } from "@gemwallet/api";
 
 const payload = {
   offerSequence: 0, // Replace me!
-  fee: '199',
+  fee: "199",
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -437,12 +437,12 @@ function App() {
       if (response.result.isInstalled) {
         const payload = {
           offerSequence: 0, // Replace me!
-          fee: '199',
+          fee: "199",
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
@@ -561,17 +561,17 @@ In case of error, the error will be thrown.
 import { createNFTOffer } from "@gemwallet/api";
 
 const payload = {
-  NFTokenID: 'Replace me!',
+  NFTokenID: "Replace me!",
   amount: 50000000, // 50 XRP
-  fee: '199',
+  fee: "199",
   flags: {
     tfSellNFToken: true // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
   },
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -592,17 +592,17 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
-          NFTokenID: 'Replace me!',
+          NFTokenID: "Replace me!",
           amount: 50000000, // 50 XRP
-          fee: '199',
+          fee: "199",
           flags: {
             tfSellNFToken: true // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
           },
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
@@ -711,21 +711,21 @@ In case of error, the error will be thrown.
 import { createOffer } from "@gemwallet/api";
 
 const payload = {
-  takerGets: '10000000', // 10 XRP
+  takerGets: "10000000", // 10 XRP
   takerPays: {
-    currency: 'ETH',
-    issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-    value: '0.1'
+    currency: "ETH",
+    issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+    value: "0.1"
   },
   flags: {
     tfPassive: true
   },
-  fee: '199',
+  fee: "199",
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -746,21 +746,21 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
-          takerGets: '10000000', // 10 XRP
+          takerGets: "10000000", // 10 XRP
           takerPays: {
-            currency: 'ETH',
-            issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-            value: '0.1'
+            currency: "ETH",
+            issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+            value: "0.1"
           },
           flags: {
             tfPassive: true
           },
-          fee: '199',
+          fee: "199",
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
@@ -1248,19 +1248,19 @@ In case of error, the error will be thrown.
 import { mintNFT } from "@gemwallet/api";
 
 const payload = {
-  URI: '4d696e746564207468726f7567682047656d57616c6c657421',
+  URI: "4d696e746564207468726f7567682047656d57616c6c657421",
   flags: {
     tfOnlyXRP: true,
     tfTransferable: true
   },
-  fee: '199',
+  fee: "199",
   transferFee: 3000, // 3%,
   NFTokenTaxon: 0,
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -1282,19 +1282,19 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
-          URI: '4d696e746564207468726f7567682047656d57616c6c657421',
+          URI: "4d696e746564207468726f7567682047656d57616c6c657421",
           flags: {
             tfOnlyXRP: true,
             tfTransferable: true
           },
-          fee: '199',
+          fee: "199",
           transferFee: 3000, // 3%,
           NFTokenTaxon: 0,
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
@@ -1626,16 +1626,16 @@ In case of error, the error will be thrown.
 import { setAccount } from "@gemwallet/api";
 
 const payload = {
-  emailHash: '1D1382344586ECFF844DACFF698C2EFB',
-  fee: '199',
+  emailHash: "1D1382344586ECFF844DACFF698C2EFB",
+  fee: "199",
   flags: {
     tfAllowXRP: true
   },
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
       }
     }
   ]
@@ -1656,16 +1656,16 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const payload = {
-          emailHash: '1D1382344586ECFF844DACFF698C2EFB',
-          fee: '199',
+          emailHash: "1D1382344586ECFF844DACFF698C2EFB",
+          fee: "199",
           flags: {
             tfAllowXRP: true
           },
           memos: [
             {
               memo: {
-                memoType: '4465736372697074696f6e',
-                memoData: '54657374206d656d6f'
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
               }
             }
           ]
