@@ -355,6 +355,115 @@ function App() {
 export default App;
 ```
 
+### cancelOffer
+
+Cancels an existing offer through the extension.
+
+#### Request
+**Mandatory** - The function takes a payload of type `CancelOfferRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `offerSequence`: The sequence number (or Ticket number) of a previous OfferCreate transaction. 
+  - If specified, cancel any offer object in the ledger that was created by that transaction. 
+  - It is not considered an error if the offer specified does not exist.
+
+```typescript
+interface CancelOfferRequest extends BaseTransactionRequest {
+  // The sequence number (or Ticket number) of a previous OfferCreate transaction. If specified, cancel any offer object
+  // in the ledger that was created by that transaction. It is not considered an error if the offer specified does not
+  // exist.
+  offerSequence: number;
+}
+```
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { cancelOffer } from "@gemwallet/api";
+
+const payload = {
+  offerSequence: 0, // Replace me!
+  fee: '199',
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+cancelOffer(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, cancelOffer } from "@gemwallet/api";
+
+function App() {
+  const handleCancelOffer = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          offerSequence: 0, // Replace me!
+          fee: '199',
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        cancelOffer(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleCancelOffer}>Cancel Offer</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### createNFTOffer
 
 Creates a new offer for a Non-Fungible Token (NFT) through the extension.
