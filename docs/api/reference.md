@@ -136,6 +136,117 @@ function App() {
 export default App;
 ```
 
+### burnNFT
+
+Burns a Non-Fungible Token (NFT) through the extension.
+
+#### Request
+**Mandatory** - The function takes a payload of type `BurnNFTRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `NFTokenID`: The NFToken to be removed by this transaction.
+- `owner`: The owner of the NFToken to burn. 
+  - Only used if that owner is different than the account sending this transaction.
+  - The issuer or authorized minter can use this field to burn NFTs that have the lsfBurnable flag enabled.
+
+```typescript
+interface BurnNFTRequest extends BaseTransactionRequest {
+  // The NFToken to be removed by this transaction.
+  NFTokenID: string;
+  // The owner of the NFToken to burn. Only used if that owner is different than the account sending this transaction.
+  // The issuer or authorized minter can use this field to burn NFTs that have the lsfBurnable flag enabled.
+  owner?: string;
+}
+```
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { burnNFT } from "@gemwallet/api";
+
+const payload = {
+  NFTokenID: 'Replace me!',
+  fee: '199',
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+burnNFT(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, burnNFT } from "@gemwallet/api";
+
+function App() {
+  const handleBurnNFT = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          NFTokenID: 'Replace me!',
+          fee: '199',
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        burnNFT(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleBurnNFT}>Burn NFT</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### cancelNFTOffer
 
 Cancels an existing offer for a Non-Fungible Token (NFT) through the extension.
