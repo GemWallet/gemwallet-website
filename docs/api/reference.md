@@ -6,6 +6,113 @@ description: Provides the documentation on how to use GemWallet API.
 
 ## Methods
 
+### cancelNFTOffer
+
+Cancels an existing offer for a Non-Fungible Token (NFT) within the wallet.
+
+#### Request
+**Mandatory** - The function takes a payload of type `CancelNFTOfferRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `NFTokenOffers`: An array of IDs of the NFTokenOffer objects to cancel. Each entry must be a different object ID of an NFTokenOffer object.
+
+```typescript
+interface CancelNFTOfferRequest extends BaseTransactionRequest {
+  // An array of IDs of the NFTokenOffer objects to cancel (not the IDs of NFToken objects, but the IDs of the
+  // NFTokenOffer objects). Each entry must be a different object ID of an NFTokenOffer object; the transaction is
+  // invalid if the array contains duplicate entries.
+  NFTokenOffers: string[];
+}
+```
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { cancelNFTOffer } from "@gemwallet/api";
+
+const payload = {
+  NFTokenOffers: ['Replace me!'],
+  fee: '199',
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+cancelNFTOffer(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, cancelNFTOffer } from "@gemwallet/api";
+
+function App() {
+  const handleCancelOffer = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          NFTokenOffers: ['Replace me!'],
+          fee: '199',
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        cancelNFTOffer(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleCancelOffer}>Cancel NFT Offer!</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### createNFTOffer
 
 Creates a new offer for a Non-Fungible Token (NFT) through the extension.
