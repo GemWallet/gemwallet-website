@@ -379,6 +379,159 @@ function App() {
 export default App;
 ```
 
+### mintNFT
+
+Mints a new Non-Fungible Token (NFT) through the extension.
+
+#### Request
+
+**Mandatory** - The function takes a payload of type `MintNFTRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `flags`: Flags to be set on the transaction.
+- `issuer`: The issuer of the token.
+- `NFTokenTaxon`: The taxon associated with this token. If you have no use for this field, set it to 0.
+- `transferFee`: The fee charged by the issuer for secondary sales of the Token, if such sales are allowed.
+- `URI`: URI of the token. Must be hex encoded.
+
+```typescript
+interface MintNFTRequest extends BaseTransactionRequest {
+  flags?: MintNFTFlags;
+  // Indicates the issuer of the token.
+  // Should only be specified if the account executing the transaction is not the Issuer of the token, e.g. when minting on behalf of another account.
+  issuer?: string;
+  // Indicates the taxon associated with this token. The taxon is generally a value chosen by the minter of the token
+  // and a given taxon may be used for multiple tokens. The implementation reserves taxon identifiers greater than or
+  // equal to 2147483648 (0x80000000). If you have no use for this field, set it to 0.
+  NFTokenTaxon: number;
+  // Specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values
+  // for this field are between 0 and 50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments
+  // of 0.001%. This field must NOT be present if the tfTransferable flag is not set.
+  transferFee?: number;
+  // URI that points to the data and/or metadata associated with the NFT. This field need not be an HTTP or HTTPS URL;
+  // it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 "data" URL, or even an opaque
+  // issuer-specific encoding. The URI is NOT checked for validity, but the field is limited to a maximum length of
+  // 256 bytes.
+  // This field must be hex-encoded.
+  URI?: string;
+}
+```
+
+```typescript
+interface MintNFTFlags {
+  tfBurnable?: boolean;
+  tfOnlyXRP?: boolean;
+  tfTrustLine?: boolean;
+  tfTransferable?: boolean;
+} | number;
+```
+
+More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `NFTokenID`: The ID of the NFT.
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  NFTokenID: string;
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { mintNFT } from "@gemwallet/api";
+
+const payload = {
+  URI: '4d696e746564207468726f7567682047656d57616c6c657421',
+  flags: {
+    tfOnlyXRP: true,
+    tfTransferable: true
+  },
+  fee: '199',
+  transferFee: 3000, // 3%,
+  NFTokenTaxon: 0,
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+mintNFT(payload).then((response) => {
+  console.log("NFT ID: ", response.result?.NFTokenID);
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, mintNFT } from "@gemwallet/api";
+
+function App() {
+  const handleMintNFT = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          URI: '4d696e746564207468726f7567682047656d57616c6c657421',
+          flags: {
+            tfOnlyXRP: true,
+            tfTransferable: true
+          },
+          fee: '199',
+          transferFee: 3000, // 3%,
+          NFTokenTaxon: 0,
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        mintNFT(payload).then((response) => {
+          console.log("NFT ID: ", response.result?.NFTokenID);
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleMintNFT}>Mint NFT!</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### sendPayment
 
 Initiates a payment transaction through the extension.
