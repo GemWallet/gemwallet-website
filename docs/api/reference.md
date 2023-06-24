@@ -1243,6 +1243,184 @@ function App() {
 export default App;
 ```
 
+### setAccount
+
+Sets an account through the extension.
+
+#### Request
+
+**Mandatory** - The function takes a payload of type `SetAccountRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `flags`: Flags to set on the transaction.
+- `clearFlag`: Unique identifier of a flag to disable for this account.
+- `domain`: The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. 
+  - Cannot be more than 256 bytes in length.
+- `emailHash`: An arbitrary 128-bit value. 
+  - Conventionally, clients treat this as the md5 hash of an email address to use for displaying a Gravatar image.
+- `messageKey`: Public key for sending encrypted messages to this account. 
+  - To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: 0x02 or 0x03 for secp256k1 keys, 0xED for Ed25519 keys. 
+  - To remove the key, use an empty value.
+- `NFTokenMinter`: Another account that can mint NFTokens for you.
+- `setFlag`: Integer flag to enable for this account.
+- `transferRate`: The fee to charge when users transfer this account's tokens, represented as billionths of a unit. 
+  - Cannot be more than 2000000000 or less than 1000000000, except for the special case 0 meaning no fee.
+- `tickSize`: Tick size to use for offers involving a currency issued by this address. 
+  - The exchange rates of those offers is rounded to this many significant digits. 
+  - Valid values are 3 to 15 inclusive, or 0 to disable.
+
+```typescript
+interface SetAccountRequest extends BaseTransactionRequest {
+  flags?: SetAccountFlags;
+  // Unique identifier of a flag to disable for this account.
+  clearFlag?: number;
+  // The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase.
+  // Cannot be more than 256 bytes in length.
+  domain?: string;
+  // An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for
+  // displaying a Gravatar image.
+  emailHash?: string;
+  // Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the
+  // first byte indicating the key type: 0x02 or 0x03 for secp256k1 keys, 0xED for Ed25519 keys. To remove the key, use
+  // an empty value.
+  messageKey?: string;
+  // Another account that can mint NFTokens for you.
+  NFTokenMinter?: string;
+  // Integer flag to enable for this account.
+  setFlag?: AccountSetAsfFlags;
+  // The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more
+  // than 2000000000 or less than 1000000000, except for the special case 0 meaning no fee.
+  transferRate?: number;
+  // Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is
+  // rounded to this many significant digits. Valid values are 3 to 15 inclusive, or 0 to disable.
+  tickSize?: number;
+}
+```
+
+```typescript
+type AccountSetFlagsInterface = {
+  tfRequireDestTag?: boolean;
+  tfOptionalDestTag?: boolean;
+  tfRequireAuth?: boolean;
+  tfOptionalAuth?: boolean;
+  tfDisallowXRP?: boolean;
+  tfAllowXRP?: boolean;
+} | number;
+```
+
+```typescript
+enum AccountSetAsfFlags {
+  asfRequireDest = 1,
+  asfRequireAuth = 2,
+  asfDisallowXRP = 3,
+  asfDisableMaster = 4,
+  asfAccountTxnID = 5,
+  asfNoFreeze = 6,
+  asfGlobalFreeze = 7,
+  asfDefaultRipple = 8,
+  asfDepositAuth = 9,
+  asfAuthorizedNFTokenMinter = 10,
+  asfDisallowIncomingNFTokenOffer = 12,
+  asfDisallowIncomingCheck = 13,
+  asfDisallowIncomingPayChan = 14,
+  asfDisallowIncomingTrustline = 15
+}
+```
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { setAccount } from "@gemwallet/api";
+
+const payload = {
+  emailHash: '1D1382344586ECFF844DACFF698C2EFB',
+  fee: '199',
+  flags: {
+    tfAllowXRP: true
+  },
+  memos: [
+    {
+      memo: {
+        memoType: '4465736372697074696f6e',
+        memoData: '54657374206d656d6f'
+      }
+    }
+  ]
+};
+
+setAccount(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, setAccount } from "@gemwallet/api";
+
+function App() {
+  const handleSetAccount = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          emailHash: '1D1382344586ECFF844DACFF698C2EFB',
+          fee: '199',
+          flags: {
+            tfAllowXRP: true
+          },
+          memos: [
+            {
+              memo: {
+                memoType: '4465736372697074696f6e',
+                memoData: '54657374206d656d6f'
+              }
+            }
+          ]
+        };
+        setAccount(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleSetAccount}>Set Account</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### setTrustLine
 
 Adds or edits a trustline within the wallet.
