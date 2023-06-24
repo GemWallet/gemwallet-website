@@ -519,6 +519,8 @@ type CreateNFTOfferFlags = {
 } | number;
 ```
 
+More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
+
 ```typescript
 type Amount = {
   currency: string;
@@ -1921,7 +1923,7 @@ export default App;
 
 ### BaseTransactionRequest
 
-All the endpoints that extend the `BaseTransactionRequest` interface also have the following fields in their request.
+All the `Request` interfaces that extend the `BaseTransactionRequest` interface also include the following fields:
 
 - `fee`: Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network.
   - Some transaction types have different minimum requirements.
