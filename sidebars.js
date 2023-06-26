@@ -63,6 +63,10 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "playground/cancelOffer",
+        },
+        {
+          type: "doc",
           id: "playground/createNFTOffer",
         },
         {
