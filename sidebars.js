@@ -83,6 +83,10 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "playground/setAccount",
+        },
+        {
+          type: "doc",
           id: "playground/setTrustline",
         },
         {
