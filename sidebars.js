@@ -71,6 +71,10 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "playground/mintNFT",
+        },
+        {
+          type: "doc",
           id: "playground/sendPayment",
         },
         {
