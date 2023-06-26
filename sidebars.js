@@ -55,6 +55,10 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "playground/createNFTOffer",
+        },
+        {
+          type: "doc",
           id: "playground/createOffer",
         },
         {
