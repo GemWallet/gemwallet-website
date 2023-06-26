@@ -51,6 +51,10 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "playground/acceptNFTOffer",
+        },
+        {
+          type: "doc",
           id: "playground/burnNFT",
         },
         {
