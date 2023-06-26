@@ -51,6 +51,30 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          id: "playground/acceptNFTOffer",
+        },
+        {
+          type: "doc",
+          id: "playground/burnNFT",
+        },
+        {
+          type: "doc",
+          id: "playground/cancelNFTOffer",
+        },
+        {
+          type: "doc",
+          id: "playground/cancelOffer",
+        },
+        {
+          type: "doc",
+          id: "playground/createNFTOffer",
+        },
+        {
+          type: "doc",
+          id: "playground/createOffer",
+        },
+        {
+          type: "doc",
           id: "playground/getAddress",
         },
         {
@@ -71,7 +95,15 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "playground/mintNFT",
+        },
+        {
+          type: "doc",
           id: "playground/sendPayment",
+        },
+        {
+          type: "doc",
+          id: "playground/setAccount",
         },
         {
           type: "doc",
