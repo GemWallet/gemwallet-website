@@ -15,7 +15,7 @@ export const AcceptNFTOfferDemo = () => {
       }
 
       const response = await acceptNFTOffer({
-        NFTokenOffers: [NFTOfferID]
+        NFTokenSellOffer: NFTOfferID,
       });
       if (response.type === "reject") {
         setError("The transaction has been refused!");

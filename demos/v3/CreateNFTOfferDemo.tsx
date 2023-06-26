@@ -3,7 +3,10 @@ import { isInstalled, createNFTOffer } from "@gemwallet/api";
 
 const PAYLOAD = {
   amount: 50000000, // 50 XRP
-}
+  flags: {
+    tfSellNFToken: true, // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
+  },
+};
 
 export const CreateNFTOfferDemo = () => {
   const [txHash, setTxHash] = useState("");
@@ -20,7 +23,7 @@ export const CreateNFTOfferDemo = () => {
 
       const response = await createNFTOffer({
         ...PAYLOAD,
-        NFTokenID: NFTokenID
+        NFTokenID: NFTokenID,
       });
       if (response.type === "reject") {
         setError("The transaction has been refused!");
