@@ -1976,14 +1976,14 @@ In case of error, the error will be thrown.
 import { submitTransaction } from "@gemwallet/api";
 
 const transaction = {
-  TransactionType: 'Payment',
-  Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-  Amount: '100000',
+  TransactionType: "Payment",
+  Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+  Amount: "100000",
   Memos: [
     {
       Memo: {
-        MemoData: '54657374206D656D6F',
-        MemoType: '4465736372697074696F6E'
+        MemoData: "54657374206D656D6F",
+        MemoType: "4465736372697074696F6E"
       }
     }
   ]
@@ -2007,14 +2007,14 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         const transaction = {
-          TransactionType: 'Payment',
-          Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-          Amount: '100000',
+          TransactionType: "Payment",
+          Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+          Amount: "100000",
           Memos: [
             {
               Memo: {
-                MemoData: '54657374206D656D6F',
-                MemoType: '4465736372697074696F6E'
+                MemoData: "54657374206D656D6F",
+                MemoType: "4465736372697074696F6E"
               }
             }
           ]
