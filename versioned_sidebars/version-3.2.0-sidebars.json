@@ -1,0 +1,109 @@
+{
+  "docs": [
+    {
+      "type": "category",
+      "label": "User Guide",
+      "collapsed": false,
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.2.0/user-guide/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/user-guide/getting-started"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.2.0/api/gemwallet-api-installation"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/api/gemwallet-api-reference"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Playground",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/acceptNFTOffer"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/burnNFT"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/cancelNFTOffer"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/cancelOffer"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/createNFTOffer"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/createOffer"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/getAddress"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/getNetwork"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/getNFT"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/getPublicKey"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/isInstalled"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/mintNFT"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/sendPayment"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/setAccount"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/setTrustline"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/signMessage"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.2.0/playground/submitTransaction"
+        }
+      ]
+    }
+  ]
+}

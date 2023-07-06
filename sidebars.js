@@ -113,6 +113,10 @@ const sidebars = {
           type: "doc",
           id: "playground/signMessage",
         },
+        {
+          type: "doc",
+          id: "playground/submitTransaction",
+        }
       ],
     },
   ],
