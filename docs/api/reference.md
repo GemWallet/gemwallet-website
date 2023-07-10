@@ -2064,6 +2064,32 @@ on("networkChanged", (response) => {
 });
 ```
 
+### walletChanged
+
+This event is triggered when the user changes the wallet in the extension.
+
+#### Response
+
+The response is an object with the following properties:
+- `wallet`:
+  - `publicAddress`: The public address of the wallet.
+
+```javascript
+wallet: {
+  publicAddress: string;
+}
+```
+
+#### Examples
+
+```tsx
+import { on } from "@gemwallet/api";
+
+on("walletChanged", (response) => {
+  console.log(response.wallet.publicAddress);
+});
+```
+
 ## Other
 
 ### BaseTransactionRequest
