@@ -2032,6 +2032,38 @@ export default App;
 
 ```
 
+## Events
+
+### networkChanged
+
+This event is triggered when the user changes the network in the extension.
+
+#### Response
+
+The response is an object with the following properties:
+- `network`:
+  - `name`: The name of the network in lowercase, e.g. `mainnet`.
+  - `server`: The URL of the network, e.g. `wss://xrplcluster.com`.
+  - `description`: The description of the network.
+
+```javascript
+network: {
+  name: string;
+  server: string;
+  description: string;
+}
+```
+
+#### Examples
+
+```tsx
+import { on } from "@gemwallet/api";
+
+on("networkChanged", (response) => {
+  console.log(response.network.name);
+});
+```
+
 ## Other
 
 ### BaseTransactionRequest
