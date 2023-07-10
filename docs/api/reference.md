@@ -2034,6 +2034,31 @@ export default App;
 
 ## Events
 
+### login
+
+This event is triggered when the user logs in to the extension.
+
+#### Response
+
+The response is an object with the following properties:
+- `loggedIn`: A boolean value indicating whether the user is logged in or not.
+
+```javascript
+{
+  loggedIn: true;
+}
+```
+
+#### Examples
+
+```tsx
+import { on } from "@gemwallet/api";
+
+on("login", (response) => {
+  console.log(response.loggedIn);
+});
+```
+
 ### networkChanged
 
 This event is triggered when the user changes the network in the extension.
