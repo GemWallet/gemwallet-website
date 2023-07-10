@@ -1327,33 +1327,26 @@ Initiates a payment transaction through the extension.
 
 **Mandatory** - The function takes a payload object as an input parameter, which has properties defined by `SendPaymentRequest`.
 
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `amount`: The amount to deliver, in one of the following formats:
   - A _string_ representing the number of XRP to deliver, in drops.
   - An _object_ where 'value' is a string representing the number of the token to deliver.
   - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
 - `destination`: The unique address of the account receiving the payment.
-- `memos`: The memos to attach to the transaction. Each attribute of each memo must be hex encoded.
-  - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 - `destinationTag`: The destination tag to attach to the transaction.
-- `fee`: Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network.
-  - More technical details about the drops can be found [here](https://xrpl.org/currency-formats.html#xrp-amounts).
 - `flags`: Flags to set on the transaction.
 
 ```typescript
-export interface SendPaymentRequest {
+export interface SendPaymentRequest extends BaseTransactionRequest {
   // The amount to deliver, in one of the following formats:
   // - A string representing the number of XRP to deliver, in drops.
   // - An object where 'value' is a string representing the number of the token to deliver.
   amount: Amount;
   // The unique address of the account receiving the payment
   destination: string;
-  // The memos to attach to the transaction
-  // Each attribute of each memo must be hex encoded
-  memos?: Memo[];
   // The destination tag to attach to the transaction
   destinationTag?: number;
-  // Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network
-  fee?: string;
   // Flags to set on the transaction
   flags?: PaymentFlags;
 }
@@ -1697,24 +1690,16 @@ Adds or edits a trustline within the wallet.
 
 **Mandatory** - The function takes a payload of type `SetTrustlineRequest` as an input parameter.
 
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `limitAmount`: The maximum amount of currency that can be exchanged to the trustline.
   - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
-- `fee`: Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements.
-  - More technical details about the drops can be found [here](https://xrpl.org/currency-formats.html#xrp-amounts).
-- `memos`: The memos to attach to the transaction. Each attribute of each memo must be hex encoded.
-  - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 - `flags`: Flags to set on the transaction.
 
 ```typescript
-interface SetTrustlineRequest {
+interface SetTrustlineRequest extends BaseTransactionRequest {
   // The maximum amount of currency that can be exchanged to the trustline
   limitAmount: IssuedCurrencyAmount;
-  // Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network.
-  // Some transaction types have different minimum requirements.
-  fee?: string;
-  // The memos to attach to the transaction
-  // Each attribute of each memo must be hex encoded
-  memos?: Memo[];
   // Flags to set on the transaction
   flags?: TrustSetFlags;
 }
