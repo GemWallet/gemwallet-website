@@ -4,7 +4,13 @@ title: Reference
 description: Provides the documentation on how to use GemWallet API.
 ---
 
-## Methods
+# Reference
+
+**Notes**:  
+- The regular methods take payloads objects as input parameters, which are documented for each method. These methods are designed to be easy to use and understand. 
+- However, if you are already familiar with the XRPL protocol convention, you can use the methods documented in the [XRPL Protocol methods](#xrpl-protocol-methods) section. These methods will directly take transaction payloads as defined in the [XRPL Protocol](https://xrpl.org/transaction-common-fields.html#transaction-common-fields).
+
+## Regular methods
 
 ### acceptNFTOffer
 
@@ -1904,9 +1910,11 @@ function App() {
 export default App;
 ```
 
+## XRPL Protocol methods
+
 ### submitTransaction
 
-Submits a transaction request to the XRPL network via the extension.
+Submits a transaction payload request to the XRPL network via the extension. The transaction will be automatically autofilled, signed and submitted.
 
 #### Request
 
