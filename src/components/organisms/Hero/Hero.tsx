@@ -11,16 +11,18 @@ export const Hero: FC = () => {
           <div className={styles.textContainer}>
             <h1 className={styles.catchPhrase}>
               <span className="block">
-                A crypto <span className={styles.coloredText}>wallet</span>{" "}
-                &amp; <span className={styles.coloredText}>Web3</span> layer for
-                the XRPL
+                Your <span className={styles.coloredText}>gateway</span> to the{" "}
+                <span className={styles.coloredText}>XRPL</span>
               </span>
             </h1>
             <p className={styles.paragraph}>
-              GemWallet is a web extension that enables you to make fast
-              payments on the XRP Ledger via your browser. It's a safer
-              alternative to copying and pasting private keys for use with web
-              applications.
+              GemWallet takes you into the world of the XRP Ledger. As a
+              decentralized, browser-based extension, GemWallet ensures fast
+              transactions and seamless interaction with Web3 applications.
+              Experience total privacy with our fully decentralized structure -
+              no back-end servers, no data storage, just secure and direct
+              transactions on the XRPL. Uncover a new level of freedom and
+              control with GemWallet.
             </p>
             <div className={styles.ctaContainer}>
               <div className={styles.ctaSubContainer}>

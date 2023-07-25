@@ -3,7 +3,7 @@ import {
   HandThumbUpIcon,
   CogIcon,
   LockClosedIcon,
-  ArrowsRightLeftIcon,
+  ArrowsPointingOutIcon,
   ShieldCheckIcon,
   KeyIcon,
 } from "@heroicons/react/24/outline";
@@ -11,6 +11,11 @@ import { Card } from "../../molecules";
 import styles from "./styles.module.scss";
 
 const features = [
+  {
+    name: "Fully decentralized",
+    description: "No back-end servers, no data storage",
+    icon: ArrowsPointingOutIcon,
+  },
   {
     name: "Easy to Use",
     description: "GemWallet is designed from the ground up to be easy to use.",
@@ -39,12 +44,6 @@ const features = [
     description:
       "No one has access to your master password, keys or the data stored on your device, except you. Not even GemWallet.",
     icon: ShieldCheckIcon,
-  },
-  {
-    name: "Fast and secure payment",
-    description:
-      "GemWallet is using the XRP Ledger to make international payments secure in less than 5 seconds.",
-    icon: ArrowsRightLeftIcon,
   },
 ];
 
