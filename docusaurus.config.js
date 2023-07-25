@@ -84,8 +84,8 @@ const config = {
             position: "left",
           },
           {
-            type: 'docsVersionDropdown',
-            position: 'right',
+            type: "docsVersionDropdown",
+            position: "right",
           },
           {
             href: "https://github.com/GemWallet/gemwallet-extension",
@@ -162,8 +162,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       colorMode: {
+        defaultMode: "dark",
         disableSwitch: true,
-        respectPrefersColorScheme: true,
+        respectPrefersColorScheme: false,
       },
       image: "img/metadata.png",
       metadata: [{ name: "og:type", content: "website" }],
