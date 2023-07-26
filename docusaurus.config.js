@@ -6,8 +6,9 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Crypto payments for the web made easy",
-  tagline: `GemWallet is a web extension that enables you to make fast payments on the XRP Ledger via your browser. It's a safer alternative to copying and pasting private keys for use with web applications.`,
+  title:
+    "Seamless Web3 Payments with GemWallet: Embrace Decentralized Crypto Transactions on the XRPL",
+  tagline: `GemWallet takes you into the world of the XRP Ledger. As a decentralized, browser-based extension, GemWallet ensures fast transactions and seamless interaction with Web3 applications. Experience total privacy with our fully decentralized structure - no back-end servers, no data storage, just secure and direct transactions on the XRPL. Uncover a new level of freedom and control with GemWallet.`,
   url: "https://gemwallet.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -84,8 +85,8 @@ const config = {
             position: "left",
           },
           {
-            type: 'docsVersionDropdown',
-            position: 'right',
+            type: "docsVersionDropdown",
+            position: "right",
           },
           {
             href: "https://github.com/GemWallet/gemwallet-extension",
@@ -162,8 +163,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       colorMode: {
+        defaultMode: "dark",
         disableSwitch: true,
-        respectPrefersColorScheme: true,
+        respectPrefersColorScheme: false,
       },
       image: "img/metadata.png",
       metadata: [{ name: "og:type", content: "website" }],
