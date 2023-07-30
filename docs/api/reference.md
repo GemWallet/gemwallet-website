@@ -2032,6 +2032,114 @@ export default App;
 
 ```
 
+## Events
+
+### login
+
+This event is triggered when the user logs in to the extension.
+
+#### Response
+
+The response is an object with the following properties:
+- `loggedIn`: A boolean value indicating whether the user is logged in or not.
+
+```javascript
+{
+  loggedIn: true;
+}
+```
+
+#### Examples
+
+```tsx
+import { on } from "@gemwallet/api";
+
+on("login", (response) => {
+  console.log(response.loggedIn);
+});
+```
+
+### logout
+
+This event is triggered when the user logs out of the extension.
+
+#### Response
+
+The response is an object with the following properties:
+- `loggedIn`: A boolean value indicating whether the user is logged in or not.
+
+```javascript
+{
+  loggedIn: false;
+}
+```
+
+#### Examples
+
+```tsx
+import { on } from "@gemwallet/api";
+
+on("logout", (response) => {
+  console.log(response.loggedIn);
+});
+```
+
+### networkChanged
+
+This event is triggered when the user changes the network in the extension.
+
+#### Response
+
+The response is an object with the following properties:
+- `network`:
+  - `name`: The name of the network in lowercase, e.g. `mainnet`.
+  - `server`: The URL of the network, e.g. `wss://xrplcluster.com`.
+  - `description`: The description of the network.
+
+```javascript
+network: {
+  name: string;
+  server: string;
+  description: string;
+}
+```
+
+#### Examples
+
+```tsx
+import { on } from "@gemwallet/api";
+
+on("networkChanged", (response) => {
+  console.log(response.network.name);
+});
+```
+
+### walletChanged
+
+This event is triggered when the user changes the wallet in the extension.
+
+#### Response
+
+The response is an object with the following properties:
+- `wallet`:
+  - `publicAddress`: The public address of the wallet.
+
+```javascript
+wallet: {
+  publicAddress: string;
+}
+```
+
+#### Examples
+
+```tsx
+import { on } from "@gemwallet/api";
+
+on("walletChanged", (response) => {
+  console.log(response.wallet.publicAddress);
+});
+```
+
 ## Other
 
 ### BaseTransactionRequest
