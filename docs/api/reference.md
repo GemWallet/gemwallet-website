@@ -7,10 +7,10 @@ description: Provides the documentation on how to use GemWallet API.
 # Reference
 
 **Notes**:  
-- The regular methods take payloads objects as input parameters, which are documented for each method. These methods are designed to be easy to use and understand. 
-- However, if you are already familiar with the XRPL protocol convention, you can use the methods documented in the [XRPL Protocol methods](#xrpl-protocol-methods) section. These methods will directly take transaction payloads as defined in the [XRPL Protocol](https://xrpl.org/transaction-common-fields.html#transaction-common-fields).
+- The helper methods take payloads objects as input parameters, which are documented for each method. These methods are designed to be easy to use and understand. 
+- However, if you are already familiar with the XRPL protocol convention, you can use the methods documented in the [XRPL protocol methods](#xrpl-protocol-methods) section. These methods will directly take transaction payloads as defined in the [XRPL protocol](https://xrpl.org/transaction-common-fields.html#transaction-common-fields).
 
-## Regular methods
+## Helper methods
 
 ### acceptNFTOffer
 
@@ -1910,7 +1910,7 @@ function App() {
 export default App;
 ```
 
-## XRPL Protocol methods
+## XRPL protocol methods
 
 ### submitTransaction
 
@@ -1987,7 +1987,6 @@ submitTransaction({ transaction }).then((response) => {
 }).catch((error) => {
   console.error("Transaction submission failed", error);
 });
-
 ```
 
 Here is an example with a React web application:
@@ -2029,7 +2028,266 @@ function App() {
 }
 
 export default App;
+```
 
+### submitTransactionsBulk
+
+Bulk submits an array of transaction payloads to the XRPL network via the extension. Each transaction in the array will be automatically autofilled, signed, and submitted.
+
+#### Request
+
+**Mandatory** - The function takes a payload of type `SubmitTransactionsBulkRequest` as an input parameter.
+
+- `transactions`: An array of transaction payloads to submit to the XRPL network (max 50).
+- `noWait`: 
+    - If set to `true`, the function will not wait for the transaction hashes to be returned from the XRPL network.
+    - If set to `true`, `accepted` values will be returned for each transaction, instead of `hash`.
+    - Default: `false`.
+- `onError`: 
+    - If set to `continue`, the remaining transactions will be submitted even if one of them fails.
+    - Default: `abort`.
+
+```typescript
+
+```typescript
+interface SubmitTransactionsBulkRequest {
+  transactions: TransactionWithID[];
+  noWait?: boolean; // default: false
+  onError?: 'abort' | 'continue'; // default: abort
+}
+```
+
+```typescript
+export type TransactionWithID = Transaction & {
+  // Optional ID to identify the transaction in the response, after it has been submitted.
+  // This id is only used as an indicator in the response, and is not used to order transactions.
+  ID?: string;
+};
+```
+
+```typescript
+export type Transaction = AccountDelete | AccountSet | CheckCancel | CheckCash | CheckCreate | DepositPreauth | EscrowCancel | EscrowCreate | EscrowFinish | NFTokenAcceptOffer | NFTokenBurn | NFTokenCancelOffer | NFTokenCreateOffer | NFTokenMint | OfferCancel | OfferCreate | Payment | PaymentChannelClaim | PaymentChannelCreate | PaymentChannelFund | SetRegularKey | SignerListSet | TicketCreate | TrustSet;
+```
+
+Notes:
+- The `Transaction` and the other derived types shown here come from [js.xrpl.org](https://js.xrpl.org/).
+- If the transaction field `Account` is not set in any transaction, the account of the user's wallet will be used.
+
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `transactions`: The status of each transaction in the array.
+    - `ID` *(optional)*: The custom ID of the transaction, if it was set in the request.
+    - `accepted` *(optional)*: Whether the transaction was accepted by the XRPL network (`noWait = true` only).
+    - `hash` *(optional)*: The hash of the transaction (`noWait = false` only).
+    - `error` *(optional)*: The error message, if the transaction was rejected.
+
+```javascript
+type: "response";
+result: {
+  transactions: TransactionBulkResponse[];
+}
+```
+
+```typescript
+export type TransactionBulkResponse = {
+  ID?: string;
+  accepted?: boolean;
+  hash?: string;
+  error?: string;
+};
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { submitTransactionsBulk } from "@gemwallet/api";
+
+const transactions = [
+  {
+    ID: '001', // Optional ID to identify the transaction in the response, after it has been submitted.
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  },
+  {
+    ID: '002',
+    TransactionType: 'TrustSet',
+    LimitAmount: {
+      currency: 'ETH',
+      issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
+      value: '10000000'
+    },
+    Fee: '199'
+  },
+  {
+    ID: '003',
+    TransactionType: 'NFTokenMint',
+    URI: '516D6654463665756E47726A57597642666A72614B486D765572354444566D525351424373513252564D71764A72',
+    NFTokenTaxon: 0
+  },
+  {
+    ID: '004',
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  },
+  {
+    ID: '005',
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  },
+  {
+    ID: '006',
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  },
+  {
+    ID: '007',
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  },
+  {
+    ID: '008',
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  },
+  {
+    ID: '009',
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  },
+  {
+    ID: '010',
+    TransactionType: 'Payment',
+    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+    Amount: '100000',
+  }
+];
+
+submitTransactionsBulk({
+  transactions,
+  onError: 'abort',
+  noWait: false
+}).then((response) => {
+  console.log('Received response: ', response);
+}).catch((error) => {
+  console.error("Transactions submission failed", error);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { submitTransactionsBulk, isInstalled } from "@gemwallet/api";
+
+function App() {
+  const handleTransactionsBulk = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const transactions = [
+          {
+            ID: '001', // Optional ID to identify the transaction in the response, after it has been submitted.
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          },
+          {
+            ID: '002',
+            TransactionType: 'TrustSet',
+            LimitAmount: {
+              currency: 'ETH',
+              issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
+              value: '10000000'
+            },
+            Fee: '199'
+          },
+          {
+            ID: '003',
+            TransactionType: 'NFTokenMint',
+            URI: '516D6654463665756E47726A57597642666A72614B486D765572354444566D525351424373513252564D71764A72',
+            NFTokenTaxon: 0
+          },
+          {
+            ID: '004',
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          },
+          {
+            ID: '005',
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          },
+          {
+            ID: '006',
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          },
+          {
+            ID: '007',
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          },
+          {
+            ID: '008',
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          },
+          {
+            ID: '009',
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          },
+          {
+            ID: '010',
+            TransactionType: 'Payment',
+            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+            Amount: '100000',
+          }
+        ];
+        submitTransactionsBulk({ transactions }).then((response) => {
+          console.log('Received response: ', response);
+        }).catch((error) => {
+          console.error("Transactions submission failed", error);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleTransactionsBulk}>Submit Transactions (Bulk)</button>
+    </div>
+  );
+}
+
+export default App;
 ```
 
 ## Events
