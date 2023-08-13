@@ -116,6 +116,10 @@ const sidebars = {
         {
           type: "doc",
           id: "playground/submitTransaction",
+        },
+        {
+          type: "doc",
+          id: "playground/submitTransactionsBulk",
         }
       ],
     },

@@ -1,0 +1,122 @@
+import React, { useCallback, useState } from "react";
+import { isInstalled, submitTransactionsBulk, SubmitTransactionsBulkRequest } from "@gemwallet/api";
+
+const PAYLOAD: SubmitTransactionsBulkRequest = {
+  transactions: [
+    {
+      ID: '001', // Optional ID to identify the transaction in the response, after it has been submitted.
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '002',
+      TransactionType: 'TrustSet',
+      LimitAmount: {
+        currency: 'ETH',
+        issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
+        value: '10000000'
+      },
+      Fee: '199'
+    },
+    {
+      ID: '003',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '004',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '005',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '006',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '007',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '008',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '009',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    },
+    {
+      ID: '010',
+      TransactionType: 'Payment',
+      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
+      Amount: '100000',
+    }
+  ]
+};
+
+export const SubmitTransactionDemo = () => {
+  const [txHash, setTxHash] = useState("");
+  const [error, setError] = useState("");
+
+  const handleButtonClick = useCallback(async () => {
+    try {
+      const responseIsInstalled = await isInstalled();
+      if (!responseIsInstalled.result.isInstalled) {
+        setError("Please install GemWallet");
+        return;
+      }
+
+      const response = await submitTransactionsBulk(PAYLOAD);
+      if (response.type === "reject") {
+        setError("The transaction has been refused!");
+        return;
+      }
+
+      setTxHash(response.result.hash);
+    } catch (error) {
+      setError("Something went wrong!");
+    }
+  }, []);
+
+  return (
+    <section>
+      <div>
+        This button submits the following transaction:
+        <pre>
+          <code>{JSON.stringify(PAYLOAD, null, 4)}</code>
+        </pre>
+      </div>
+      {txHash ? (
+        <div style={{ display: "block", margin: "1em 0" }}>
+          Transaction hash: {txHash}
+        </div>
+      ) : null}
+      {!txHash && error ? (
+        <div style={{ display: "block", margin: "1em 0" }}>Error: {error}</div>
+      ) : null}
+      <button
+        type="button"
+        onClick={handleButtonClick}
+        style={{ margin: "1em 0" }}
+      >
+        Submit transaction
+      </button>
+    </section>
+  );
+};
