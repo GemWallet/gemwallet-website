@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title:
-    "Seamless Web3 Payments with GemWallet: Embrace Decentralized Crypto Transactions on the XRPL",
+    "Your Gateway to Secure and Decentralized XRP Ledger Transactions",
   tagline: `GemWallet takes you into the world of the XRP Ledger. As a decentralized, browser-based extension, GemWallet ensures fast transactions and seamless interaction with Web3 applications. Experience total privacy with our fully decentralized structure - no back-end servers, no data storage, just secure and direct transactions on the XRPL. Uncover a new level of freedom and control with GemWallet.`,
   url: "https://gemwallet.app",
   baseUrl: "/",
