@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
-import { isInstalled, submitTransactionsBulk, SubmitTransactionsBulkRequest } from "@gemwallet/api";
+import { isInstalled, submitBulkTransactions, SubmitBulkTransactionsRequest } from "@gemwallet/api";
 
-const PAYLOAD: SubmitTransactionsBulkRequest = {
+const PAYLOAD: SubmitBulkTransactionsRequest = {
   transactions: [
     {
       ID: '001', // Optional ID to identify the transaction in the response, after it has been submitted.
@@ -70,7 +70,7 @@ const PAYLOAD: SubmitTransactionsBulkRequest = {
   ]
 };
 
-export const SubmitTransactionDemo = () => {
+export const SubmitBulkTransactionsDemo = () => {
   const [txHash, setTxHash] = useState("");
   const [error, setError] = useState("");
 
@@ -82,7 +82,7 @@ export const SubmitTransactionDemo = () => {
         return;
       }
 
-      const response = await submitTransactionsBulk(PAYLOAD);
+      const response = await submitBulkTransactions(PAYLOAD);
       if (response.type === "reject") {
         setError("The transaction has been refused!");
         return;
@@ -115,7 +115,7 @@ export const SubmitTransactionDemo = () => {
         onClick={handleButtonClick}
         style={{ margin: "1em 0" }}
       >
-        Submit transaction
+        Submit transactions
       </button>
     </section>
   );

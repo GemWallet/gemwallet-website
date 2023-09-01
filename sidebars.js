@@ -115,11 +115,11 @@ const sidebars = {
         },
         {
           type: "doc",
-          id: "playground/submitTransaction",
+          id: "playground/submitBulkTransactions",
         },
         {
           type: "doc",
-          id: "playground/submitTransactionsBulk",
+          id: "playground/submitTransaction",
         }
       ],
     },
