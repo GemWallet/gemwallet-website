@@ -3,6 +3,7 @@ import {
   isInstalled,
   submitBulkTransactions,
   SubmitBulkTransactionsRequest,
+  TransactionBulkResponse,
 } from "@gemwallet/api";
 
 const PAYLOAD: SubmitBulkTransactionsRequest = {
@@ -75,7 +76,7 @@ const PAYLOAD: SubmitBulkTransactionsRequest = {
 };
 
 export const SubmitBulkTransactionsDemo = () => {
-  const [txHash, setTxHash] = useState("");
+  const [txResult, setTxResult] = useState<TransactionBulkResponse[]>();
   const [error, setError] = useState("");
 
   const handleButtonClick = useCallback(async () => {
@@ -92,7 +93,7 @@ export const SubmitBulkTransactionsDemo = () => {
         return;
       }
 
-      setTxHash(response.result.hash);
+      setTxResult(response.result.transactions);
     } catch (error) {
       console.error(error);
       setError("Something went wrong!");
@@ -107,12 +108,12 @@ export const SubmitBulkTransactionsDemo = () => {
           <code>{JSON.stringify(PAYLOAD, null, 4)}</code>
         </pre>
       </div>
-      {txHash ? (
-        <div style={{ display: "block", margin: "1em 0" }}>
-          Transaction hash: {txHash}
-        </div>
+      {txResult ? (
+        <pre>
+          <code>{JSON.stringify(txResult, null, 4)}</code>
+        </pre>
       ) : null}
-      {!txHash && error ? (
+      {!txResult && error ? (
         <div style={{ display: "block", margin: "1em 0" }}>Error: {error}</div>
       ) : null}
       <button
