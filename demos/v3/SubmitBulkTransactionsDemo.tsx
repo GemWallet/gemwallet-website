@@ -1,73 +1,77 @@
 import React, { useCallback, useState } from "react";
-import { isInstalled, submitBulkTransactions, SubmitBulkTransactionsRequest } from "@gemwallet/api";
+import {
+  isInstalled,
+  submitBulkTransactions,
+  SubmitBulkTransactionsRequest,
+} from "@gemwallet/api";
 
 const PAYLOAD: SubmitBulkTransactionsRequest = {
   transactions: [
     {
-      ID: '001', // Optional ID to identify the transaction in the response, after it has been submitted.
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "001", // Optional ID to identify the transaction in the response, after it has been submitted.
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '002',
-      TransactionType: 'TrustSet',
+      ID: "002",
+      TransactionType: "TrustSet",
       LimitAmount: {
-        currency: 'ETH',
-        issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-        value: '10000000'
+        currency: "ETH",
+        issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+        value: "10000000",
       },
-      Fee: '199'
+      Fee: "199",
     },
     {
-      ID: '003',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "003",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '004',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "004",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '005',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "005",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '006',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "006",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '007',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "007",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '008',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "008",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '009',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
+      ID: "009",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
     },
     {
-      ID: '010',
-      TransactionType: 'Payment',
-      Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-      Amount: '100000',
-    }
-  ]
+      ID: "010",
+      TransactionType: "Payment",
+      Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+      Amount: "100000",
+    },
+  ],
 };
 
 export const SubmitBulkTransactionsDemo = () => {
@@ -90,6 +94,7 @@ export const SubmitBulkTransactionsDemo = () => {
 
       setTxHash(response.result.hash);
     } catch (error) {
+      console.error(error);
       setError("Something went wrong!");
     }
   }, []);
