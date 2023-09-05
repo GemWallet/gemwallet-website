@@ -1912,6 +1912,129 @@ export default App;
 
 ## XRPL Protocol methods
 
+### signTransaction
+
+Signs a transaction payload request via the extension.
+
+#### Request
+
+**Mandatory** - The function takes a payload of type `SignTransactionRequest` as an input parameter.
+
+- `transaction`: The transaction payload to be signed.
+
+```typescript
+interface SignTransactionRequest {
+  transaction: Transaction;
+}
+```
+
+```typescript
+export type Transaction = AccountDelete | AccountSet | CheckCancel | CheckCash | CheckCreate | DepositPreauth | EscrowCancel | EscrowCreate | EscrowFinish | NFTokenAcceptOffer | NFTokenBurn | NFTokenCancelOffer | NFTokenCreateOffer | NFTokenMint | OfferCancel | OfferCreate | Payment | PaymentChannelClaim | PaymentChannelCreate | PaymentChannelFund | SetRegularKey | SignerListSet | TicketCreate | TrustSet;
+```
+
+Notes:
+- The `Transaction` and the other derived types shown here come from [js.xrpl.org](https://js.xrpl.org/).
+- If the transaction field `Account` is not set, the account of the user's wallet will be used.
+
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `signature`: The signed message.
+
+```javascript
+type: "response";
+result: {
+  signature: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { signTransaction } from "@gemwallet/api";
+
+const transaction = {
+  TransactionType: "Payment",
+  Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+  Amount: "100000",
+  Memos: [
+    {
+      Memo: {
+        MemoData: "54657374206D656D6F",
+        MemoType: "4465736372697074696F6E"
+      }
+    }
+  ]
+};
+
+signTransaction({ transaction }).then((response) => {
+  console.log(response.result?.signature);
+}).catch((error) => {
+  console.error("Transaction submission failed", error);
+});
+
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { signTransaction, isInstalled } from "@gemwallet/api";
+
+function App() {
+  const handleSignTransaction = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const transaction = {
+          TransactionType: "Payment",
+          Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+          Amount: "100000",
+          Memos: [
+            {
+              Memo: {
+                MemoData: "54657374206D656D6F",
+                MemoType: "4465736372697074696F6E"
+              }
+            }
+          ]
+        };
+        signTransaction({ transaction }).then((response) => {
+          console.log("Transaction hash: ", response.result?.signature);
+        }).catch((error) => {
+          console.error("Transaction submission failed", error);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleSignTransaction}>Sign Transaction</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### submitBulkTransactions
 
 Bulk submits an array of transaction payloads to the XRPL network via the extension. Each transaction in the array will be automatically autofilled, signed, and submitted.
