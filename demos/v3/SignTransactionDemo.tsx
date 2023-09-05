@@ -1,5 +1,9 @@
 import React, { useCallback, useState } from "react";
-import {isInstalled, signTransaction, SignTransactionRequest} from "@gemwallet/api";
+import {
+  isInstalled,
+  signTransaction,
+  SignTransactionRequest,
+} from "@gemwallet/api";
 
 const PAYLOAD: SignTransactionRequest = {
   transaction: {
@@ -10,11 +14,11 @@ const PAYLOAD: SignTransactionRequest = {
       {
         Memo: {
           MemoData: "54657374206D656D6F",
-          MemoType: "4465736372697074696F6E"
-        }
-      }
-    ]
-  }
+          MemoType: "4465736372697074696F6E",
+        },
+      },
+    ],
+  },
 };
 
 export const SignTransactionDemo = () => {
@@ -46,7 +50,7 @@ export const SignTransactionDemo = () => {
       <div>
         This button is using the following transaction to be signed:
         <pre>
-          <code>{MESSAGE}</code>
+          <code>{JSON.stringify(PAYLOAD, null, 4)}</code>
         </pre>
       </div>
       {message ? (
