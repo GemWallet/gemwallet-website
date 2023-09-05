@@ -1688,6 +1688,111 @@ function App() {
 export default App;
 ```
 
+### setRegularKey
+
+Sets a regular key through the extension.
+
+#### Request
+
+**Mandatory** - The function takes a payload of type `SetRegularKeyRequest` as an input parameter.
+
+- All the fields from `BaseTransactionRequest`.
+  - See [BaseTransactionRequest](#basetransactionrequest) for more details.
+- `regularKey` (optional): A base-58-encoded Address that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. Must not match the master key pair for the address.
+
+```typescript
+interface SetRegularKeyRequest extends BaseTransactionRequest {
+  // A base-58-encoded Address that indicates the regular key pair to be assigned to the account. If omitted, removes
+  // any existing regular key pair from the account. Must not match the master key pair for the address.
+  regularKey?: string;
+}
+```
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hash`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { setRegularKey } from "@gemwallet/api";
+
+const payload = {
+  regularKey: "rNvFCZXpDtGeQ3bVas95wGLN6N2stGmA9o",
+  memos: [
+    {
+      memo: {
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f"
+      }
+    }
+  ]
+};
+
+setRegularKey(payload).then((response) => {
+  console.log("Transaction Hash: ", response.result?.hash);
+});
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { isInstalled, setRegularKey } from "@gemwallet/api";
+
+function App() {
+  const handleSetRegularKey = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const payload = {
+          regularKey: "rNvFCZXpDtGeQ3bVas95wGLN6N2stGmA9o",
+          memos: [
+            {
+              memo: {
+                memoType: "4465736372697074696f6e",
+                memoData: "54657374206d656d6f"
+              }
+            }
+          ]
+        };
+        setRegularKey(payload).then((response) => {
+          console.log("Transaction Hash: ", response.result?.hash);
+        });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleSetRegularKey}>Set Account</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### setTrustLine
 
 Adds or edits a trustline within the wallet.
