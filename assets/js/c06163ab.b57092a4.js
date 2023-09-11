@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgemwallet_website=self.webpackChunkgemwallet_website||[]).push([[3444],{76955:function(e){e.exports=JSON.parse('{"label":"GemWallet","permalink":"/blog/tags/gem-wallet","allTagsPath":"/blog/tags","count":6}')}}]);

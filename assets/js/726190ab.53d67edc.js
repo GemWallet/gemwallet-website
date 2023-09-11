@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkgemwallet_website=self.webpackChunkgemwallet_website||[]).push([[3882],{7865:function(e){e.exports=JSON.parse('{"label":"Release 2.0.0","permalink":"/blog/tags/release-2-0-0","allTagsPath":"/blog/tags","count":1}')}}]);
