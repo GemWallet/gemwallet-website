@@ -1943,11 +1943,7 @@ The response is a Promise which resolves to an object with a `type` and `result`
 
 - `type`: `"response" | "reject"`
 - `result`:
-  - `hash`: The hash of the transaction.
-
-- `type`: `"response" | "reject"`
-- `result`:
-  - `signature`: The signed message.
+  - `signature`: The signed transaction.
 
 ```javascript
 type: "response";
@@ -2046,7 +2042,7 @@ Bulk submits an array of transaction payloads to the XRPL network via the extens
 - `transactions`: An array of transaction payloads to submit to the XRPL network (max 50).
 - `waitForHashes`:
   - If set to `false`, the function will not wait for the transaction hashes to be returned from the XRPL.
-  - If set to `true`, `accepted` values will be returned for each transaction, instead of `hash`.
+  - If set to `false`, `accepted` values will be returned for each transaction, instead of `hash`.
   - Default: `true`.
 - `onError`:
   - If set to `continue`, the remaining transactions will be submitted even if one of them fails.
@@ -2084,7 +2080,7 @@ The response is a Promise which resolves to an object with a `type` and `result`
 - `type`: `"response" | "reject"`
 - `result`:
   - `transactions`: The status of each transaction in the array.
-    - `ID` *(optional)*: The custom ID of the transaction, if it was set in the request.
+    - `id` *(optional)*: The custom ID of the transaction, if it was set in the request.
     - `accepted` *(optional)*: Whether the transaction was accepted by the XRPL network (`waitForHashes = false` only).
     - `hash` *(optional)*: The hash of the transaction (`waitForHashes = true` only).
     - `error` *(optional)*: The error message, if the transaction was rejected.
