@@ -2094,7 +2094,7 @@ result: {
 
 ```typescript
 export type TransactionBulkResponse = {
-  ID?: string;
+  id?: string;
   accepted?: boolean;
   hash?: string;
   error?: string;
