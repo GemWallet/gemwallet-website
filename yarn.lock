@@ -2604,10 +2604,10 @@
   resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-2.2.1.tgz#d6c16d3c3f171de23bd0292fc04d6589dee23329"
   integrity sha512-/qW49CcpfQvtB/IIInkop3JywbabtvB0NZOIFcvPZP9nXZYYqP2n2RFaphvWV/gjRdmndefyfggmFk7XcmAk1Q==
 
-"@gemwallet/api@3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-3.5.0.tgz#7249e3a51f5d5e2829d0fbb82703c713f85cea3b"
-  integrity sha512-kZ7zjJGrExUKAx3Z3apZQ6S6k9lUs+ojVrBZQQzVT9Uykilza25QdxAEDnpxdeq3kXepM5jwKkk/Z26RiTePdg==
+"@gemwallet/api@3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-3.5.1.tgz#54e098b5d489396788cbe151af2486c0ef4aa37f"
+  integrity sha512-CWtC71J0a2D/hmERmglzOcGbgOd2WWXIAKB+UwM/xhJyk/DRzPpZujJn9gbytmzaD61kq9PHaIt+RZmWUTbELg==
 
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
@@ -6388,6 +6388,11 @@ nanoid@^3.3.4:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
+nanoid@^3.3.6:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
+  integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
+
 napi-build-utils@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/napi-build-utils/-/napi-build-utils-1.0.2.tgz#b1fddc0b2c46e380a0b7a76f984dd47c41a13806"
@@ -7108,6 +7113,15 @@ postcss@^8.4.13, postcss@^8.4.14:
   integrity sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==
   dependencies:
     nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
+postcss@^8.4.31:
+  version "8.4.31"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.31.tgz#92b451050a9f914da6755af352bdc0192508656d"
+  integrity sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==
+  dependencies:
+    nanoid "^3.3.6"
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
