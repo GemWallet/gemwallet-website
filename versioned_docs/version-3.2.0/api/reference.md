@@ -1935,12 +1935,9 @@ interface SubmitTransactionRequest {
 }
 ```
 
-```typescript
-export type Transaction = AccountDelete | AccountSet | CheckCancel | CheckCash | CheckCreate | DepositPreauth | EscrowCancel | EscrowCreate | EscrowFinish | NFTokenAcceptOffer | NFTokenBurn | NFTokenCancelOffer | NFTokenCreateOffer | NFTokenMint | OfferCancel | OfferCreate | Payment | PaymentChannelClaim | PaymentChannelCreate | PaymentChannelFund | SetRegularKey | SignerListSet | TicketCreate | TrustSet;
-```
+The `Transaction` type [is defined here](https://js.xrpl.org/types/Transaction.html).
 
 Notes:
-- The `Transaction` and the other derived types shown here come from [js.xrpl.org](https://js.xrpl.org/).
 - If the transaction field `Account` is not set, the account of the user's wallet will be used.
 
 
