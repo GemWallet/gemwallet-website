@@ -6,9 +6,10 @@ description: Provides the documentation on how to use GemWallet API.
 
 # Reference
 
-**Notes**:  
-- The helper methods take payloads objects as input parameters, which are documented for each method. These methods are designed to be easy to use and understand. 
-- However, if you are already familiar with the XRPL protocol convention, you can use the methods documented in the [XRPL protocol methods](#xrpl-protocol-methods) section. These methods will directly take transaction payloads as defined in the [XRPL protocol](https://xrpl.org/transaction-common-fields.html#transaction-common-fields).
+**Notes**:
+
+- The helper methods take payloads objects as input parameters, which are documented for each method. These methods are designed to be easy to use and understand.
+- However, if you are already familiar with the Raw transactions convention, you can use the methods documented in the [Raw transactions methods](#xrpl-protocol-methods) section. These methods will directly take transaction payloads as defined in the [XRPL Protocol](https://xrpl.org/transaction-common-fields.html#transaction-common-fields).
 
 ## Main helper methods
 
@@ -419,11 +420,13 @@ export interface SendPaymentRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-type Amount = {
-  currency: string;
-  issuer: string;
-  value: string;
-} | string;
+type Amount =
+  | {
+      currency: string;
+      issuer: string;
+      value: string;
+    }
+  | string;
 ```
 
 More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
@@ -441,11 +444,13 @@ interface Memo {
 More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 
 ```typescript
-type PaymentFlags = {
-  tfNoDirectRipple?: boolean;
-  tfPartialPayment?: boolean;
-  tfLimitQuality?: boolean;
-} | number;
+type PaymentFlags =
+  | {
+      tfNoDirectRipple?: boolean;
+      tfPartialPayment?: boolean;
+      tfLimitQuality?: boolean;
+    }
+  | number;
 ```
 
 More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
@@ -626,14 +631,16 @@ interface SetAccountRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-type AccountSetFlagsInterface = {
-  tfRequireDestTag?: boolean;
-  tfOptionalDestTag?: boolean;
-  tfRequireAuth?: boolean;
-  tfOptionalAuth?: boolean;
-  tfDisallowXRP?: boolean;
-  tfAllowXRP?: boolean;
-} | number;
+type AccountSetFlagsInterface =
+  | {
+      tfRequireDestTag?: boolean;
+      tfOptionalDestTag?: boolean;
+      tfRequireAuth?: boolean;
+      tfOptionalAuth?: boolean;
+      tfDisallowXRP?: boolean;
+      tfAllowXRP?: boolean;
+    }
+  | number;
 ```
 
 ```typescript
@@ -651,7 +658,7 @@ enum AccountSetAsfFlags {
   asfDisallowIncomingNFTokenOffer = 12,
   asfDisallowIncomingCheck = 13,
   asfDisallowIncomingPayChan = 14,
-  asfDisallowIncomingTrustline = 15
+  asfDisallowIncomingTrustline = 15,
 }
 ```
 
@@ -690,16 +697,16 @@ const payload = {
   emailHash: "1D1382344586ECFF844DACFF698C2EFB",
   fee: "199",
   flags: {
-    tfAllowXRP: true
+    tfAllowXRP: true,
   },
   memos: [
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 setAccount(payload).then((response) => {
@@ -720,16 +727,16 @@ function App() {
           emailHash: "1D1382344586ECFF844DACFF698C2EFB",
           fee: "199",
           flags: {
-            tfAllowXRP: true
+            tfAllowXRP: true,
           },
           memos: [
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         setAccount(payload).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -899,13 +906,15 @@ interface Memo {
 More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 
 ```typescript
-type TrustSetFlags = {
-  tfSetfAuth?: boolean;
-  tfSetNoRipple?: boolean;
-  tfClearNoRipple?: boolean;
-  tfSetFreeze?: boolean;
-  tfClearFreeze?: boolean;
-} | number;
+type TrustSetFlags =
+  | {
+      tfSetfAuth?: boolean;
+      tfSetNoRipple?: boolean;
+      tfClearNoRipple?: boolean;
+      tfSetFreeze?: boolean;
+      tfClearFreeze?: boolean;
+    }
+  | number;
 ```
 
 More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
@@ -1082,6 +1091,7 @@ export default App;
 Cancels an existing offer through the extension.
 
 #### Request
+
 **Mandatory** - The function takes a payload of type `CancelOfferRequest` as an input parameter.
 
 - All the fields from `BaseTransactionRequest`.
@@ -1137,10 +1147,10 @@ const payload = {
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 cancelOffer(payload).then((response) => {
@@ -1164,10 +1174,10 @@ function App() {
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         cancelOffer(payload).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -1223,20 +1233,24 @@ interface CreateOfferRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-type OfferCreateFlagsInterface = {
-    tfPassive?: boolean;
-    tfImmediateOrCancel?: boolean;
-    tfFillOrKill?: boolean;
-    tfSell?: boolean;
-} | number;
+type OfferCreateFlagsInterface =
+  | {
+      tfPassive?: boolean;
+      tfImmediateOrCancel?: boolean;
+      tfFillOrKill?: boolean;
+      tfSell?: boolean;
+    }
+  | number;
 ```
 
 ```typescript
-type Amount = {
-  currency: string;
-  issuer: string;
-  value: string;
-} | string;
+type Amount =
+  | {
+      currency: string;
+      issuer: string;
+      value: string;
+    }
+  | string;
 ```
 
 More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
@@ -1277,20 +1291,20 @@ const payload = {
   takerPays: {
     currency: "ETH",
     issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
-    value: "0.1"
+    value: "0.1",
   },
   flags: {
-    tfPassive: true
+    tfPassive: true,
   },
   fee: "199",
   memos: [
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 createOffer(payload).then((response) => {
@@ -1312,20 +1326,20 @@ function App() {
           takerPays: {
             currency: "ETH",
             issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
-            value: "0.1"
+            value: "0.1",
           },
           flags: {
-            tfPassive: true
+            tfPassive: true,
           },
           fee: "199",
           memos: [
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         createOffer(payload).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -1351,14 +1365,15 @@ export default App;
 Accepts an existing offer for a Non-Fungible Token (NFT) through the extension.
 
 #### Request
+
 **Mandatory** - The function takes a payload of type `AcceptNFTOfferRequest` as an input parameter.
 
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `NFTokenSellOffer`: Identifies the NFTokenOffer that offers to sell the NFToken.
 - `NFTokenBuyOffer`: Identifies the NFTokenOffer that offers to buy the NFToken.
-- `NFTokenBrokerFee`: 
-  This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought. 
+- `NFTokenBrokerFee`:
+  This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFToken being bought.
   - If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer.
   - Specified in one of the following formats:
     - A _string_ representing the number of XRP to deliver, in drops.
@@ -1380,11 +1395,13 @@ interface AcceptNFTOfferRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-type Amount = {
-  currency: string;
-  issuer: string;
-  value: string;
-} | string;
+type Amount =
+  | {
+      currency: string;
+      issuer: string;
+      value: string;
+    }
+  | string;
 ```
 
 More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
@@ -1427,10 +1444,10 @@ const payload = {
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 acceptNFTOffer(payload).then((response) => {
@@ -1454,10 +1471,10 @@ function App() {
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         acceptNFTOffer(payload).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -1481,12 +1498,13 @@ export default App;
 Burns a Non-Fungible Token (NFT) through the extension.
 
 #### Request
+
 **Mandatory** - The function takes a payload of type `BurnNFTRequest` as an input parameter.
 
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `NFTokenID`: The NFToken to be removed by this transaction.
-- `owner`: The owner of the NFToken to burn. 
+- `owner`: The owner of the NFToken to burn.
   - Only used if that owner is different than the account sending this transaction.
   - The issuer or authorized minter can use this field to burn NFTs that have the lsfBurnable flag enabled.
 
@@ -1538,10 +1556,10 @@ const payload = {
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 burnNFT(payload).then((response) => {
@@ -1565,10 +1583,10 @@ function App() {
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         burnNFT(payload).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -1592,11 +1610,12 @@ export default App;
 Cancels an existing offer for a Non-Fungible Token (NFT) through the extension.
 
 #### Request
+
 **Mandatory** - The function takes a payload of type `CancelNFTOfferRequest` as an input parameter.
 
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
-- `NFTokenOffers`: An array of IDs of the NFTokenOffer objects to cancel. 
+- `NFTokenOffers`: An array of IDs of the NFTokenOffer objects to cancel.
   - Each entry must be a different object ID of an NFTokenOffer object; the transaction is invalid if the array contains duplicate entries.
 
 ```typescript
@@ -1646,10 +1665,10 @@ const payload = {
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 cancelNFTOffer(payload).then((response) => {
@@ -1673,10 +1692,10 @@ function App() {
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         cancelNFTOffer(payload).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -1700,6 +1719,7 @@ export default App;
 Creates a new offer for a Non-Fungible Token (NFT) through the extension.
 
 #### Request
+
 **Mandatory** - The function takes a payload of type `CreateNFTOfferRequest` as an input parameter.
 
 - All the fields from `BaseTransactionRequest`.
@@ -1711,11 +1731,11 @@ Creates a new offer for a Non-Fungible Token (NFT) through the extension.
     - A _string_ representing the number of XRP to deliver, in drops.
     - An _object_ where 'value' is a string representing the number of the token to deliver.
     - More technical details about the amount formats can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
-- `owner`: Indicates the AccountID of the account that owns the corresponding NFToken. 
-  - If the offer is to buy a token, this field must be present and it must be different than Account (since an offer to buy a token one already holds is meaningless). 
+- `owner`: Indicates the AccountID of the account that owns the corresponding NFToken.
+  - If the offer is to buy a token, this field must be present and it must be different than Account (since an offer to buy a token one already holds is meaningless).
   - If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as Account (since an offer to sell a token one doesn't already hold is meaningless).
 - `expiration`: Indicates the time after which the offer will no longer be valid. The value is the number of seconds since the Ripple Epoch.
-- `destination`: If present, indicates that this offer may only be accepted by the specified account. 
+- `destination`: If present, indicates that this offer may only be accepted by the specified account.
   - Attempts by other accounts to accept this offer MUST fail.
 - `flags`: Flags to set on the transaction.
 
@@ -1745,19 +1765,23 @@ interface CreateNFTOfferRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-type CreateNFTOfferFlags = {
-  tfSellNFToken?: boolean;
-} | number;
+type CreateNFTOfferFlags =
+  | {
+      tfSellNFToken?: boolean;
+    }
+  | number;
 ```
 
 More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
 
 ```typescript
-type Amount = {
-  currency: string;
-  issuer: string;
-  value: string;
-} | string;
+type Amount =
+  | {
+      currency: string;
+      issuer: string;
+      value: string;
+    }
+  | string;
 ```
 
 More details about the amount format can be found [here](https://xrpl.org/basic-data-types.html#specifying-currency-amounts).
@@ -1798,16 +1822,16 @@ const payload = {
   amount: 50000000, // 50 XRP
   fee: "199",
   flags: {
-    tfSellNFToken: true // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
+    tfSellNFToken: true, // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
   },
   memos: [
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 createNFTOffer(payload).then((response) => {
@@ -1829,16 +1853,16 @@ function App() {
           amount: 50000000, // 50 XRP
           fee: "199",
           flags: {
-            tfSellNFToken: true // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
+            tfSellNFToken: true, // If enabled, indicates that the offer is a sell offer. Otherwise, it is a buy offer.
           },
           memos: [
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         createNFTOffer(payload).then((response) => {
           console.log("Transaction Hash: ", response.result?.hash);
@@ -1868,18 +1892,18 @@ Mints a new Non-Fungible Token (NFT) through the extension.
 - All the fields from `BaseTransactionRequest`.
   - See [BaseTransactionRequest](#basetransactionrequest) for more details.
 - `flags`: Flags to be set on the transaction.
-- `issuer`: Indicates the issuer of the token. 
+- `issuer`: Indicates the issuer of the token.
   - Should only be specified if the account executing the transaction is not the Issuer of the token, e.g. when minting on behalf of another account.
-- `NFTokenTaxon`: Indicates the taxon associated with this token. 
-  - The taxon is generally a value chosen by the minter of the token and a given taxon may be used for multiple tokens. 
-  - The implementation reserves taxon identifiers greater than or equal to 2147483648 (0x80000000). 
+- `NFTokenTaxon`: Indicates the taxon associated with this token.
+  - The taxon is generally a value chosen by the minter of the token and a given taxon may be used for multiple tokens.
+  - The implementation reserves taxon identifiers greater than or equal to 2147483648 (0x80000000).
   - If you have no use for this field, set it to 0.
-- `transferFee`: Specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed. 
-  - Valid values for this field are between 0 and 50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. 
+- `transferFee`: Specifies the fee charged by the issuer for secondary sales of the Token, if such sales are allowed.
+  - Valid values for this field are between 0 and 50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%.
   - This field must NOT be present if the tfTransferable flag is not set.
-- `URI`: URI that points to the data and/or metadata associated with the NFT. 
-  - This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 "data" URL, or even an opaque issuer-specific encoding. 
-  - The URI is NOT checked for validity, but the field is limited to a maximum length of 256 bytes. 
+- `URI`: URI that points to the data and/or metadata associated with the NFT.
+  - This field need not be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, immediate data encoded as an RFC2379 "data" URL, or even an opaque issuer-specific encoding.
+  - The URI is NOT checked for validity, but the field is limited to a maximum length of 256 bytes.
   - This field must be hex-encoded.
 
 ```typescript
@@ -1906,12 +1930,14 @@ interface MintNFTRequest extends BaseTransactionRequest {
 ```
 
 ```typescript
-type MintNFTFlags = {
-  tfBurnable?: boolean;
-  tfOnlyXRP?: boolean;
-  tfTrustLine?: boolean;
-  tfTransferable?: boolean;
-} | number;
+type MintNFTFlags =
+  | {
+      tfBurnable?: boolean;
+      tfOnlyXRP?: boolean;
+      tfTrustLine?: boolean;
+      tfTransferable?: boolean;
+    }
+  | number;
 ```
 
 More details about the flags can be found [here](https://xrpl.org/transaction-common-fields.html#flags-field).
@@ -1953,7 +1979,7 @@ const payload = {
   URI: "4d696e746564207468726f7567682047656d57616c6c657421",
   flags: {
     tfOnlyXRP: true,
-    tfTransferable: true
+    tfTransferable: true,
   },
   fee: "199",
   transferFee: 3000, // 3%,
@@ -1962,10 +1988,10 @@ const payload = {
     {
       memo: {
         memoType: "4465736372697074696f6e",
-        memoData: "54657374206d656d6f"
-      }
-    }
-  ]
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 mintNFT(payload).then((response) => {
@@ -1987,7 +2013,7 @@ function App() {
           URI: "4d696e746564207468726f7567682047656d57616c6c657421",
           flags: {
             tfOnlyXRP: true,
-            tfTransferable: true
+            tfTransferable: true,
           },
           fee: "199",
           transferFee: 3000, // 3%,
@@ -1996,10 +2022,10 @@ function App() {
             {
               memo: {
                 memoType: "4465736372697074696f6e",
-                memoData: "54657374206d656d6f"
-              }
-            }
-          ]
+                memoData: "54657374206d656d6f",
+              },
+            },
+          ],
         };
         mintNFT(payload).then((response) => {
           console.log("NFT ID: ", response.result?.NFTokenID);
@@ -2019,7 +2045,7 @@ function App() {
 export default App;
 ```
 
-## XRPL protocol methods
+## Raw transactions methods
 
 ### signTransaction
 
@@ -2040,8 +2066,8 @@ interface SignTransactionRequest {
 The `Transaction` type [is defined here](https://js.xrpl.org/types/Transaction.html).
 
 Notes:
-- If the transaction field `Account` is not set, the account of the user's wallet will be used.
 
+- If the transaction field `Account` is not set, the account of the user's wallet will be used.
 
 #### Response
 
@@ -2082,18 +2108,19 @@ const transaction = {
     {
       Memo: {
         MemoData: "54657374206D656D6F",
-        MemoType: "4465736372697074696F6E"
-      }
-    }
-  ]
+        MemoType: "4465736372697074696F6E",
+      },
+    },
+  ],
 };
 
-signTransaction({ transaction }).then((response) => {
-  console.log(response.result?.signature);
-}).catch((error) => {
-  console.error("Transaction submission failed", error);
-});
-
+signTransaction({ transaction })
+  .then((response) => {
+    console.log(response.result?.signature);
+  })
+  .catch((error) => {
+    console.error("Transaction submission failed", error);
+  });
 ```
 
 Here is an example with a React web application:
@@ -2113,16 +2140,18 @@ function App() {
             {
               Memo: {
                 MemoData: "54657374206D656D6F",
-                MemoType: "4465736372697074696F6E"
-              }
-            }
-          ]
+                MemoType: "4465736372697074696F6E",
+              },
+            },
+          ],
         };
-        signTransaction({ transaction }).then((response) => {
-          console.log("Transaction hash: ", response.result?.signature);
-        }).catch((error) => {
-          console.error("Transaction submission failed", error);
-        });
+        signTransaction({ transaction })
+          .then((response) => {
+            console.log("Transaction hash: ", response.result?.signature);
+          })
+          .catch((error) => {
+            console.error("Transaction submission failed", error);
+          });
       }
     });
   };
@@ -2158,7 +2187,7 @@ Bulk submits an array of transaction payloads to the XRPL network via the extens
 interface SubmitBulkTransactionsRequest {
   transactions: TransactionWithID[];
   waitForHashes?: boolean; // default: true
-  onError?: 'abort' | 'continue'; // default: abort
+  onError?: "abort" | "continue"; // default: abort
 }
 ```
 
@@ -2173,8 +2202,8 @@ export type TransactionWithID = Transaction & {
 The `Transaction` type [is defined here](https://js.xrpl.org/types/Transaction.html).
 
 Notes:
-- If the transaction field `Account` is not set in any transaction, the account of the user's wallet will be used.
 
+- If the transaction field `Account` is not set in any transaction, the account of the user's wallet will be used.
 
 #### Response
 
@@ -2183,10 +2212,10 @@ The response is a Promise which resolves to an object with a `type` and `result`
 - `type`: `"response" | "reject"`
 - `result`:
   - `transactions`: The status of each transaction in the array.
-    - `id` *(optional)*: The custom ID of the transaction, if it was set in the request.
-    - `accepted` *(optional)*: Whether the transaction was accepted by the XRPL network (`waitForHashes = false` only).
-    - `hash` *(optional)*: The hash of the transaction (`waitForHashes = true` only).
-    - `error` *(optional)*: The error message, if the transaction was rejected.
+    - `id` _(optional)_: The custom ID of the transaction, if it was set in the request.
+    - `accepted` _(optional)_: Whether the transaction was accepted by the XRPL network (`waitForHashes = false` only).
+    - `hash` _(optional)_: The hash of the transaction (`waitForHashes = true` only).
+    - `error` _(optional)_: The error message, if the transaction was rejected.
 
 ```javascript
 type: "response";
@@ -2222,80 +2251,82 @@ import { submitBulkTransactions } from "@gemwallet/api";
 
 const transactions = [
   {
-    ID: '001', // Optional ID to identify the transaction in the response, after it has been submitted.
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
+    ID: "001", // Optional ID to identify the transaction in the response, after it has been submitted.
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
   },
   {
-    ID: '002',
-    TransactionType: 'TrustSet',
+    ID: "002",
+    TransactionType: "TrustSet",
     LimitAmount: {
-      currency: 'ETH',
-      issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-      value: '10000000'
+      currency: "ETH",
+      issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+      value: "10000000",
     },
-    Fee: '199'
+    Fee: "199",
   },
   {
-    ID: '003',
-    TransactionType: 'NFTokenMint',
-    URI: '516D6654463665756E47726A57597642666A72614B486D765572354444566D525351424373513252564D71764A72',
-    NFTokenTaxon: 0
+    ID: "003",
+    TransactionType: "NFTokenMint",
+    URI: "516D6654463665756E47726A57597642666A72614B486D765572354444566D525351424373513252564D71764A72",
+    NFTokenTaxon: 0,
   },
   {
-    ID: '004',
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
+    ID: "004",
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
   },
   {
-    ID: '005',
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
+    ID: "005",
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
   },
   {
-    ID: '006',
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
+    ID: "006",
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
   },
   {
-    ID: '007',
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
+    ID: "007",
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
   },
   {
-    ID: '008',
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
+    ID: "008",
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
   },
   {
-    ID: '009',
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
+    ID: "009",
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
   },
   {
-    ID: '010',
-    TransactionType: 'Payment',
-    Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-    Amount: '100000',
-  }
+    ID: "010",
+    TransactionType: "Payment",
+    Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+    Amount: "100000",
+  },
 ];
 
 submitBulkTransactions({
   transactions,
-  onError: 'abort',
-  waitForHashes: true
-}).then((response) => {
-  console.log('Received response: ', response);
-}).catch((error) => {
-  console.error("Transactions submission failed", error);
-});
+  onError: "abort",
+  waitForHashes: true,
+})
+  .then((response) => {
+    console.log("Received response: ", response);
+  })
+  .catch((error) => {
+    console.error("Transactions submission failed", error);
+  });
 ```
 
 Here is an example with a React web application:
@@ -2309,82 +2340,86 @@ function App() {
       if (response.result.isInstalled) {
         const transactions = [
           {
-            ID: '001', // Optional ID to identify the transaction in the response, after it has been submitted.
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
+            ID: "001", // Optional ID to identify the transaction in the response, after it has been submitted.
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
           },
           {
-            ID: '002',
-            TransactionType: 'TrustSet',
+            ID: "002",
+            TransactionType: "TrustSet",
             LimitAmount: {
-              currency: 'ETH',
-              issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-              value: '10000000'
+              currency: "ETH",
+              issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+              value: "10000000",
             },
-            Fee: '199'
+            Fee: "199",
           },
           {
-            ID: '003',
-            TransactionType: 'NFTokenMint',
-            URI: '516D6654463665756E47726A57597642666A72614B486D765572354444566D525351424373513252564D71764A72',
-            NFTokenTaxon: 0
+            ID: "003",
+            TransactionType: "NFTokenMint",
+            URI: "516D6654463665756E47726A57597642666A72614B486D765572354444566D525351424373513252564D71764A72",
+            NFTokenTaxon: 0,
           },
           {
-            ID: '004',
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
+            ID: "004",
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
           },
           {
-            ID: '005',
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
+            ID: "005",
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
           },
           {
-            ID: '006',
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
+            ID: "006",
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
           },
           {
-            ID: '007',
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
+            ID: "007",
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
           },
           {
-            ID: '008',
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
+            ID: "008",
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
           },
           {
-            ID: '009',
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
+            ID: "009",
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
           },
           {
-            ID: '010',
-            TransactionType: 'Payment',
-            Destination: 'rhikRdkFw28csKw9z7fVoBjWncz1HSoQij',
-            Amount: '100000',
-          }
+            ID: "010",
+            TransactionType: "Payment",
+            Destination: "rhikRdkFw28csKw9z7fVoBjWncz1HSoQij",
+            Amount: "100000",
+          },
         ];
-        submitBulkTransactions({ transactions }).then((response) => {
-          console.log('Received response: ', response);
-        }).catch((error) => {
-          console.error("Transactions submission failed", error);
-        });
+        submitBulkTransactions({ transactions })
+          .then((response) => {
+            console.log("Received response: ", response);
+          })
+          .catch((error) => {
+            console.error("Transactions submission failed", error);
+          });
       }
     });
   };
 
   return (
     <div className="App">
-      <button onClick={handleTransactionsBulk}>Submit Transactions (Bulk)</button>
+      <button onClick={handleTransactionsBulk}>
+        Submit Transactions (Bulk)
+      </button>
     </div>
   );
 }
@@ -2411,8 +2446,8 @@ interface SubmitTransactionRequest {
 The `Transaction` type [is defined here](https://js.xrpl.org/types/Transaction.html).
 
 Notes:
-- If the transaction field `Account` is not set, the account of the user's wallet will be used.
 
+- If the transaction field `Account` is not set, the account of the user's wallet will be used.
 
 #### Response
 
@@ -2453,17 +2488,19 @@ const transaction = {
     {
       Memo: {
         MemoData: "54657374206D656D6F",
-        MemoType: "4465736372697074696F6E"
-      }
-    }
-  ]
+        MemoType: "4465736372697074696F6E",
+      },
+    },
+  ],
 };
 
-submitTransaction({ transaction }).then((response) => {
-  console.log(response.result?.hash);
-}).catch((error) => {
-  console.error("Transaction submission failed", error);
-});
+submitTransaction({ transaction })
+  .then((response) => {
+    console.log(response.result?.hash);
+  })
+  .catch((error) => {
+    console.error("Transaction submission failed", error);
+  });
 ```
 
 Here is an example with a React web application:
@@ -2483,16 +2520,18 @@ function App() {
             {
               Memo: {
                 MemoData: "54657374206D656D6F",
-                MemoType: "4465736372697074696F6E"
-              }
-            }
-          ]
+                MemoType: "4465736372697074696F6E",
+              },
+            },
+          ],
         };
-        submitTransaction({ transaction }).then((response) => {
-          console.log("Transaction hash: ", response.result?.hash);
-        }).catch((error) => {
-          console.error("Transaction submission failed", error);
-        });
+        submitTransaction({ transaction })
+          .then((response) => {
+            console.log("Transaction hash: ", response.result?.hash);
+          })
+          .catch((error) => {
+            console.error("Transaction submission failed", error);
+          });
       }
     });
   };
@@ -2500,6 +2539,231 @@ function App() {
   return (
     <div className="App">
       <button onClick={handleTransaction}>Submit Transaction</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Xahau specific methods
+
+### setHook (Experimental)
+
+Sets Hooks to the account via the extension.
+
+#### Request
+
+**Mandatory** - The function takes a payload of type `SetHookRequest` as an input parameter.
+
+- `hooks`: The list of Hooks to set to the account.
+
+```typescript
+interface SetHookRequest extends BaseTransactionRequest {
+  // Hooks array, which mirrors the Hook Chain installed on the account. Position 0 in the array corresponds to position
+  // 0 in the Hook Chain, etc.
+  hooks: Hook[];
+}
+```
+
+```typescript
+interface Hook {
+  Hook: {
+    CreateCode: string;
+    Flags: number;
+    HookApiVersion: number;
+    // Each bit in this unsigned 256-bit integer indicates whether the Hook should execute on a particular transaction
+    // type.
+    //
+    // More info: https://xrpl-hooks.readme.io/docs/hookon-field
+    HookOn: string;
+    // To avoid two or more Hooks installed on the same account unintentionally clobbering each-other's Hook State, a 32
+    // byte namespace must be provided when creating or installing each Hook.
+    //
+    // The namespace may be any arbitrary 32 byte value the developer chooses. Provided the namespace is unique in the
+    // Hook chain no state clobbering will occur.
+    //
+    // More info: https://xrpl-hooks.readme.io/docs/namespaces
+    HookNamespace: string;
+    // Hook developers may opt to use install-time parameters (called Hook Parameters) in their Hook. This allows
+    // subsequent installers of the Hook to change certain behaviours the programmer defines without recompiling or
+    // re-uploading the Hook (assuming at least one account still references the existing Hook Definition.)
+    //
+    // Hook Parameters are a set of Key-Value pairs set during the SetHook Transaction and retrievable by the Hook during runtime. Both the ParameterName (key) and the ParameterValue are set as hex blobs, and have a maximum length of 32 bytes and 256 bytes respectively.
+    //
+    // A SetHook Transaction may define up to 16 Hook Parameters per installed Hook.
+    //
+    // https://xrpl-hooks.readme.io/docs/parameters
+    HookParameters?: HookParameter[];
+    // A Grant permits a foreign XRPL account or Hook to modify the Hook State within the namespace of the specific Hook
+    // for which the Grant is defined.
+    //
+    // If you wish to update a particular HookGrant whilst retaining multiple other HookGrant entires that were previously
+    // set, you must first obtain the old HookGrants array, modify it, and then resubmit the entire array in an Update
+    // Operation. To delete all Grants submit an empty HookGrants array.
+    //
+    // More info: https://xrpl-hooks.readme.io/docs/grants
+    HookGrants?: HookGrant[];
+  };
+}
+```
+
+```typescript
+interface HookParameter {
+  HookParameter: {
+    HookParameterName: string;
+    HookParameterValue: string;
+  };
+}
+```
+
+```typescript
+// Warning !!!
+//
+// Most Hook Developers will rarely need to use HookGrants, and should exercise extreme caution when granting state
+// mutation permission to foreign Hooks and accounts.
+//
+// While a HookGrant cannot be used to directly steal funds, intentional external modification of a Hook's State may
+// lead a Hook to behave in an unintended way, which in some cases could lead to a theft.
+//
+// If you think you need to use a Grant then please re-check your design first to ensure you actually need to use one
+// before continuing.
+//
+// More info: https://xrpl-hooks.readme.io/docs/grants
+interface HookGrant {
+  HookGrant: {
+    HookHash: string;
+    Authorize?: string;
+  };
+}
+```
+
+Notes:
+
+- If the transaction field `Account` is not set, the account of the user's wallet will be used.
+
+#### Response
+
+The response is a Promise which resolves to an object with a `type` and `result` property.
+
+- `type`: `"response" | "reject"`
+- `result`:
+  - `hahs`: The hash of the transaction.
+
+```javascript
+type: "response";
+result: {
+  hash: string;
+}
+```
+
+or
+
+```javascript
+type: "reject";
+result: undefined;
+```
+
+#### Error Handling
+
+In case of error, the error will be thrown.
+
+#### Examples
+
+```tsx
+import { setHook } from "@gemwallet/api";
+
+const const payload = {
+  hooks: [
+    {
+      Hook: {
+        CreateCode:
+          '0061736D01000000011C0460057F7F7F7F7F017E60037F7F7E017E60027F7F017F60017F017E02230303656E76057472616365000003656E7606616363657074000103656E76025F670002030201030503010002062B077F0141B088040B7F004180080B7F0041A6080B7F004180080B7F0041B088040B7F0041000B7F0041010B07080104686F6F6B00030AC4800001C0800001017F230041106B220124002001200036020C41920841134180084112410010001A410022002000420010011A41012200200010021A200141106A240042000B0B2C01004180080B254163636570742E633A2043616C6C65642E00224163636570742E633A2043616C6C65642E22',
+        Flags: 1,
+        HookApiVersion: 0,
+        HookOn: 'F'.repeat(58) + 'BFFFFE',
+        HookNamespace: '3963ADEB1B0E8934C0963680531202FD511FF1E16D5864402C2DA63861C420A8',
+        HookParameters: [
+          {
+            HookParameter: {
+              HookParameterName: 'ABCDEF12',
+              HookParameterValue: '12345678'
+            }
+          }
+        ],
+        HookGrants: [
+          {
+            HookGrant: {
+              HookHash: '78CAF69EEE950A6C55A450AC2A980DE434D624CD1B13148E007E28B7B6461CC8'
+            }
+          }
+        ]
+      }
+    }
+  ]
+};
+
+setHook(payload)
+  .then((response) => {
+    console.log("Transaction Hash: ", response.result?.hash);
+  })
+  .catch((error) => {
+    console.error("Transaction submission failed", error);
+  });
+```
+
+Here is an example with a React web application:
+
+```tsx
+import { setHook, isInstalled } from "@gemwallet/api";
+
+function App() {
+  const handleSetHook = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        const const payload = {
+          hooks: [
+            {
+              Hook: {
+                CreateCode:
+                  '0061736D01000000011C0460057F7F7F7F7F017E60037F7F7E017E60027F7F017F60017F017E02230303656E76057472616365000003656E7606616363657074000103656E76025F670002030201030503010002062B077F0141B088040B7F004180080B7F0041A6080B7F004180080B7F0041B088040B7F0041000B7F0041010B07080104686F6F6B00030AC4800001C0800001017F230041106B220124002001200036020C41920841134180084112410010001A410022002000420010011A41012200200010021A200141106A240042000B0B2C01004180080B254163636570742E633A2043616C6C65642E00224163636570742E633A2043616C6C65642E22',
+                Flags: 1,
+                HookApiVersion: 0,
+                HookOn: 'F'.repeat(58) + 'BFFFFE',
+                HookNamespace: '3963ADEB1B0E8934C0963680531202FD511FF1E16D5864402C2DA63861C420A8',
+                HookParameters: [
+                  {
+                    HookParameter: {
+                      HookParameterName: 'ABCDEF12',
+                      HookParameterValue: '12345678'
+                    }
+                  }
+                ],
+                HookGrants: [
+                  {
+                    HookGrant: {
+                      HookHash: '78CAF69EEE950A6C55A450AC2A980DE434D624CD1B13148E007E28B7B6461CC8'
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        };
+        setHook(payload)
+          .then((response) => {
+            console.log("Transaction hash: ", response.result?.hash);
+          })
+          .catch((error) => {
+            console.error("Transaction submission failed", error);
+          });
+      }
+    });
+  };
+
+  return (
+    <div className="App">
+      <button onClick={handleSetHook}>Set Hooks</button>
     </div>
   );
 }
@@ -2516,6 +2780,7 @@ This event is triggered when the user logs in to the extension.
 #### Response
 
 The response is an object with the following properties:
+
 - `loggedIn`: A boolean value indicating whether the user is logged in or not.
 
 ```javascript
@@ -2541,6 +2806,7 @@ This event is triggered when the user logs out of the extension.
 #### Response
 
 The response is an object with the following properties:
+
 - `loggedIn`: A boolean value indicating whether the user is logged in or not.
 
 ```javascript
@@ -2566,6 +2832,7 @@ This event is triggered when the user changes the network in the extension.
 #### Response
 
 The response is an object with the following properties:
+
 - `network`:
   - `name`: The name of the network in lowercase, e.g. `mainnet`.
   - `server`: The URL of the network, e.g. `wss://xrplcluster.com`.
@@ -2596,6 +2863,7 @@ This event is triggered when the user changes the wallet in the extension.
 #### Response
 
 The response is an object with the following properties:
+
 - `wallet`:
   - `publicAddress`: The public address of the wallet.
 
@@ -2624,24 +2892,24 @@ All the `Request` interfaces that extend the `BaseTransactionRequest` interface 
 - `fee`: Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network.
   - Some transaction types have different minimum requirements.
   - More technical details about the drops can be found [here](https://xrpl.org/currency-formats.html#xrp-amounts).
-- `sequence`: The sequence number of the account sending the transaction. 
-  - A transaction is only valid if the Sequence number is exactly 1 greater than the previous transaction from the same account. 
+- `sequence`: The sequence number of the account sending the transaction.
+  - A transaction is only valid if the Sequence number is exactly 1 greater than the previous transaction from the same account.
   - The special case 0 means the transaction is using a Ticket instead.
-- `accountTxnID`: Hash value identifying another transaction. 
+- `accountTxnID`: Hash value identifying another transaction.
   - If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash.
-- `lastLedgerSequence`: Highest ledger index this transaction can appear in. 
+- `lastLedgerSequence`: Highest ledger index this transaction can appear in.
   - Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected.
-- `memos`: Additional arbitrary information used to identify this transaction. 
+- `memos`: Additional arbitrary information used to identify this transaction.
   - Each attribute of each memo must be hex encoded.
   - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
 - `signers`: Array of objects that represent a multi-signature which authorizes this transaction.
   - More technical details about the signers can be found [here](https://xrpl.org/transaction-common-fields.html#signers-field).
-- `sourceTag`: Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. 
+- `sourceTag`: Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made.
   - Conventionally, a refund should specify the initial payment's SourceTag as the refund payment's DestinationTag.
-- `signingPubKey`: Hex representation of the public key that corresponds to the private key used to sign this transaction. 
+- `signingPubKey`: Hex representation of the public key that corresponds to the private key used to sign this transaction.
   - If an empty string, indicates a multi-signature is present in the Signers field instead.
-- `ticketSequence`: The sequence number of the ticket to use in place of a Sequence number. 
-  - If this is provided, Sequence must be 0. 
+- `ticketSequence`: The sequence number of the ticket to use in place of a Sequence number.
+  - If this is provided, Sequence must be 0.
   - Cannot be used with AccountTxnID.
 - `txnSignature`: The signature that verifies this transaction as originating from the account it says it is from.
 
