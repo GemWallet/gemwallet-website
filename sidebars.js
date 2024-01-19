@@ -107,6 +107,10 @@ const sidebars = {
         },
         {
           type: "doc",
+          id: "playground/setRegularKey",
+        },
+        {
+          type: "doc",
           id: "playground/setTrustline",
         },
         {
