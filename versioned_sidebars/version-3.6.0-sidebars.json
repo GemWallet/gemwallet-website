@@ -7,11 +7,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-3.6.0/user-guide/introduction"
+          "id": "user-guide/introduction"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/user-guide/getting-started"
+          "id": "user-guide/getting-started"
         }
       ]
     },
@@ -22,11 +22,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-3.6.0/api/gemwallet-api-installation"
+          "id": "api/gemwallet-api-installation"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/api/gemwallet-api-reference"
+          "id": "api/gemwallet-api-reference"
         }
       ]
     },
@@ -37,79 +37,79 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/acceptNFTOffer"
+          "id": "playground/acceptNFTOffer"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/burnNFT"
+          "id": "playground/burnNFT"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/cancelNFTOffer"
+          "id": "playground/cancelNFTOffer"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/cancelOffer"
+          "id": "playground/cancelOffer"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/createNFTOffer"
+          "id": "playground/createNFTOffer"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/createOffer"
+          "id": "playground/createOffer"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/getAddress"
+          "id": "playground/getAddress"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/getNetwork"
+          "id": "playground/getNetwork"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/getNFT"
+          "id": "playground/getNFT"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/getPublicKey"
+          "id": "playground/getPublicKey"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/isInstalled"
+          "id": "playground/isInstalled"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/mintNFT"
+          "id": "playground/mintNFT"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/sendPayment"
+          "id": "playground/sendPayment"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/setAccount"
+          "id": "playground/setAccount"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/setTrustline"
+          "id": "playground/setTrustline"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/signMessage"
+          "id": "playground/signMessage"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/signTransaction"
+          "id": "playground/signTransaction"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/submitBulkTransactions"
+          "id": "playground/submitBulkTransactions"
         },
         {
           "type": "doc",
-          "id": "version-3.6.0/playground/submitTransaction"
+          "id": "playground/submitTransaction"
         }
       ]
     }
