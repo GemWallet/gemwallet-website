@@ -2138,13 +2138,13 @@ export default App;
 
 ### submitBulkTransactions
 
-Bulk submits an array of transaction payloads to the XRPL network via the extension. Each transaction in the array will be automatically autofilled, signed, and submitted.
+Bulk submits an array of transaction payloads via the extension. Each transaction in the array will be automatically autofilled, signed, and submitted.
 
 #### Request
 
 **Mandatory** - The function takes a payload of type `SubmitBulkTransactionsRequest` as an input parameter.
 
-- `transactions`: An array of transaction payloads to submit to the XRPL network (max 50).
+- `transactions`: An array of transaction payloads to submit (max 50).
 - `waitForHashes`:
   - If set to `false`, the function will not wait for the transaction hashes to be returned from the XRPL.
   - If set to `false`, `accepted` values will be returned for each transaction, instead of `hash`.
@@ -2393,13 +2393,13 @@ export default App;
 
 ### submitTransaction
 
-Submits a transaction payload request to the XRPL network via the extension. The transaction will be automatically autofilled, signed and submitted.
+Submits a transaction payload request via the extension. The transaction will be automatically autofilled, signed and submitted.
 
 #### Request
 
 **Mandatory** - The function takes a payload of type `SubmitTransactionRequest` as an input parameter.
 
-- `transaction`: The transaction payload to submit to the XRPL network.
+- `transaction`: The transaction payload to submit.
 
 ```typescript
 interface SubmitTransactionRequest {
