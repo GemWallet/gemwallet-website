@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, getAddress } from "@gemwallet/api";
 
 export const GetAddressDemo = () => {

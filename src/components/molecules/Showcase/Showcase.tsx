@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Image from "@theme/IdealImage";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.scss";
@@ -30,11 +30,11 @@ export const Showcase: FC<ShowcaseProps> = ({
               {title}
             </Link>
           </h4>
-          {source &&
+          {source && (
             <Link href={source} className={styles.button}>
               source
             </Link>
-          }
+          )}
         </div>
         <p className={styles.description}>{description}</p>
       </div>

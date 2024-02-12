@@ -1,22 +1,22 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, mintNFT, MintNFTRequest } from "@gemwallet/api";
 
 const PAYLOAD: MintNFTRequest = {
-  URI: '4d696e746564207468726f7567682047656d57616c6c657421',
+  URI: "4d696e746564207468726f7567682047656d57616c6c657421",
   flags: {
     tfOnlyXRP: true,
-    tfTransferable: true
+    tfTransferable: true,
   },
   transferFee: 3000, // 3%,
   NFTokenTaxon: 0,
   memos: [
     {
       memo: {
-        memoType: '4465736372697074696f6e',
-        memoData: '54657374206d656d6f'
-      }
-    }
-  ]
+        memoType: "4465736372697074696f6e",
+        memoData: "54657374206d656d6f",
+      },
+    },
+  ],
 };
 
 export const MintNFTDemo = () => {

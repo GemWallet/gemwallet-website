@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, setTrustline, SetTrustlineRequest } from "@gemwallet/api";
 
 const TRANSACTION: SetTrustlineRequest = {

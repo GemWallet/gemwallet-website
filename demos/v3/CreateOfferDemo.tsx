@@ -1,15 +1,15 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, createOffer, CreateOfferRequest } from "@gemwallet/api";
 
 const PAYLOAD: CreateOfferRequest = {
-  takerGets: '10000000', // 10 XRP
+  takerGets: "10000000", // 10 XRP
   takerPays: {
-    currency: 'ETH',
-    issuer: 'rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey',
-    value: '0.1'
+    currency: "ETH",
+    issuer: "rnm76Qgz4G9G4gZBJVuXVvkbt7gVD7szey",
+    value: "0.1",
   },
   flags: {
-    tfPassive: true
+    tfPassive: true,
   },
 };
 

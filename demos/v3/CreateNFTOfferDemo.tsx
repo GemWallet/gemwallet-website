@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, createNFTOffer } from "@gemwallet/api";
 
 const PAYLOAD = {

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.scss";

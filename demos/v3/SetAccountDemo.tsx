@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, setAccount, SetAccountRequest } from "@gemwallet/api";
 
 const PAYLOAD: SetAccountRequest = {
-  emailHash: '1D1382344586ECFF844DACFF698C2EFB'
+  emailHash: "1D1382344586ECFF844DACFF698C2EFB",
 };
 
 export const SetAccountDemo = () => {

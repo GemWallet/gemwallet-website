@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, cancelOffer } from "@gemwallet/api";
 
 export const CancelOfferDemo = () => {
@@ -15,7 +15,7 @@ export const CancelOfferDemo = () => {
       }
 
       const response = await cancelOffer({
-        offerSequence: [offerSequence]
+        offerSequence: [offerSequence],
       });
       if (response.type === "reject") {
         setError("The transaction has been refused!");

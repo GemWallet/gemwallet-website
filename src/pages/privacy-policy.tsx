@@ -1,7 +1,4 @@
-import React from "react";
 import Layout from "@theme/Layout";
-import { Subtitle, Title } from "../components/atoms";
-import { FAQ } from "../components/organisms";
 
 export default function PrivacyPolicy(): JSX.Element {
   return (

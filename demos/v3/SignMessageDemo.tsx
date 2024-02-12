@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, signMessage } from "@gemwallet/api";
 
 const MESSAGE = "The message I want to get signed";

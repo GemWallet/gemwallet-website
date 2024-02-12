@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, cancelNFTOffer } from "@gemwallet/api";
 
 export const CancelNFTOfferDemo = () => {
@@ -15,7 +15,7 @@ export const CancelNFTOfferDemo = () => {
       }
 
       const response = await cancelNFTOffer({
-        NFTokenOffers: [NFTOfferID]
+        NFTokenOffers: [NFTOfferID],
       });
       if (response.type === "reject") {
         setError("The transaction has been refused!");
