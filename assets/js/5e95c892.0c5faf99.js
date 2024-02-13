@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgemwallet_website=self.webpackChunkgemwallet_website||[]).push([[9661],{34942:(e,s,r)=>{r.r(s),r.d(s,{default:()=>w});r(67294);var t=r(36905),a=r(35463),l=r(23702),u=r(18790),c=r(79641),n=r(85893);function w(e){return(0,n.jsx)(a.FG,{className:(0,t.Z)(l.k.wrapper.docsPages),children:(0,n.jsx)(c.Z,{children:(0,u.H)(e.route.routes)})})}}}]);
