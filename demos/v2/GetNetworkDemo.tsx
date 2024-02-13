@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isConnected, getNetwork } from "@gemwallet/api-v2";
 
 export const GetNetworkDemo = () => {

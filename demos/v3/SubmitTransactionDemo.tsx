@@ -1,5 +1,9 @@
-import React, { useCallback, useState } from "react";
-import { isInstalled, submitTransaction, SubmitTransactionRequest } from "@gemwallet/api";
+import { useCallback, useState } from "react";
+import {
+  isInstalled,
+  submitTransaction,
+  SubmitTransactionRequest,
+} from "@gemwallet/api";
 
 const PAYLOAD: SubmitTransactionRequest = {
   transaction: {
@@ -10,11 +14,11 @@ const PAYLOAD: SubmitTransactionRequest = {
       {
         Memo: {
           MemoData: "54657374206D656D6F",
-          MemoType: "4465736372697074696F6E"
-        }
-      }
-    ]
-  }
+          MemoType: "4465736372697074696F6E",
+        },
+      },
+    ],
+  },
 };
 
 export const SubmitTransactionDemo = () => {

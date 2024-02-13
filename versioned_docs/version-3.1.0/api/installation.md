@@ -19,7 +19,7 @@ We provide two ways of installing the extension:
 
 ## For browser-based applications
 
-Install the packaged library via script tag using cdnjs, swapping in the desired version number for {version}:
+Install the packaged library via script tag using cdnjs, swapping in the desired version number for \{version\}:
 
 ```html
 <script src="https://unpkg.com/@gemwallet/api@{version}/umd/gemwallet-api.js"></script>

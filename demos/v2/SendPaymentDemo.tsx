@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isConnected, sendPayment } from "@gemwallet/api-v2";
 
 const PAYMENT = {

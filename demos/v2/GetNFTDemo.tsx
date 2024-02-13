@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isConnected, getNFT, AccountNFToken } from "@gemwallet/api-v2";
 
 export const GetNFTDemo = () => {

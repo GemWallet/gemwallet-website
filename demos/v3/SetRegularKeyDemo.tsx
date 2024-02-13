@@ -1,8 +1,12 @@
-import React, { useCallback, useState } from "react";
-import { isInstalled, setRegularKey, SetRegularKeyRequest } from "@gemwallet/api";
+import { useCallback, useState } from "react";
+import {
+  isInstalled,
+  setRegularKey,
+  SetRegularKeyRequest,
+} from "@gemwallet/api";
 
 const PAYLOAD: SetRegularKeyRequest = {
-  regularKey: 'rNvFCZXpDtGeQ3bVas95wGLN6N2stGmA9o'
+  regularKey: "rNvFCZXpDtGeQ3bVas95wGLN6N2stGmA9o",
 };
 
 export const SetRegularKeyDemo = () => {

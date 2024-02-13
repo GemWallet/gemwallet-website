@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, burnNFT } from "@gemwallet/api";
 
 export const BurnNFTDemo = () => {
@@ -46,11 +46,7 @@ export const BurnNFTDemo = () => {
       {!txHash && error ? (
         <div style={{ display: "block", margin: "1em 0" }}>Error: {error}</div>
       ) : null}
-      <button
-        type="button"
-        onClick={handleBurnNFT}
-        style={{ margin: "1em 0" }}
-      >
+      <button type="button" onClick={handleBurnNFT} style={{ margin: "1em 0" }}>
         Burn NFT
       </button>
     </section>

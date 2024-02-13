@@ -7,11 +7,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-1.0.2/user-guide/introduction"
+          "id": "user-guide/introduction"
         },
         {
           "type": "doc",
-          "id": "version-1.0.2/user-guide/getting-started"
+          "id": "user-guide/getting-started"
         }
       ]
     },
@@ -22,15 +22,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-1.0.2/api/gemwallet-api"
+          "id": "api/gemwallet-api"
         },
         {
           "type": "doc",
-          "id": "version-1.0.2/api/using-gemwallet-in-browser"
+          "id": "api/using-gemwallet-in-browser"
         },
         {
           "type": "doc",
-          "id": "version-1.0.2/api/using-gemwallet-in-node-js"
+          "id": "api/using-gemwallet-in-node-js"
         }
       ]
     },
@@ -41,15 +41,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-1.0.2/playground/isConnected"
+          "id": "playground/isConnected"
         },
         {
           "type": "doc",
-          "id": "version-1.0.2/playground/getNetwork"
+          "id": "playground/getNetwork"
         },
         {
           "type": "doc",
-          "id": "version-1.0.2/playground/transactionRequest"
+          "id": "playground/transactionRequest"
         }
       ]
     }

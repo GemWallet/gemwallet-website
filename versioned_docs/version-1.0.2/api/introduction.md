@@ -20,7 +20,7 @@ We provide two ways of installing the extension:
 
 ## For browser-based applications
 
-Install the packaged library via script tag using cdnjs, swapping in the desired version number for {version}:
+Install the packaged library via script tag using cdnjs, swapping in the desired version number for \{version\}:
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/GemWallet/gemwallet-extension@{version}/dist/gemwallet-api.min.js"></script>

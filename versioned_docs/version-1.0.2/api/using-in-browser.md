@@ -13,7 +13,7 @@ This page assumes that you have GemWallet installed.
 
 Let's first import the library in the `<head>` tag of our page.
 
-Install the packaged library via script tag using cdnjs, swapping in the desired version number for {version}. You can also replace {version} with `master` to get the last version (not recommended).
+Install the packaged library via script tag using cdnjs, swapping in the desired version number for \{version\}. You can also replace \{version\} with `master` to get the last version (not recommended).
 
 ```html
 <head>
