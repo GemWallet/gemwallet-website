@@ -22,7 +22,7 @@ We provide two ways of installing the extension:
 Install the packaged library via script tag using cdnjs, swapping in the desired version number for \{version\}:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/GemWallet/gemwallet-extension@\{version\}/dist/gemwallet-api.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/GemWallet/gemwallet-extension@{version}/dist/gemwallet-api.min.js"></script>
 ```
 
 After adding the library to your web pages using GemWallet, you will need to import the proper functions as explained in the guide [here](./using-gemwallet-in-browser).

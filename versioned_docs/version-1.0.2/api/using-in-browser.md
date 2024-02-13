@@ -17,7 +17,7 @@ Install the packaged library via script tag using cdnjs, swapping in the desired
 
 ```html
 <head>
-  <script src="https://cdn.jsdelivr.net/gh/GemWallet/gemwallet-extension@\{version\}/dist/gemwallet-api.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/GemWallet/gemwallet-extension@{version}/dist/gemwallet-api.min.js"></script>
 </head>
 ```
 
