@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { isInstalled, setHook, SetHookRequest } from "@gemwallet/api";
 
 const PAYLOAD: SetHookRequest = {
