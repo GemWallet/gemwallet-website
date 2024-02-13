@@ -162,7 +162,7 @@ const config = {
       prism: {
         theme: lightTheme,
         darkTheme: darkTheme,
-        additionalLanguages: ['bash', 'js-extras', 'tsx', 'html'],
+        additionalLanguages: ['js-extras', 'tsx', 'jsx'],
       },
       colorMode: {
         defaultMode: "dark",
