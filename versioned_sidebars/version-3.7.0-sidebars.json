@@ -1,0 +1,125 @@
+{
+  "docs": [
+    {
+      "type": "category",
+      "label": "User Guide",
+      "collapsed": false,
+      "items": [
+        {
+          "type": "doc",
+          "id": "user-guide/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "user-guide/getting-started"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/gemwallet-api-installation"
+        },
+        {
+          "type": "doc",
+          "id": "api/gemwallet-api-reference"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Playground",
+      "collapsed": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "playground/acceptNFTOffer"
+        },
+        {
+          "type": "doc",
+          "id": "playground/burnNFT"
+        },
+        {
+          "type": "doc",
+          "id": "playground/cancelNFTOffer"
+        },
+        {
+          "type": "doc",
+          "id": "playground/cancelOffer"
+        },
+        {
+          "type": "doc",
+          "id": "playground/createNFTOffer"
+        },
+        {
+          "type": "doc",
+          "id": "playground/createOffer"
+        },
+        {
+          "type": "doc",
+          "id": "playground/getAddress"
+        },
+        {
+          "type": "doc",
+          "id": "playground/getNetwork"
+        },
+        {
+          "type": "doc",
+          "id": "playground/getNFT"
+        },
+        {
+          "type": "doc",
+          "id": "playground/getPublicKey"
+        },
+        {
+          "type": "doc",
+          "id": "playground/isInstalled"
+        },
+        {
+          "type": "doc",
+          "id": "playground/mintNFT"
+        },
+        {
+          "type": "doc",
+          "id": "playground/sendPayment"
+        },
+        {
+          "type": "doc",
+          "id": "playground/setAccount"
+        },
+        {
+          "type": "doc",
+          "id": "playground/setHook"
+        },
+        {
+          "type": "doc",
+          "id": "playground/setRegularKey"
+        },
+        {
+          "type": "doc",
+          "id": "playground/setTrustline"
+        },
+        {
+          "type": "doc",
+          "id": "playground/signMessage"
+        },
+        {
+          "type": "doc",
+          "id": "playground/signTransaction"
+        },
+        {
+          "type": "doc",
+          "id": "playground/submitBulkTransactions"
+        },
+        {
+          "type": "doc",
+          "id": "playground/submitTransaction"
+        }
+      ]
+    }
+  ]
+}
