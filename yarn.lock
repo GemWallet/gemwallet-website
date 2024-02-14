@@ -1969,10 +1969,10 @@
   resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-2.2.1.tgz#d6c16d3c3f171de23bd0292fc04d6589dee23329"
   integrity sha512-/qW49CcpfQvtB/IIInkop3JywbabtvB0NZOIFcvPZP9nXZYYqP2n2RFaphvWV/gjRdmndefyfggmFk7XcmAk1Q==
 
-"@gemwallet/api@3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-3.6.0.tgz#bb504380065a929b84a95d80b1de5e107b9bdede"
-  integrity sha512-iC80N8KJacdE2HPCQZBprlgPDzFGv1R42Sm8QB6ijDuAAHcDjuojBiE2YWCoVwm2fIiylzwuMxAzm8FyswAnhg==
+"@gemwallet/api@3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-3.7.0.tgz#af2d1bb76b8e0ebad0aac60c514485bc6519f9b5"
+  integrity sha512-Ib2CmvUW9VxfGCFhQ8d4cYn+P5RmGbVSTJLd6iTCLKxhy1J6U1G43SQ75+Ll6Uk3qeAiq2owEan97LHWBk6LIg==
 
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
