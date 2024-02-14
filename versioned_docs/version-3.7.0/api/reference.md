@@ -8,7 +8,7 @@ description: Provides the documentation on how to use GemWallet API.
 
 **Notes**:
 - The helper methods take payloads objects as input parameters, which are documented for each method. These methods are designed to be easy to use and understand.
-- However, if you are already familiar with the Raw transactions convention, you can use the methods documented in the [Raw transactions methods](#xrpl-protocol-methods) section. These methods will directly take transaction payloads as defined in the [XRPL Protocol](https://xrpl.org/transaction-common-fields.html#transaction-common-fields).
+- However, if you are already familiar with the Raw transactions convention, you can use the methods documented in the [Raw transactions methods](#raw-transactions-methods) section. These methods will directly take transaction payloads as defined in the [XRPL Protocol](https://xrpl.org/transaction-common-fields.html#transaction-common-fields).
 
 ## Main helper methods
 
