@@ -93,6 +93,14 @@
         },
         {
           "type": "doc",
+          "id": "playground/setHook"
+        },
+        {
+          "type": "doc",
+          "id": "playground/setRegularKey"
+        },
+        {
+          "type": "doc",
           "id": "playground/setTrustline"
         },
         {
