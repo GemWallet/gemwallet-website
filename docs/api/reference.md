@@ -96,19 +96,22 @@ The response is a Promise which resolves to an object with a `type` and `result`
 
 - `type`: `"response" | "reject"`
 - `result`:
+  - `chain`: The chain name as a string, e.g. `XRPL`.
   - `network`: The network name as a string.
+  - `websocket`: The websocket URL as a string.
 
-Returns:
+Network name returns:
 
 - `Mainnet` if the user is connected to the `main network`.
 - `Testnet` if the user is connected to the `test network`.
 - `Devnet` if the user is connected to the `developer network`.
-- `AMM-Devnet` if the user is connected to the `AMM Devnet`.
 
 ```javascript
 type: "response";
 result: {
+  chain: string;
   network: string;
+  websocket: string;
 }
 ```
 
