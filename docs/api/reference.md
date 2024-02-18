@@ -2860,6 +2860,9 @@ All the `Request` interfaces that extend the `BaseTransactionRequest` interface 
 - `memos`: Additional arbitrary information used to identify this transaction.
   - Each attribute of each memo must be hex encoded.
   - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
+- `networkID`: The network ID of the chain this transaction is intended for.
+  - Must be omitted for XRPL Mainnet and some test networks.
+  - Required on chains whose network ID is 1025 or higher.
 - `signers`: Array of objects that represent a multi-signature which authorizes this transaction.
   - More technical details about the signers can be found [here](https://xrpl.org/transaction-common-fields.html#signers-field).
 - `sourceTag`: Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made.
@@ -2889,6 +2892,9 @@ interface BaseTransactionRequest {
   // Additional arbitrary information used to identify this transaction.
   // Each attribute of each memo must be hex encoded.
   memos?: Memo[];
+  // The network ID of the chain this transaction is intended for. MUST BE OMITTED for XRPL Mainnet and some test
+  // networks. REQUIRED on chains whose network ID is 1025 or higher.
+  networkID?: number;
   // Array of objects that represent a multi-signature which authorizes this transaction.
   signers?: Signer[];
   // Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is
