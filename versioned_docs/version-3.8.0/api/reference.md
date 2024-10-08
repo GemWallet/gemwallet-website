@@ -2869,8 +2869,8 @@ All the `Request` interfaces that extend the `BaseTransactionRequest` interface 
 - `memos`: Additional arbitrary information used to identify this transaction.
   - Each attribute of each memo must be hex encoded.
   - More technical details about the memos can be found [here](https://xrpl.org/transaction-common-fields.html#memos-field).
-- `networkID`: The network ID of the chain this transaction is intended for.
-  - Must be omitted for XRPL Mainnet and some test networks.
+- `networkID`: The network ID of the chain this transaction is intended for. 
+  - Must be omitted for XRPL Mainnet and some test networks. 
   - Required on chains whose network ID is 1025 or higher.
 - `signers`: Array of objects that represent a multi-signature which authorizes this transaction.
   - More technical details about the signers can be found [here](https://xrpl.org/transaction-common-fields.html#signers-field).

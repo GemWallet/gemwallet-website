@@ -1806,7 +1806,7 @@
     "@docusaurus/theme-search-algolia" "3.1.1"
     "@docusaurus/types" "3.1.1"
 
-"@docusaurus/react-loadable@5.5.2", "react-loadable@npm:@docusaurus/react-loadable@5.5.2":
+"@docusaurus/react-loadable@5.5.2":
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz#81aae0db81ecafbdaee3651f12804580868fa6ce"
   integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
@@ -1969,10 +1969,10 @@
   resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-2.2.1.tgz#d6c16d3c3f171de23bd0292fc04d6589dee23329"
   integrity sha512-/qW49CcpfQvtB/IIInkop3JywbabtvB0NZOIFcvPZP9nXZYYqP2n2RFaphvWV/gjRdmndefyfggmFk7XcmAk1Q==
 
-"@gemwallet/api@3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-3.7.0.tgz#af2d1bb76b8e0ebad0aac60c514485bc6519f9b5"
-  integrity sha512-Ib2CmvUW9VxfGCFhQ8d4cYn+P5RmGbVSTJLd6iTCLKxhy1J6U1G43SQ75+Ll6Uk3qeAiq2owEan97LHWBk6LIg==
+"@gemwallet/api@3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@gemwallet/api/-/api-3.8.0.tgz#46bc47789848c7ac9cc620613e0a1757dc8668a1"
+  integrity sha512-hZ6XC0mVm3Q54cgonrzk6tHS/wUMjtPHyqsqbtlnNGPouCR7OIfEDo5Y802qLZ5ah6PskhsK0DouVnwUykEM8Q==
 
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
@@ -7728,6 +7728,14 @@ react-loadable-ssr-addon-v5-slorber@^1.0.1:
   integrity sha512-lq3Lyw1lGku8zUEJPDxsNm1AfYHBrO9Y1+olAYwpUJ2IGFBskM0DMKok97A6LWUpHm+o7IvQBOWu9MLenp9Z+A==
   dependencies:
     "@babel/runtime" "^7.10.3"
+
+"react-loadable@npm:@docusaurus/react-loadable@5.5.2":
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz#81aae0db81ecafbdaee3651f12804580868fa6ce"
+  integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
+  dependencies:
+    "@types/react" "*"
+    prop-types "^15.6.2"
 
 react-router-config@^5.1.1:
   version "5.1.1"
